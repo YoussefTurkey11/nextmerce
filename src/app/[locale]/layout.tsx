@@ -8,6 +8,7 @@ import { setRequestLocale } from "next-intl/server";
 import AuthInitializer from "@/providers/AuthInitializer";
 import ReduxProvider from "@/redux/provider";
 import HolyLoader from "holy-loader";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -42,8 +43,12 @@ export default async function RootLayout({
         <ReduxProvider>
           <AuthInitializer>
             <NextIntlClientProvider>
-              <HolyLoader />
-              {children}
+              <GoogleOAuthProvider
+                clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
+              >
+                <HolyLoader />
+                {children}
+              </GoogleOAuthProvider>
             </NextIntlClientProvider>
           </AuthInitializer>
         </ReduxProvider>

@@ -2,40 +2,52 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
+import { GoogleLogin } from "@react-oauth/google";
+import { useSignUpWithGoogleMutation } from "@/redux/api/authApi";
+import { useAppDispatch } from "@/redux/store";
+import { setToken, setUser } from "@/redux/slices/authSlice";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const SocialAuth = () => {
   const t = useTranslations("Auth.register");
 
-  return (
-    <div className="flex flex-col gap-1 w-full">
-      <Button
-        className="group mt-3 bg-background2 hover:bg-divider border border-primaryContainer2 text-primary3 flex items-center gap-3"
-        type="button"
-      >
-        <Image
-          src="/images/auth/google.svg"
-          width={20}
-          height={20}
-          alt="google-login"
-          loading="lazy"
-        />
-        <span>{t("google")}</span>
-      </Button>
+  const [signUpWithGoogle] = useSignUpWithGoogleMutation();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
-      <Button
-        className="group mt-3 bg-background2 hover:bg-divider border border-primaryContainer2 text-primary3 flex items-center gap-3"
-        type="button"
-      >
-        <Image
-          src="/images/auth/facebook.svg"
-          width={20}
-          height={20}
-          alt="facebook-login"
-          loading="lazy"
-        />
-        <span>{t("facebook")}</span>
-      </Button>
-    </div>
+  const handleSuccess = async (credentialResponse: any) => {
+    try {
+      const idToken = credentialResponse.credential;
+
+      const res = await signUpWithGoogle({
+        idToken,
+      }).unwrap();
+
+      dispatch(setToken(res.token));
+      dispatch(setUser(res.data));
+
+      localStorage.setItem("token", res.token);
+
+      toast.success("Welcome 🎉");
+
+      router.push("/home");
+    } catch (error: any) {
+      console.error(error);
+      toast.error(error?.data?.message || "Google login failed");
+    }
+  };
+
+  return (
+    <GoogleLogin
+      onSuccess={handleSuccess}
+      onError={() => toast.error("Google Login Failed")}
+      theme="outline"
+      size="large"
+      shape="pill"
+      text="continue_with"
+      width="250"
+    />
   );
 };
 

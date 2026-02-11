@@ -20,6 +20,17 @@ export const authApi = api.injectEndpoints({
       }),
       invalidatesTags: ["Auth"],
     }),
+    signUpWithGoogle: builder.mutation<
+      { token: string; data: any },
+      { idToken: string }
+    >({
+      query: (body) => ({
+        url: "/api/v1/auth/signUp-google",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Auth"],
+    }),
     logout: builder.mutation<void, void>({
       query: () => ({
         url: "/auth/logout",
@@ -90,6 +101,7 @@ export const authApi = api.injectEndpoints({
 export const {
   useLoginMutation,
   useRegisterMutation,
+  useSignUpWithGoogleMutation,
   useLogoutMutation,
   useGetUserQuery,
   useLazyGetUserQuery,
