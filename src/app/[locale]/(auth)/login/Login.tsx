@@ -42,6 +42,11 @@ const LoginPage = () => {
         password: data.password,
       }).unwrap();
 
+      if (res.message && res.message.includes("email is not verified")) {
+        router.push(`/${locale}/verify?email=${data.email}`);
+        return;
+      }
+
       const token = res.token;
 
       setAuthCookie(token);

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { OTPVerificationProps } from "@/types/OTPVerification";
 import { useLocale, useTranslations } from "next-intl";
 import { OTP } from "./OTP";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export function OTPVerification({
   onVerify,
@@ -21,6 +21,7 @@ export function OTPVerification({
   const locale = useLocale();
   const router = useRouter();
   const error = externalError || internalError;
+  const pathname = usePathname();
 
   // check from vaild code
   useEffect(() => {
@@ -45,10 +46,12 @@ export function OTPVerification({
     try {
       const success = await onVerify(resetCode);
 
-      if (success) {
+      if (pathname.startsWith(`/${locale}/verifyOTP`) && success) {
         router.push(
           `/${locale}/newPassword?email=${encodeURIComponent(email)}&resetCode=${resetCode}`,
         );
+      } else if (pathname.startsWith(`/${locale}/verify`) && success) {
+        router.push(`/${locale}/login`);
       }
 
       setInternalError("");

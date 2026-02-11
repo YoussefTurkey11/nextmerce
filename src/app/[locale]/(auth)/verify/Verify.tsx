@@ -23,15 +23,15 @@ const VerifyPage = () => {
     useResendVerifyCodeMutation();
 
   // Check token
-  useEffect(() => {
-    if (!token && typeof window !== "undefined") {
-      const localToken = localStorage.getItem("token");
-      if (!localToken) {
-        toast.error(t("sessionExpired"));
-        router.push(`/${locale}/login`);
-      }
-    }
-  }, [token, router]);
+  // useEffect(() => {
+  //   if (!token && typeof window !== "undefined") {
+  //     const localToken = localStorage.getItem("token");
+  //     if (!localToken) {
+  //       toast.error(t("sessionExpired"));
+  //       router.push(`/${locale}/login`);
+  //     }
+  //   }
+  // }, [token, router]);
 
   const handleVerify = async (otp: string): Promise<boolean> => {
     if (!token) {
@@ -72,10 +72,6 @@ const VerifyPage = () => {
     }
   };
 
-  const handleSuccessAction = () => {
-    router.push(`/${locale}/login`);
-  };
-
   return (
     <div className="shadow rounded-lg bg-background1 p-10">
       <Title title={t("title")} subTitle={t("subTitle")} />
@@ -83,11 +79,9 @@ const VerifyPage = () => {
         type={"email-verification"}
         email={email}
         onVerify={handleVerify}
-        onResend={handleResend}
         isResending={isResending}
         successTitle={t("successTitle")}
         successDescription={t("successDescription")}
-        onSuccessAction={handleSuccessAction}
       />
     </div>
   );

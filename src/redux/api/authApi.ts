@@ -31,13 +31,13 @@ export const authApi = api.injectEndpoints({
       }),
       invalidatesTags: ["Auth"],
     }),
-    logout: builder.mutation<void, void>({
-      query: () => ({
-        url: "/auth/logout",
-        method: "POST",
-      }),
-      invalidatesTags: ["Auth"],
-    }),
+    // logout: builder.mutation<void, void>({
+    //   query: () => ({
+    //     url: "/auth/logout",
+    //     method: "POST",
+    //   }),
+    //   invalidatesTags: ["Auth"],
+    // }),
 
     // ------- Get User Info -------
     getUser: builder.query<AuthResponse, void>({
@@ -102,7 +102,7 @@ export const {
   useLoginMutation,
   useRegisterMutation,
   useSignUpWithGoogleMutation,
-  useLogoutMutation,
+  // useLogoutMutation,
   useGetUserQuery,
   useLazyGetUserQuery,
   useVerifyEmailMutation,

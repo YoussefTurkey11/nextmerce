@@ -35,7 +35,8 @@
         "passwordNumber": "Password must contain at least one number",
         "passwordSpecial": "Password must contain at least one special character",
         "passwordConfirmationRequired": "Password confirmation is required",
-        "passwordsNotMatch": "Passwords don't match"
+        "passwordsNotMatch": "Passwords don't match",
+        "emailNotVerified": "⚠️ Your email is not verified. A verification code was sent to your email. Please verify to continue."
       },
       "response": {
         "success": "Login Success",
