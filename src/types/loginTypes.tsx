@@ -20,7 +20,7 @@ export interface TNormalInputProps extends TBaseFieldProps {
   type: Exclude<TInputType, "phone">;
   name: string;
   register: UseFormRegisterReturn;
-  control: Control<any>;
+  control?: Control<any>;
   icon?: React.ReactNode;
 }
 

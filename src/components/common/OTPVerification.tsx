@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { OTPVerificationProps } from "@/types/OTPVerification";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { OTP } from "./OTP";
+import { useRouter } from "next/navigation";
 
 export function OTPVerification({
   onVerify,
@@ -11,37 +12,44 @@ export function OTPVerification({
   error: externalError,
   email,
 }: OTPVerificationProps) {
-  const [otp, setOTP] = useState("");
+  const [resetCode, setResetCode] = useState("");
   const [isCodeComplete, setIsCodeComplete] = useState(false);
   const [internalError, setInternalError] = useState("");
   const [isErrorMode, setIsErrorMode] = useState(false);
 
   const t = useTranslations("Auth.verify");
-
+  const locale = useLocale();
+  const router = useRouter();
   const error = externalError || internalError;
 
   // check from vaild code
   useEffect(() => {
-    if (isCodeComplete && otp.length === 6) {
+    if (isCodeComplete && resetCode.length === 6) {
       handleSubmit();
     }
-  }, [isCodeComplete, otp]);
+  }, [isCodeComplete, resetCode]);
 
   const handleSubmit = async () => {
-    if (!otp.trim()) {
+    if (!resetCode.trim()) {
       setInternalError(t("pleaseEnterVerificationCode"));
       setIsErrorMode(true);
       return;
     }
 
-    if (otp.length !== 6) {
+    if (resetCode.length !== 6) {
       setInternalError(t("invalidCode"));
       setIsErrorMode(true);
       return;
     }
 
     try {
-      await onVerify(email, otp);
+      const success = await onVerify(resetCode);
+
+      if (success) {
+        router.push(
+          `/${locale}/newPassword?email=${encodeURIComponent(email)}&resetCode=${resetCode}`,
+        );
+      }
 
       setInternalError("");
       setIsErrorMode(false);
@@ -49,7 +57,7 @@ export function OTPVerification({
       setIsErrorMode(true);
 
       setTimeout(() => {
-        setOTP("");
+        setResetCode("");
         setIsCodeComplete(false);
         setTimeout(() => {
           setIsErrorMode(false);
@@ -61,7 +69,7 @@ export function OTPVerification({
   };
 
   const handleOTPChange = (value: string) => {
-    setOTP(value);
+    setResetCode(value);
     setIsCodeComplete(value.length === 6);
 
     if (internalError) {
@@ -76,7 +84,7 @@ export function OTPVerification({
         className={`my-5 transition-all duration-300 ${isErrorMode ? "shake-animation" : ""}`}
       >
         <OTP
-          value={otp}
+          value={resetCode}
           onChange={handleOTPChange}
           maxLength={6}
           disabled={isLoading}
@@ -91,7 +99,7 @@ export function OTPVerification({
       </div>
 
       <Button onClick={handleSubmit} type="submit">
-        {t("resendCode")}
+        {t("verifyLink")}
       </Button>
     </div>
   );

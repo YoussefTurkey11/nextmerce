@@ -19,7 +19,7 @@ const NewPasswordForm = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
-  const otp = searchParams.get("otp") || "";
+  const resetCode = searchParams.get("resetCode") || "";
   const t = useTranslations("Auth.newPassword");
   const locale = useLocale();
 
@@ -30,7 +30,7 @@ const NewPasswordForm = () => {
     id: string;
     name: keyof PasswordFormData;
     label: string;
-    type: TInputType;
+    type: Exclude<TInputType, "phone">;
     placeholder: string;
     description?: string;
     required: boolean;
@@ -39,75 +39,92 @@ const NewPasswordForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitted },
+    formState: { errors, isSubmitting },
     reset,
+    control, // أضف control
   } = useForm<PasswordFormData>({
     resolver: zodResolver(passwordSchema(t)),
     defaultValues: {
       email,
-      otp,
-      password: "",
-      passwordConfirmation: "",
+      newPassword: "",
+      confirmNewPassword: "",
     },
+    mode: "onChange",
   });
 
   const [resetPassword, { isLoading }] = useResetPasswordMutation();
 
   // Validate URL parameters
   useEffect(() => {
-    if (!email || !otp) {
+    if (!email || !resetCode) {
       toast.error(t("invalidLink"));
-      router.push(`/${locale}/forgetPassword`);
+      router.push(`/${locale}/forgotPassword`);
     }
-  }, [email, otp, router]);
+  }, [email, resetCode, router, locale, t]);
 
   const onSubmit = async (data: PasswordFormData) => {
+    console.log("Form submitted with data:", data);
+    console.log("Reset code:", resetCode);
+
     setIsProcessing(true);
     try {
-      await resetPassword({
+      const response = await resetPassword({
         email: data.email,
-        otp: data.otp,
-        password: data.password,
-        passwordConfirmation: data.passwordConfirmation,
+        newPassword: data.newPassword,
+        confirmNewPassword: data.confirmNewPassword,
+        resetCode: resetCode,
       }).unwrap();
+
+      console.log("Reset password response:", response);
 
       setShowSuccessDialog(true);
       reset();
+
+      setTimeout(() => {
+        router.push(`/${locale}/login`);
+      }, 2000);
     } catch (error: any) {
-      toast.error(error?.data?.message || t("errorMessage"));
-      console.error("Reset password error:", error);
+      console.error("Reset password error details:", error);
+      toast.error(error?.data?.message || error?.message || t("errorMessage"));
     } finally {
       setIsProcessing(false);
     }
   };
 
-  if (!email || !otp) {
+  if (!email || !resetCode) {
     return null;
   }
 
   return (
     <>
-      <div className="shadow rounded-lg bg-background1 p-10 w-full">
+      <div className="shadow rounded-lg bg-background1 p-10">
         <Title title={t("title")} subTitle={t("subTitle")} />
 
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-5 space-y-2">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col justify-center items-center gap-5 mt-10 w-full md:w-100"
+        >
           {newPasswordFormFields.map((pass) => (
             <InputField
               key={pass.id}
               label={pass.label}
               type={pass.type}
               placeholder={pass.placeholder}
-              {...register(pass.name)}
-              errors={errors[pass.name]?.message}
+              name={pass.name}
+              register={register(pass.name)}
+              errors={errors}
+              control={control as any} // أضف control
             />
           ))}
 
           <Button
             className="mt-3"
             type="submit"
-            disabled={isSubmitted || isLoading}
+            disabled={isSubmitting || isLoading || isProcessing}
           >
-            {t("resetButton")}
+            {isSubmitting || isLoading || isProcessing
+              ? t("resetting")
+              : t("resetButton")}
           </Button>
         </form>
       </div>

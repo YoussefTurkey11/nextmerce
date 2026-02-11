@@ -186,19 +186,19 @@
       "invalidLink": "Invalid or expired reset link",
       "formFields": [
         {
-          "id": "password",
-          "name": "password",
-          "label": "Password",
+          "id": "newPassword",
+          "name": "newPassword",
+          "label": "New Password",
           "type": "password",
-          "placeholder": "Enter your password",
+          "placeholder": "*************",
           "description": "Must be at least 8 characters with uppercase, lowercase, number, and special character"
         },
         {
-          "id": "passwordConfirmation",
-          "name": "passwordConfirmation",
-          "label": "Confirm Password",
+          "id": "confirmNewPassword",
+          "name": "confirmNewPassword",
+          "label": "Confirm new password",
           "type": "password",
-          "placeholder": "Confirm your password"
+          "placeholder": "*************"
         }
       ],
       "validations": {

@@ -33,23 +33,25 @@ const VerifyPage = () => {
     }
   }, [token, router]);
 
-  const handleVerify = async (email: string, otp: string) => {
+  const handleVerify = async (otp: string): Promise<boolean> => {
     if (!token) {
       toast.error(t("authRequired"));
       router.push(`/${locale}/login`);
-      return;
+      false;
     }
 
     try {
-      const res = await verifyEmail({
+      await verifyEmail({
         email,
         OTP: otp,
       }).unwrap();
+
       toast.success(t("response.success"));
-      return res;
+      return true;
     } catch (error: any) {
       console.error(error);
       toast.error(t("response.error"));
+      return false;
     }
   };
 
@@ -57,7 +59,7 @@ const VerifyPage = () => {
     if (!token) {
       toast.error(t("authRequired"));
       router.push(`/${locale}/login`);
-      return;
+      return false;
     }
 
     try {

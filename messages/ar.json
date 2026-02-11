@@ -185,19 +185,19 @@
       "invalidLink": "رابط إعادة التعيين غير صالح أو منتهي الصلاحية",
       "formFields": [
         {
-          "id": "password",
-          "name": "password",
-          "label": "كلمة المرور",
+          "id": "newPassword",
+          "name": "newPassword",
+          "label": " كلمة المرور الجديدة",
           "type": "password",
-          "placeholder": "أدخل كلمة المرور",
+          "placeholder": "أدخل كلمة المرور الجديدة",
           "description": "يجب أن تكون 8 أحرف على الأقل مع حرف كبير وحرف صغير ورقم ورمز خاص"
         },
         {
-          "id": "passwordConfirmation",
-          "name": "passwordConfirmation",
-          "label": "تأكيد كلمة المرور",
+          "id": "confirmNewPassword",
+          "name": "confirmNewPassword",
+          "label": "تأكيد كلمة المرور الجديدة",
           "type": "password",
-          "placeholder": "أعد إدخال كلمة المرور"
+          "placeholder": "أعد إدخال كلمة المرور الجديدة"
         }
       ],
       "validations": {

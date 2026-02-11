@@ -18,14 +18,13 @@ import Link from "next/link";
 const ForgotPassword = () => {
   const t = useTranslations("Auth.forgotPassword");
   const locale = useLocale();
-  const [userEmail, setUserEmail] = useState("");
   const [forgotPassword, { isLoading }] = useSendResetEmailMutation();
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitted },
+    formState: { errors, isSubmitting },
   } = useForm<ForgotPasswordFormDataSchema>({
     resolver: zodResolver(forgotPasswordSchema(t)),
     mode: "onChange",
@@ -33,13 +32,12 @@ const ForgotPassword = () => {
 
   const onSubmit = async (data: ForgotPasswordFormDataSchema) => {
     try {
-      const res = await forgotPassword({
+      await forgotPassword({
         email: data.email,
       }).unwrap();
-      setUserEmail(data.email);
       toast.success(t("response.success"));
       router.push(
-        `/${locale}/verifyOTP?email=${encodeURIComponent(userEmail)}`,
+        `/${locale}/verifyOTP?email=${encodeURIComponent(data.email)}`,
       );
     } catch (error: any) {
       console.error(error);
@@ -58,7 +56,7 @@ const ForgotPassword = () => {
         <Button
           className="mt-3"
           type="submit"
-          disabled={isSubmitted || isLoading}
+          disabled={isSubmitting || isLoading}
         >
           {t("forgotPasswordBtn")}
         </Button>

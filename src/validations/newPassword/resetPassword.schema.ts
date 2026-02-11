@@ -21,21 +21,20 @@ export const passwordSchema = (t: (key: string) => string) =>
   z
     .object({
       email: z.string().email(),
-      otp: z.string().length(6),
-      password: z
+      newPassword: z
         .string()
         .min(8, t("validations.password.min"))
         .regex(/[A-Z]/, t("validations.password.uppercase"))
         .regex(/[a-z]/, t("validations.password.lowercase"))
         .regex(/\d/, t("validations.password.number"))
         .regex(/[@$!%*?&]/, t("validations.password.special")),
-      passwordConfirmation: z
+      confirmNewPassword: z
         .string()
         .min(1, t("validations.password.confirmationRequired")),
     })
-    .refine((data) => data.password === data.passwordConfirmation, {
+    .refine((data) => data.newPassword === data.confirmNewPassword, {
       message: t("validations.password.notMatch"),
-      path: ["passwordConfirmation"],
+      path: ["confirmNewPassword"],
     });
 
 export type EmailFormData = z.infer<ReturnType<typeof emailSchema>>;

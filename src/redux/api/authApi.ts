@@ -35,7 +35,7 @@ export const authApi = api.injectEndpoints({
     }),
 
     // ------- Email Action -------
-    verifyEmail: builder.mutation<void, { code: string }>({
+    verifyEmail: builder.mutation<void, { email: string; OTP: string }>({
       query: (body) => ({
         url: "/api/v1/auth/verifyEmail",
         method: "POST",
@@ -54,15 +54,15 @@ export const authApi = api.injectEndpoints({
     // ------- Password Action -------
     sendResetEmail: builder.mutation<void, { email: string }>({
       query: (body) => ({
-        url: "/forget-password/check-email",
+        url: "/api/v1/forgetPassword/sendResetCode",
         method: "POST",
         body,
       }),
       invalidatesTags: ["Auth"],
     }),
-    checkResetOtp: builder.mutation<void, { email: string; otp: string }>({
+    checkResetOtp: builder.mutation<void, { resetCode: string }>({
       query: (body) => ({
-        url: "/forget-password/check-otp",
+        url: "/api/v1/forgetPassword/verifyResetCode",
         method: "POST",
         body,
       }),
@@ -72,14 +72,14 @@ export const authApi = api.injectEndpoints({
       void,
       {
         email: string;
-        otp: string;
-        password: string;
-        passwordConfirmation: string;
+        newPassword: string;
+        confirmNewPassword: string;
+        resetCode: string;
       }
     >({
       query: (body) => ({
-        url: "/forget-password/reset-password",
-        method: "POST",
+        url: "/api/v1/forgetPassword/resetPassword",
+        method: "PUT",
         body,
       }),
       invalidatesTags: ["Auth"],

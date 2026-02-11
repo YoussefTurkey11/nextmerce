@@ -62,7 +62,7 @@ const RegisterPage = () => {
       dispatch(setUser(res.data));
 
       toast.success(t("response.success"));
-      router.push(`/${locale}/verify?email=${data.email}`);
+      router.push(`/${locale}/`);
     } catch (error: any) {
       if (error.data?.message === "🛑 Email already in use") {
         toast.error(t("validation.existEmail") || error?.data?.message);
