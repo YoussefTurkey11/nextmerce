@@ -19,7 +19,7 @@ const ForgotPasswordFormData = ({
     id: keyof ForgotPasswordFormDataSchema;
     label: string;
     placeholder: string;
-    type: TInputType;
+    type: Exclude<TInputType, "phone">;
   }>;
 
   return (
