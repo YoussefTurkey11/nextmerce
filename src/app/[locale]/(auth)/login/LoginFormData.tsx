@@ -19,7 +19,7 @@ const LoginFormData = ({
     id: keyof LoginFormDataSchema;
     label: string;
     placeholder: string;
-    type: TInputType;
+    type: Exclude<TInputType, "phone">;
   }>;
 
   return (

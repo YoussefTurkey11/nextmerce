@@ -22,17 +22,6 @@ const VerifyPage = () => {
   const [resendVerifyCode, { isLoading: isResending }] =
     useResendVerifyCodeMutation();
 
-  // Check token
-  // useEffect(() => {
-  //   if (!token && typeof window !== "undefined") {
-  //     const localToken = localStorage.getItem("token");
-  //     if (!localToken) {
-  //       toast.error(t("sessionExpired"));
-  //       router.push(`/${locale}/login`);
-  //     }
-  //   }
-  // }, [token, router]);
-
   const handleVerify = async (otp: string): Promise<boolean> => {
     if (!token) {
       toast.error(t("authRequired"));
