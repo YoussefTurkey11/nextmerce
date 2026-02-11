@@ -1,0 +1,228 @@
+{
+  "Auth": {
+    "login": {
+      "title": "تسجيل الدخول إلى حسابك",
+      "subTitle": "سعداء لرؤيتك مجددًا :)",
+      "google": "تسجيل الدخول باستخدام جوجل",
+      "facebook": "تسجيل الدخول باستخدام فيسبوك",
+      "divider": "أو",
+      "loginBtn": "تسجيل الدخول",
+      "haveAccount": "ليس لديك حساب؟",
+      "registerLink": "أنشئ حسابًا الآن!",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "formData": [
+        {
+          "id": "email",
+          "name": "email",
+          "label": "البريد الإلكتروني",
+          "placeholder": "ادخل بريدك الإلكتروني",
+          "type": "email"
+        },
+        {
+          "id": "password",
+          "name": "password",
+          "label": "كلمة المرور",
+          "placeholder": "ادخل كلمة المرور",
+          "type": "password"
+        }
+      ],
+      "validation": {
+        "invalidEmail": "هذا البريد غير صحيح",
+        "passwordMin": "لابد أن تحتوي كلمة المرور ع الأفل 9 أحروف",
+        "required": "هذا الحقل مطلوب",
+        "passwordUppercase": "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل",
+        "passwordLowercase": "كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل",
+        "passwordNumber": "كلمة المرور يجب أن تحتوي على رقم واحد على الأقل",
+        "passwordSpecial": "كلمة المرور يجب أن تحتوي على رمز خاص واحد على الأقل",
+        "passwordConfirmationRequired": "تأكيد كلمة المرور مطلوب",
+        "passwordsNotMatch": "كلمتا المرور غير متطابقتين"
+      },
+      "response": {
+        "success": "تم تسجيل الدخول بنجاح",
+        "error": "قد يكون البريد الإلكتروني أو كلمة المرور غير صحيحة!"
+      }
+    },
+    "register": {
+      "title": "إنشاء حساب",
+      "subTitle": "سعداء بوجودك معنا :)",
+      "google": "التسجيل باستخدام جوجل",
+      "facebook": "التسجيل باستخدام فيسبوك",
+      "divider": "أو",
+      "registerBtn": "إنشاء الحساب",
+      "haveAccount": "هل لديك حساب بالفعل؟",
+      "registerLink": "تسجيل الدخول",
+      "formData": [
+        {
+          "id": "name",
+          "name": "name",
+          "label": "الاسم الكامل",
+          "placeholder": "محمد أحمد",
+          "type": "text"
+        },
+        {
+          "id": "email",
+          "name": "email",
+          "label": "البريد الإلكتروني",
+          "placeholder": "أدخل بريدك الإلكتروني",
+          "type": "email"
+        },
+        {
+          "id": "phone",
+          "name": "phone",
+          "label": "رقم التليفون",
+          "type": "phone",
+          "placeholder": "+971 50 123 4567"
+        },
+        {
+          "id": "password",
+          "name": "password",
+          "label": "كلمة المرور",
+          "placeholder": "أدخل كلمة المرور",
+          "type": "password"
+        },
+        {
+          "id": "passwordConfirmation",
+          "name": "passwordConfirmation",
+          "label": "تأكيد كلمة المرور",
+          "placeholder": "أعد إدخال كلمة المرور",
+          "type": "password"
+        }
+      ],
+      "validation": {
+        "invalidEmail": "البريد الإلكتروني غير صالح",
+        "existEmail": "هذا البريد بالفعل مستخدم",
+        "passwordMin": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+        "required": "هذا الحقل مطلوب",
+        "nameMax": "يجب ألا يزيد الاسم عن 255 حرفًا",
+        "passwordUppercase": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
+        "passwordLowercase": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
+        "passwordNumber": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+        "passwordSpecial": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل",
+        "passwordConfirmationRequired": "تأكيد كلمة المرور مطلوب",
+        "passwordsNotMatch": "كلمتا المرور غير متطابقتين",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "invalidPhone": "رقم الهاتف غير صحيح"
+      },
+      "response": {
+        "success": "تم إنشاء الحساب بنجاح",
+        "error": "حدثت مشكلة ما، يرجى المحاولة مرة أخرى!"
+      }
+    },
+    "forgotPassword": {
+      "title": "هل نسيت كلمة المرور",
+      "subTitle": "لا تقلق! سنتحقق منها فورًا :)",
+      "forgotPasswordBtn": "تحقق من البريد الإلكتروني",
+      "haveAccount": "تذكرت حسابك؟",
+      "forgotPasswordLink": "تسجيل الدخول",
+      "formData": [
+        {
+          "id": "email",
+          "name": "email",
+          "label": "البريد الإلكتروني",
+          "placeholder": "ادخل بريدك الإلكتروني",
+          "type": "email"
+        }
+      ],
+      "validation": {
+        "invalidEmail": "البريد الإلكتروني غير صالح",
+        "required": "هذا الحقل مطلوب"
+      },
+      "response": {
+        "success": "التحقق من البريد الإلكتروني صحيح",
+        "error": "هذا البريد الإلكتروني غير موجود في حسابتنا"
+      }
+    },
+    "verify": {
+      "title": "تحقق من بريدك الإلكتروني",
+      "subTitle": "لقد أرسلنا رمزًا مكونًا من 6 أرقام إلى بريدك الإلكتروني. أدخله أدناه لتأكيد حسابك.",
+      "verifyLink": "تأكيد الحساب",
+      "haveCode": "لم تستلم الرمز بعد؟",
+      "changeEmail": "تغيير عنوان البريد الإلكتروني",
+      "secure": "تأكيد آمن",
+      "resendCode": "إعادة إرسال الرمز",
+      "resending": "جاري إعادة الإرسال...",
+      "didntReceive": "لم تستلم الرمز؟",
+      "resendIn": "إعادة الإرسال خلال",
+      "second": "ثانية",
+      "seconds": "ثوانٍ",
+      "codeRequired": "الرجاء إدخال رمز التحقق",
+      "codeLength": "يجب أن يكون الرمز مكونًا من 6 أرقام",
+      "successTitle": "تم التحقق من البريد الإلكتروني بنجاح!",
+      "successDescription": "تم التحقق من بريدك الإلكتروني بنجاح. مرحبًا بك!",
+      "sessionExpired": "انتهت صلاحية الجلسة. الرجاء تسجيل الدخول مرة أخرى.",
+      "authRequired": "مطلوب المصادقة. الرجاء تسجيل الدخول مرة أخرى.",
+      "resendSuccess": "تم إعادة إرسال رمز التحقق بنجاح!",
+      "pleaseEnterVerificationCode": "الرجاء إدخال رمز التحقق",
+      "invalidCode": "رمز التحقق غير صحيح. الرجاء المحاولة مرة أخرى.",
+      "response": {
+        "success": "تم إدخال الرمز بنجاح",
+        "error": "الرمز غير صحيح، حاول مرة أخرى"
+      }
+    },
+    "verifyOTP": {
+      "title": "تأكيد كود OTP",
+      "subTitle": "أدخل الكود المكون من 6 أرقام الذي أرسلناه إلى بريدك الإلكتروني لإعادة تعيين كلمة المرور.",
+      "successTitle": "تم التحقق من كود OTP بنجاح!",
+      "successDescription": "تم التحقق من كود OTP بنجاح. يمكنك الآن تعيين كلمة مرور جديدة.",
+      "backButtonText": "استخدام بريد إلكتروني آخر",
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "resetCodeResent": "تم إعادة إرسال كود إعادة التعيين!",
+      "pleaseEnterVerificationCode": "يرجى إدخال كود التحقق",
+      "invalidCode": "كود التحقق غير صالح. يرجى المحاولة مرة أخرى.",
+      "response": {
+        "success": "تم إدخال الرمز بنجاح",
+        "error": "الرمز غير صحيح، حاول مرة أخرى"
+      }
+    },
+    "newPassword": {
+      "title": "تعيين كلمة مرور جديدة",
+      "subTitle": "أدخل كلمة المرور الجديدة أدناه.",
+      "back": "رجوع",
+      "resetButton": "إعادة تعيين كلمة المرور",
+      "resetting": "جاري إعادة تعيين كلمة المرور...",
+      "successTitle": "تم تغيير كلمة المرور بنجاح!",
+      "successDescription": "كلمة مرورك جاهزة الآن. يمكنك تسجيل الدخول وبدء طلب وجباتك المفضلة.",
+      "invalidLink": "رابط إعادة التعيين غير صالح أو منتهي الصلاحية",
+      "formFields": [
+        {
+          "id": "password",
+          "name": "password",
+          "label": "كلمة المرور",
+          "type": "password",
+          "placeholder": "أدخل كلمة المرور",
+          "description": "يجب أن تكون 8 أحرف على الأقل مع حرف كبير وحرف صغير ورقم ورمز خاص"
+        },
+        {
+          "id": "passwordConfirmation",
+          "name": "passwordConfirmation",
+          "label": "تأكيد كلمة المرور",
+          "type": "password",
+          "placeholder": "أعد إدخال كلمة المرور"
+        }
+      ],
+      "validations": {
+        "email": {
+          "required": "البريد الإلكتروني مطلوب",
+          "invalid": "يرجى إدخال عنوان بريد إلكتروني صحيح"
+        },
+        "otp": {
+          "required": "رمز التحقق مطلوب",
+          "length": "يجب أن يكون رمز التحقق 6 أرقام بالضبط",
+          "digitsOnly": "يجب أن يحتوي رمز التحقق على أرقام فقط"
+        },
+        "password": {
+          "min": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+          "uppercase": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
+          "lowercase": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
+          "number": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+          "special": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل (@$!%*?&)",
+          "confirmationRequired": "يرجى تأكيد كلمة المرور",
+          "notMatch": "كلمتا المرور غير متطابقتين"
+        }
+      }
+    }
+  },
+  "HomePage": {
+    "title": "مرحبًا بالعالم!"
+  }
+}

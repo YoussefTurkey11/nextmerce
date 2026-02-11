@@ -1,0 +1,229 @@
+{
+  "Auth": {
+    "login": {
+      "title": "Login to Your Account",
+      "subTitle": "We are happy to see you again :)",
+      "google": "Login With Google",
+      "facebook": "Login With Facebook",
+      "divider": "Or",
+      "loginBtn": "Login",
+      "haveAccount": "Don't have an account?",
+      "registerLink": "Register Now!",
+      "forgotPassword": "Forgot your password?",
+      "formData": [
+        {
+          "id": "email",
+          "name": "email",
+          "label": "email",
+          "placeholder": "Enter your email",
+          "type": "email"
+        },
+        {
+          "id": "password",
+          "name": "password",
+          "label": "password",
+          "placeholder": "Enter your password",
+          "type": "password"
+        }
+      ],
+      "validation": {
+        "invalidEmail": "Email is invalid",
+        "passwordMin": "Password must be at least 6 characters",
+        "required": "This field is required",
+        "passwordUppercase": "Password must contain at least one uppercase letter",
+        "passwordLowercase": "Password must contain at least one lowercase letter",
+        "passwordNumber": "Password must contain at least one number",
+        "passwordSpecial": "Password must contain at least one special character",
+        "passwordConfirmationRequired": "Password confirmation is required",
+        "passwordsNotMatch": "Passwords don't match"
+      },
+      "response": {
+        "success": "Login Success",
+        "error": "May email or password is wrong!"
+      }
+    },
+    "register": {
+      "title": "Create an Account",
+      "subTitle": "We are happy to see you here :)",
+      "google": "Register With Google",
+      "facebook": "Register With Facebook",
+      "divider": "Or",
+      "registerBtn": "Create Account",
+      "haveAccount": "Already have an account?",
+      "registerLink": "Login",
+      "formData": [
+        {
+          "id": "name",
+          "name": "name",
+          "label": "Full Name",
+          "placeholder": "John",
+          "type": "text"
+        },
+        {
+          "id": "email",
+          "name": "email",
+          "label": "email",
+          "placeholder": "Enter your email",
+          "type": "email"
+        },
+        {
+          "id": "phone",
+          "name": "phone",
+          "label": "Phone Number",
+          "type": "phone",
+          "placeholder": "+971 50 123 4567"
+        },
+        {
+          "id": "password",
+          "name": "password",
+          "label": "password",
+          "placeholder": "Enter your password",
+          "type": "password"
+        },
+        {
+          "id": "passwordConfirmation",
+          "name": "passwordConfirmation",
+          "label": "Re-type Password",
+          "placeholder": "Re-type your password",
+          "type": "password"
+        }
+      ],
+      "validation": {
+        "invalidEmail": "Email is invalid",
+        "existEmail": "Email already in use",
+        "passwordMin": "Password must be at least 9 characters",
+        "required": "This field is required",
+        "nameMax": "Name must not exceed 255 characters",
+        "passwordUppercase": "Password must contain at least one uppercase letter",
+        "passwordLowercase": "Password must contain at least one lowercase letter",
+        "passwordNumber": "Password must contain at least one number",
+        "passwordSpecial": "Password must contain at least one special character",
+        "passwordConfirmationRequired": "Password confirmation is required",
+        "passwordsNotMatch": "Passwords don't match",
+        "phoneRequired": "Phone number is required",
+        "invalidPhone": "Invalid phone number"
+      },
+      "response": {
+        "success": "Register Success",
+        "error": "We are have some issues, please try again!"
+      }
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subTitle": "Don't worry! We'll check it immediately :)",
+      "forgotPasswordBtn": "Check email",
+      "haveAccount": "Did you remember your account?",
+      "forgotPasswordLink": "Login",
+      "formData": [
+        {
+          "id": "email",
+          "name": "email",
+          "label": "email",
+          "placeholder": "Enter your email",
+          "type": "email"
+        }
+      ],
+      "validation": {
+        "invalidEmail": "Email is invalid",
+        "required": "This field is required"
+      },
+      "response": {
+        "success": "Email was checked successfully",
+        "error": "This email is not in our records"
+      }
+    },
+    "verify": {
+      "title": "Verify your email",
+      "subTitle": "We've sent a 6-digit code to your email. Enter it below to confirm your account.",
+      "verifyLink": "Verify Account",
+      "haveCode": "Did not receive the code yet?",
+      "changeEmail": "Change email address",
+      "secure": "SECURE VERIFICATION",
+      "resendCode": "Resend Code",
+      "resending": "Resending...",
+      "didntReceive": "Didn't receive the code?",
+      "resendIn": "Resend in",
+      "second": "second",
+      "seconds": "seconds",
+      "codeRequired": "Please enter the verification code",
+      "codeLength": "Code must be 6 digits",
+      "successTitle": "Email Verified Successfully!",
+      "successDescription": "Your email has been verified successfully. Welcome!",
+      "sessionExpired": "Session expired. Please login again.",
+      "authRequired": "Authentication required. Please login again.",
+      "resendSuccess": "Verification code resent successfully!",
+      "pleaseEnterVerificationCode": "Please enter the verification code",
+      "invalidCode": "Invalid verification code. Please try again.",
+      "emailRequired": "Email is required",
+      "response": {
+        "success": "Enter code successfully",
+        "error": "Code is not correct, try again"
+      }
+    },
+    "verifyOTP": {
+      "title": "Verify OTP Code",
+      "subTitle": "Enter the 6-digit code sent to email to reset your password.",
+      "successTitle": "OTP Verified Successfully!",
+      "successDescription": "Your OTP code has been verified. Now you can set a new password.",
+      "backButtonText": "Use different email",
+      "emailRequired": "Email is required",
+      "resetCodeResent": "Reset code has been resent!",
+      "pleaseEnterVerificationCode": "Please enter the verification code",
+      "invalidCode": "Invalid verification code. Please try again.",
+      "response": {
+        "success": "Enter code successfully",
+        "error": "Code is not correct, try again"
+      }
+    },
+    "newPassword": {
+      "title": "Set New Password",
+      "subTitle": "Enter your new password below.",
+      "back": "Back",
+      "resetButton": "Reset Password",
+      "resetting": "Resetting password...",
+      "successTitle": "Password Changed Successfully!",
+      "successDescription": "Your password is now ready. You can log in and start ordering your favorite meals.",
+      "invalidLink": "Invalid or expired reset link",
+      "formFields": [
+        {
+          "id": "password",
+          "name": "password",
+          "label": "Password",
+          "type": "password",
+          "placeholder": "Enter your password",
+          "description": "Must be at least 8 characters with uppercase, lowercase, number, and special character"
+        },
+        {
+          "id": "passwordConfirmation",
+          "name": "passwordConfirmation",
+          "label": "Confirm Password",
+          "type": "password",
+          "placeholder": "Confirm your password"
+        }
+      ],
+      "validations": {
+        "email": {
+          "required": "Email is required",
+          "invalid": "Please enter a valid email address"
+        },
+        "otp": {
+          "required": "OTP is required",
+          "length": "OTP must be exactly 6 digits",
+          "digitsOnly": "OTP must contain only numbers"
+        },
+        "password": {
+          "min": "Password must be at least 8 characters",
+          "uppercase": "Password must contain at least one uppercase letter",
+          "lowercase": "Password must contain at least one lowercase letter",
+          "number": "Password must contain at least one number",
+          "special": "Password must contain at least one special character (@$!%*?&)",
+          "confirmationRequired": "Please confirm your password",
+          "notMatch": "Passwords do not match"
+        }
+      }
+    }
+  },
+  "HomePage": {
+    "title": "Hello World!"
+  }
+}

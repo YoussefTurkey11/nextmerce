@@ -1,0 +1,108 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Neutral-Colors */
+  --color-background1: var(--background1);
+  --color-background2: var(--background2);
+  --color-divider: var(--divider);
+  --color-surface1: var(--surface1);
+  --color-surface2: var(--surface2);
+  --color-surface3: var(--surface3);
+  --color-onSurface1: var(--onSurface1);
+  --color-onSurface2: var(--onSurface2);
+  --color-onSurface3: var(--onSurface3);
+  /* Primary-Colors */
+  --color-primary1: var(--primary1);
+  --color-primary2: var(--primary2);
+  --color-primary3: var(--primary3);
+  --color-onPrimary: var(--onPrimary);
+  --color-primaryContainer1: var(--primaryContainer1);
+  --color-primaryContainer2: var(--primaryContainer2);
+  --color-primaryContainer3: var(--primaryContainer3);
+  /* Alerts */
+  --color-success: var(--success);
+  --color-error: var(--error);
+  /* Font-family */
+  --font-cairo: var(--font-cairo);
+  /* Font-size */
+  --headline-size: var(--headline-size);
+  --title-large-size: var(--title-large-size);
+  --title-medium-size: var(--title-medium-size);
+  --body-large-size: var(--body-large-size);
+  --body-medium-size: var(--body-medium-size);
+  --body-regular-size: var(--body-regular-size);
+  --body-small-size: var(--body-small-size);
+  --label-medium-size: var(--label-medium-size);
+  --label-small-size: var(--label-small-size);
+}
+
+:root {
+  /* Neutral-Colors */
+  --background1: #ffffff;
+  --background2: #f1f6ff;
+  --divider: #d3e0fe;
+  --surface1: #ffffff;
+  --surface2: #f1f6ff;
+  --surface3: #e8ecf3;
+  --onSurface1: #2e3139;
+  --onSurface2: #425583;
+  --onSurface3: #899cc9;
+  /* Primary-Colors */
+  --primary1: #4045ef;
+  --primary2: #1216b3;
+  --primary3: #16173a;
+  --onPrimary: #ffffff;
+  --primaryContainer1: #e3e3ff;
+  --primaryContainer2: #c9cbff;
+  --primaryContainer3: #ebebff;
+  /* Alerts */
+  --success: #17a31a;
+  --error: #d91b1b;
+  /* Font-size */
+  --headline-size: 64px;
+  --title-large-size: 32px;
+  --title-medium-size: 24px;
+  --body-large-size: 18px;
+  --body-medium-size: 16px;
+  --body-regular-size: 14px;
+  --body-small-size: 12px;
+  --label-medium-size: 12px;
+  --label-small-size: 10px;
+}
+
+.dark {
+  /* Neutral-Colors */
+  --background1: #0f1226;
+  --background2: #151938;
+  --divider: #2a2f55;
+  --surface1: #161a3d;
+  --surface2: #1c204a;
+  --surface3: #242a5c;
+  --onSurface1: #f1f3ff;
+  --onSurface2: #c3c7ff;
+  --onSurface3: #8f93c9;
+  /* Primary-Colors */
+  --primary1: #6c72ff;
+  --primary2: #4045ef;
+  --primary3: #1f225c;
+  --onPrimary: #ffffff;
+  --primaryContainer1: #1c204a;
+  --primaryContainer2: #252a66;
+  --primaryContainer3: #2f3475;
+}
+
+@layer base {
+  * {
+    @apply font-cairo;
+  }
+  body {
+    @apply bg-background2 text-onSurface1;
+  }
+  .center {
+    @apply flex items-center justify-center min-h-screen;
+  }
+}
