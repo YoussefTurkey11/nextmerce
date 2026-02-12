@@ -14,6 +14,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { TInputType } from "@/types/authTypes";
 import { InputField } from "@/components/common/InputField";
 import Title from "@/components/common/Title";
+import { Lock } from "lucide-react";
 
 const NewPasswordForm = () => {
   const router = useRouter();
@@ -41,7 +42,7 @@ const NewPasswordForm = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    control, // أضف control
+    control,
   } = useForm<PasswordFormData>({
     resolver: zodResolver(passwordSchema(t)),
     defaultValues: {
@@ -97,7 +98,7 @@ const NewPasswordForm = () => {
 
   return (
     <>
-      <div className="shadow rounded-lg bg-background1 p-10">
+      <div className="ring-[0.5px] ring-ring rounded-lg bg-background p-10">
         <Title title={t("title")} subTitle={t("subTitle")} />
 
         <form
@@ -113,7 +114,8 @@ const NewPasswordForm = () => {
               name={pass.name}
               register={register(pass.name)}
               errors={errors}
-              control={control as any} // أضف control
+              control={control as any}
+              icon={<Lock />}
             />
           ))}
 

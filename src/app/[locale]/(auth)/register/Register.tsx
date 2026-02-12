@@ -74,7 +74,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="shadow rounded-lg bg-background1 p-10">
+    <div className="ring-[0.5px] ring-ring rounded-lg bg-background p-10">
       <Title title={t("title")} subTitle={t("subTitle")} />
       <form
         onSubmit={handleSubmit(onSubmit)}

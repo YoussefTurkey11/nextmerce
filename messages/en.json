@@ -224,7 +224,44 @@
       }
     }
   },
-  "HomePage": {
-    "title": "Hello World!"
+  "Header": {
+    "btns": {
+      "categories": "All Categories",
+      "searchBtn": "I am shopping for...",
+      "searchInput": "Type anyting to search...",
+      "searchInputBtn": "search",
+      "tabs": [
+        { "title": "All" },
+        { "title": "Products" },
+        { "title": "Blogs" }
+      ],
+      "account": {
+        "title": "account",
+        "action": "Login / Register"
+      }
+    },
+    "categoryList": [
+      {
+        "title": "Laptop & PC"
+      },
+      {
+        "title": "Watches"
+      },
+      {
+        "title": "Mobile & Tablets"
+      },
+      {
+        "title": "Health & Sports"
+      },
+      {
+        "title": "Home Applications"
+      },
+      {
+        "title": "Games & Videos"
+      },
+      {
+        "title": "Televisions"
+      }
+    ]
   }
 }

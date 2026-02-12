@@ -80,7 +80,6 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
           newCountryData?.countryCallingCodes?.[0] &&
           !value
         ) {
-          // تحديث لاستدعاء onChange مع string
           if (onChange) {
             (onChange as (value: string) => void)(
               newCountryData.countryCallingCodes[0],
@@ -138,9 +137,9 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
     const containerClasses = cn("flex flex-col gap-1 w-full", className);
 
     const inputContainerClasses = cn(
-      "flex items-center gap-2 relative bg-background2 transition-colors text-base rounded-full border ring-[0.5px] px-7 py-3",
-      "has-[input:focus]:outline-none has-[input:focus]:ring-1 has-[input:focus]:ring-ring",
-      error ? "border-error" : "border-primaryContainer2",
+      "flex items-center gap-2 relative bg-background transition-colors text-base rounded-full border ring-[0.5px] px-7 py-3",
+      "has-[input:focus]:outline-none has-[input:focus]:ring-1 has-[input:focus]:ring-primary",
+      error ? "border-destructive" : "border-ring",
       inline && "rounded-l-none",
       isSubmitting && "opacity-50 cursor-not-allowed",
     );
@@ -152,7 +151,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
             {displayFlag ? (
               <CircleFlag countryCode={displayFlag} height={20} />
             ) : (
-              <GlobeIcon size={20} className="text-onSurface3" />
+              <GlobeIcon size={20} className="text-ring" />
             )}
           </div>
           <input
@@ -168,7 +167,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
             {...props}
           />
         </div>
-        {error && <p className="text-error text-sm mt-1 px-2">{error}</p>}
+        {error && <p className="text-destructive text-sm mt-1 px-2">{error}</p>}
       </div>
     );
   },

@@ -62,7 +62,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="shadow rounded-lg bg-background1 p-10">
+    <div className="ring-[0.5px] ring-ring rounded-lg bg-background p-10">
       <Title title={t("title")} subTitle={t("subTitle")} />
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -79,10 +79,10 @@ const LoginPage = () => {
           {t("loginBtn")}
         </Button>
         <div className="flex flex-col sm:flex-row items-center gap-1">
-          <p className="text-onSurface1 text-sm">{t("haveAccount")}</p>
+          <p className="text-ring text-sm">{t("haveAccount")}</p>
           <Link
             href={`/${locale}/register`}
-            className="text-onSurface3 hover:text-primary1 transition-colors text-sm"
+            className="text-ring hover:text-primary underline transition-colors text-sm"
           >
             {t("registerLink")}
           </Link>

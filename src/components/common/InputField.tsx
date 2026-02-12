@@ -60,7 +60,7 @@ export function InputField(props: TInputFieldProps) {
           </FieldLabel>
           <Link
             href={`/${locale}/forgotPassword`}
-            className="hidden sm:flex text-onSurface3 hover:text-primary1 transition-colors text-sm"
+            className="hidden sm:flex text-ring hover:text-primary hover:underline transition-colors text-sm"
           >
             {t("forgotPassword")}
           </Link>
@@ -73,10 +73,8 @@ export function InputField(props: TInputFieldProps) {
 
       <div className="flex flex-col gap-3">
         <InputGroup
-          className={`relative py-6 px-5 rounded-full bg-background2 ring-[0.5px] ${
-            props.errors?.[props.name]
-              ? "border-error"
-              : "border-primaryContainer2"
+          className={`relative py-6 px-5 rounded-full bg-background ring-[0.5px] ${
+            props.errors?.[props.name] ? "border-destructive" : "border-ring"
           }`}
         >
           <InputGroupInput
@@ -86,14 +84,12 @@ export function InputField(props: TInputFieldProps) {
             {...props.register}
             disabled={props.isSubmitting}
           />
-          <InputGroupAddon className="text-onSurface3">
-            {props.icon}
-          </InputGroupAddon>
+          <InputGroupAddon className="text-ring">{props.icon}</InputGroupAddon>
           {props.type === "password" && (
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute inset-y-0 end-5 top-1/2 -translate-y-1/2 cursor-pointer px-1 text-onSurface3 hover:text-primary3 transition-colors"
+              className="absolute inset-y-0 end-5 top-1/2 -translate-y-1/2 cursor-pointer px-1 text-ring hover:text-primary transition-colors"
             >
               {showPassword ? <EyeClosed size={22.5} /> : <Eye size={22.5} />}
             </button>
@@ -101,7 +97,7 @@ export function InputField(props: TInputFieldProps) {
         </InputGroup>
 
         {props.errors?.[props.name] && (
-          <p className="text-error text-sm mt-1">
+          <p className="text-destructive text-sm mt-1">
             {props.errors[props.name]?.message as string}
           </p>
         )}
@@ -109,7 +105,7 @@ export function InputField(props: TInputFieldProps) {
         {isPasswordWithLogin && (
           <Link
             href={`/${locale}/forgotPassword`}
-            className="flex sm:hidden text-onSurface3 hover:text-primary1 transition-colors text-sm"
+            className="flex sm:hidden text-primary-foreground hover:text-primary transition-colors text-sm"
           >
             {t("forgotPassword")}
           </Link>
