@@ -274,6 +274,10 @@
     "cart": {
       "title": "Cart View",
       "price": "Price"
+    },
+    "wishlist": {
+      "title": "Wishlist View",
+      "price": "Price"
     }
   }
 }

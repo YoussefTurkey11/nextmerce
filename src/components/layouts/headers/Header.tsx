@@ -5,6 +5,7 @@ import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import Logo from "@/components/common/Logo";
 import MenuSheet from "@/components/common/MenuSheet";
 import SearchDialog from "@/components/common/SearchDialog";
+import WishSheet from "@/components/common/WishSheet";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "@/hooks/useLogout";
 import { RootState, useAppSelector } from "@/redux/store";
@@ -75,12 +76,7 @@ const Header = () => {
                   </span>
                 </div>
               </div>
-              <Button variant={"ghost"} className="w-fit px-2! relative">
-                <Heart className="w-6! h-6!" />
-                <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
-                  0
-                </div>
-              </Button>
+              <WishSheet />
               <CartSheet />
             </div>
           ) : (

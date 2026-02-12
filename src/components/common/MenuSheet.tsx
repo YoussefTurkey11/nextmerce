@@ -17,6 +17,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
 import { User } from "@/types/authTypes";
 import CartSheet from "./CartSheet";
+import WishSheet from "./WishSheet";
 
 export default function MenuSheet({ user }: { user: User }) {
   const locale = useLocale();
@@ -70,12 +71,7 @@ export default function MenuSheet({ user }: { user: User }) {
                 )}
               </Link>
 
-              <Button variant={"ghost"} className="w-fit px-2! relative">
-                <Heart className="w-6! h-6!" />
-                <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
-                  0
-                </div>
-              </Button>
+              <WishSheet />
               <CartSheet />
             </div>
           ) : (
