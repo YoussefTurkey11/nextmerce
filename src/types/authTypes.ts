@@ -4,7 +4,7 @@ export interface User {
   name: string;
   email: string;
   phone: string;
-  image: string;
+  profile: string;
   email_verified_at: boolean;
   count_items_cart: number;
   referral_code: string;

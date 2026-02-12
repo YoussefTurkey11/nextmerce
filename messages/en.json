@@ -230,6 +230,7 @@
       "searchBtn": "I am shopping for...",
       "searchInput": "Type anyting to search...",
       "searchInputBtn": "search",
+      "logout": "Logout",
       "tabs": [
         { "title": "All" },
         { "title": "Products" },
@@ -262,6 +263,17 @@
       {
         "title": "Televisions"
       }
-    ]
+    ],
+    "menu": [
+      { "title": "Popular", "link": "popular" },
+      { "title": "Shop", "link": "shop" },
+      { "title": "Blogs", "link": "blog" },
+      { "title": "About us", "link": "about" },
+      { "title": "Contact us", "link": "contact" }
+    ],
+    "cart": {
+      "title": "Cart View",
+      "price": "Price"
+    }
   }
 }

@@ -20,10 +20,7 @@ export function DropMenuComponent() {
   return (
     <DropdownMenu open={clicked} onOpenChange={setClicked}>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="secondary"
-          className="flex items-center py-5 px-5 w-fit"
-        >
+        <Button variant="secondary" className="flex items-center w-fit">
           <span>
             <Menu />
           </span>
