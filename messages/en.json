@@ -279,5 +279,30 @@
       "title": "Wishlist View",
       "price": "Price"
     }
+  },
+  "Landpage": {
+    "btns": {
+      "shopNow": "Shop Now"
+    },
+    "carousel": [
+      {
+        "slogan": "Premium design",
+        "name": "Apple Watch Ultra",
+        "description": "Advanced imaging performance with a 200MP AI camera with Enhanced image quality.",
+        "image": "/images/products/carousel1.webp"
+      },
+      {
+        "slogan": "SPECIAL EDITION",
+        "name": "Apple AirPods Max",
+        "description": "Transparency mode, and spatial audio, it delivers a premium listening experience.",
+        "image": "/images/products/carousel2.webp"
+      },
+      {
+        "slogan": "LIMITED EDITION",
+        "name": "iPhone 16 Pro Max",
+        "description": "Featuring A18 Chip, Liquid Glass, and AI-Powered Innovation",
+        "image": "/images/products/carousel3.webp"
+      }
+    ]
   }
 }

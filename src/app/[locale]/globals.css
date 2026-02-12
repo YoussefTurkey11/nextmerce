@@ -125,6 +125,10 @@
   .center {
     @apply flex items-center justify-center;
   }
+  .swiper-pagination-bullet {
+    width: 50px !important;
+    border-radius: 5px !important;
+  }
   @media (max-width: 375px) {
     .header-btns {
       flex-direction: column !important;

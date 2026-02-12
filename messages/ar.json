@@ -278,5 +278,30 @@
       "title": "قائمة المفضلات",
       "price": "السعر"
     }
+  },
+  "Landpage": {
+    "btns": {
+      "shopNow": "تسوق الآن"
+    },
+    "carousel": [
+      {
+        "slogan": "تصميم مميز",
+        "name": "ساعة ابل الترا",
+        "description": "أداء تصوير متطور مع كاميرا ذكاء اصطناعي بدقة 200 ميجابكسل وجودة صورة محسّنة.",
+        "image": "/images/products/carousel1.webp"
+      },
+      {
+        "slogan": "إصدار خاص",
+        "name": "أبل إيربودز ماكس",
+        "description": "بفضل وضع الشفافية والصوت المكاني، فإنه يوفر تجربة استماع مميزة.",
+        "image": "/images/products/carousel2.webp"
+      },
+      {
+        "slogan": "إصدار محدود",
+        "name": "آيفون 16 برو ماكس",
+        "description": "يتميز بشريحة A18، والزجاج السائل، والابتكار المدعوم بالذكاء الاصطناعي",
+        "image": "/images/products/carousel3.webp"
+      }
+    ]
   }
 }
