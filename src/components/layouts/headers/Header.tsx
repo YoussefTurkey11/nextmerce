@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="border-b border-ring/30">
-      <nav className="container mx-auto flex lg:items-center justify-between gap-5 p-5">
+      <nav className="container mx-auto flex lg:items-center justify-between gap-5 p-5 header-comp">
         <div className="flex flex-col md:flex-row items-center gap-5">
           {/* Logo */}
           <div className="flex justify-between items-center w-full">
@@ -31,7 +31,7 @@ const Header = () => {
             </div>
           </div>
           {/* All Category && Search */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 header-btns">
             <DropMenuComponent />
             <SearchDialog />
           </div>

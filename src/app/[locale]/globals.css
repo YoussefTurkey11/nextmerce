@@ -125,4 +125,16 @@
   .center {
     @apply flex items-center justify-center;
   }
+  @media (max-width: 375px) {
+    .header-btns {
+      flex-direction: column !important;
+      width: 100% !important;
+    }
+    .header-comp {
+      display: block !important;
+    }
+    div[role="dialog"] {
+      width: 100% !important;
+    }
+  }
 }
