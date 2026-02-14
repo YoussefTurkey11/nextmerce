@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header className="border-b border-ring/30">
-      <nav className="container mx-auto flex lg:items-center justify-around gap-5 py-5 header-comp">
+      <nav className="container mx-auto flex lg:items-center justify-between gap-5 py-5 header-comp">
         <div className="flex flex-col md:flex-row items-center gap-5">
           {/* Logo */}
           <div className="flex justify-between items-center w-full">

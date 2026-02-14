@@ -322,6 +322,33 @@
         "saveTo": "تخفيضات تصل إلى",
         "bgStyle": "#eae7de"
       }
-    ]
+    ],
+    "prosData": [
+      {
+        "id": "freeShipping",
+        "title": "ًالشحن مجانا",
+        "desc": "لجميع الطلبات بقيمة 200 دولار",
+        "icon": "Rocket"
+      },
+      {
+        "id": "returns",
+        "title": "سياسة إرجاع خلال يوم",
+        "desc": "الإلغاء بعد يوم واحد",
+        "icon": "Repeat2"
+      },
+      {
+        "id": "secure",
+        "title": "مدفوعات آمنة بنسبة 100%",
+        "desc": "ضمان دفعات آمنة",
+        "icon": "ShieldCheck"
+      },
+      {
+        "id": "support",
+        "title": " 24/7 دعم مخصص",
+        "desc": "في أي مكان وفي أي وقت",
+        "icon": "MessageSquareMore"
+      }
+    ],
+    "categoryTitle": "تصفح حسب الفئة"
   }
 }

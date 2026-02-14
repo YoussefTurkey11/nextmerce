@@ -323,6 +323,33 @@
         "saveTo": "Save up to",
         "bgStyle": "#eae7de"
       }
-    ]
+    ],
+    "prosData": [
+      {
+        "id": "freeShipping",
+        "title": "Free Shipping",
+        "desc": "For all orders $200",
+        "icon": "Rocket"
+      },
+      {
+        "id": "returns",
+        "title": "1 & 1 Returns",
+        "desc": "Cancellation after 1 day",
+        "icon": "Repeat2"
+      },
+      {
+        "id": "secure",
+        "title": "100% Secure Payments",
+        "desc": "Gurantee secure payments",
+        "icon": "ShieldCheck"
+      },
+      {
+        "id": "support",
+        "title": "24/7 Dedicated Support",
+        "desc": "Anywhere & anytime",
+        "icon": "MessageSquareMore"
+      }
+    ],
+    "categoryTitle": "Browse by Category"
   }
 }
