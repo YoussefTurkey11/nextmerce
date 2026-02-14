@@ -302,6 +302,26 @@
         "description": "يتميز بشريحة A18، والزجاج السائل، والابتكار المدعوم بالذكاء الاصطناعي",
         "image": "/images/products/carousel3.webp"
       }
+    ],
+    "carouselData": [
+      {
+        "id": "cam",
+        "title": "كاميرا الأمن المنزلية الذكية",
+        "price": "450",
+        "img": "/images/products/cam.webp",
+        "link": "/",
+        "saveTo": "تخفيضات تصل إلى",
+        "bgStyle": "#d7ebf2"
+      },
+      {
+        "id": "mob",
+        "title": "جالاكسي إس 24 ألترا 5G",
+        "price": "600",
+        "img": "/images/products/mob.webp",
+        "link": "/",
+        "saveTo": "تخفيضات تصل إلى",
+        "bgStyle": "#eae7de"
+      }
     ]
   }
 }

@@ -19,6 +19,7 @@ export default function CarouselComponent() {
   return (
     <>
       <Swiper
+        spaceBetween={10}
         pagination={{
           dynamicBullets: true,
         }}
@@ -27,7 +28,7 @@ export default function CarouselComponent() {
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Pagination]}
-        className="mySwiper cursor-grab"
+        className="mySwiper cursor-grab rounded-xl"
       >
         {swiperItems.map((item, idx) => (
           <SwiperSlide key={idx} className="relative">
@@ -37,7 +38,7 @@ export default function CarouselComponent() {
               height={1000}
               alt={item.name}
               loading="lazy"
-              className="object-contain  rounded-xl"
+              className="object-contain rounded-xl w-full!"
             />
             <div className="absolute inset-0 bg-black/50 md:hidden"></div>
             <div

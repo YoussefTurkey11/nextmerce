@@ -129,6 +129,10 @@
     width: 50px !important;
     border-radius: 5px !important;
   }
+  .swiper-pagination-bullet-active-next,
+  .swiper-pagination-bullet-active-prev {
+    background-color: #ffffff !important;
+  }
   @media (max-width: 375px) {
     .header-btns {
       flex-direction: column !important;

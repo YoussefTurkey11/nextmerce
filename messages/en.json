@@ -303,6 +303,26 @@
         "description": "Featuring A18 Chip, Liquid Glass, and AI-Powered Innovation",
         "image": "/images/products/carousel3.webp"
       }
+    ],
+    "carouselData": [
+      {
+        "id": "cam",
+        "title": "Smart Security Home Camera",
+        "price": "450",
+        "img": "/images/products/cam.webp",
+        "link": "/",
+        "saveTo": "Save up to",
+        "bgStyle": "#d7ebf2"
+      },
+      {
+        "id": "mob",
+        "title": "Galaxy S24 Ultra 5G",
+        "price": "600",
+        "img": "/images/products/mob.webp",
+        "link": "/",
+        "saveTo": "Save up to",
+        "bgStyle": "#eae7de"
+      }
     ]
   }
 }
