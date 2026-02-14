@@ -254,7 +254,7 @@
         "title": "الصحة والرياضة"
       },
       {
-        "title": "تطبيقات المنازل"
+        "title": "أجهزة المنازل"
       },
       {
         "title": "ألعاب وفيديوهات"
@@ -349,6 +349,123 @@
         "icon": "MessageSquareMore"
       }
     ],
-    "categoryTitle": "تصفح حسب الفئة"
+    "categories": {
+      "categoryTitle": "تصفح حسب الفئة",
+      "categoriesCarouselItem": [
+        {
+          "id": "pc&Laptop",
+          "img": "/images/products/pc.webp",
+          "title": "لابتوبات و كمبيوترات",
+          "link": "/"
+        },
+        {
+          "id": "watches",
+          "img": "/images/products/watch.webp",
+          "title": "ساعات",
+          "link": "/"
+        },
+        {
+          "id": "mobiles&tablets",
+          "img": "/images/products/iphone.webp",
+          "title": "موبايلات و تابلت",
+          "link": "/"
+        },
+        {
+          "id": "health&sports",
+          "img": "/images/products/health.webp",
+          "title": "الصحة والرياضة",
+          "link": "/"
+        },
+        {
+          "id": "homeApps",
+          "img": "/images/products/home.webp",
+          "title": "أجهزة المنازل",
+          "link": "/"
+        },
+        {
+          "id": "games",
+          "img": "/images/products/game.webp",
+          "title": "ألعاب وفيديوهات",
+          "link": "/"
+        },
+        {
+          "id": "tvs",
+          "img": "/images/products/tv.webp",
+          "title": "تلفيزيونات",
+          "link": "/"
+        }
+      ]
+    },
+    "newArrivals": {
+      "title": "وصل حديثاً",
+      "viewBtn": "عرض الكل",
+      "cartBtn": "أضف إلى السلة",
+      "newArrivalData": [
+        {
+          "id": "product-01",
+          "img": "/images/products/Portable Electric Grinder Maker.webp",
+          "link": "/",
+          "title": "مطحنة كهربائية محمولة",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-02",
+          "img": "/images/products/Indoor Steel Adjustable Silent Treadmill.webp",
+          "link": "/",
+          "title": "جهاز مشي منزلي قابل للتعديل مصنوع من الفولاذ",
+          "price": "888",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-03",
+          "img": "/images/products/Rangs 43 Inch Frameless FHD Double.webp",
+          "link": "/",
+          "title": "تلفزيون Rangs مقاس 43 بوصة بدون إطار FHD زجاج مزدوج أندرويد",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "produc-04",
+          "img": "/images/products/Apple AirPods Max.webp",
+          "link": "/",
+          "title": "آبل إيربودز ماكس",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-05",
+          "img": "/images/products/Apple Watch Ultra.webp",
+          "link": "/",
+          "title": "آبل ووتش ألترا",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-06",
+          "img": "/images/products/MacBook Air M4 chip.webp",
+          "link": "/",
+          "title": "ماك بوك إير بشريحة M4، 16/256 جيجابايت",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-07",
+          "img": "/images/products/Apple iMac M4 24-inch 2025.webp",
+          "link": "/",
+          "title": "آبل آيماك M4 مقاس 24 بوصة إصدار 2025",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-08",
+          "img": "/images/products/iPhone 16 Pro Max.webp",
+          "link": "/",
+          "title": "آيفون 16 برو ماكس",
+          "price": "777",
+          "oldPrice": "999"
+        }
+      ]
+    }
   }
 }

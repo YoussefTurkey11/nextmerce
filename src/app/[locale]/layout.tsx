@@ -10,6 +10,7 @@ import ReduxProvider from "@/redux/provider";
 import HolyLoader from "holy-loader";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import HeaderServer from "@/components/layouts/headers/HeaderServer";
+import ScrollUp from "@/components/common/ScrollUp";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -49,6 +50,7 @@ export default async function RootLayout({
               >
                 <HolyLoader />
                 <HeaderServer />
+                <ScrollUp />
                 {children}
               </GoogleOAuthProvider>
             </NextIntlClientProvider>

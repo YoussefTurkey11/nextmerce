@@ -350,6 +350,123 @@
         "icon": "MessageSquareMore"
       }
     ],
-    "categoryTitle": "Browse by Category"
+    "categories": {
+      "categoryTitle": "Browse by Category",
+      "categoriesCarouselItem": [
+        {
+          "id": "pc&Laptop",
+          "img": "/images/products/pc.webp",
+          "title": "Laptop & PC",
+          "link": "/"
+        },
+        {
+          "id": "watches",
+          "img": "/images/products/watch.webp",
+          "title": "Watches",
+          "link": "/"
+        },
+        {
+          "id": "mobiles&tablets",
+          "img": "/images/products/iphone.webp",
+          "title": "Mobile & Tablets",
+          "link": "/"
+        },
+        {
+          "id": "health&sports",
+          "img": "/images/products/health.webp",
+          "title": "Health & Sports",
+          "link": "/"
+        },
+        {
+          "id": "homeApps",
+          "img": "/images/products/home.webp",
+          "title": "Home Applications",
+          "link": "/"
+        },
+        {
+          "id": "games",
+          "img": "/images/products/game.webp",
+          "title": "Games & Videos",
+          "link": "/"
+        },
+        {
+          "id": "tvs",
+          "img": "/images/products/tv.webp",
+          "title": "Televisions",
+          "link": "/"
+        }
+      ]
+    },
+    "newArrivals": {
+      "title": "New Arrivals",
+      "viewBtn": "View All",
+      "cartBtn": "Add to cart",
+      "newArrivalData": [
+        {
+          "id": "product-01",
+          "img": "/images/products/Portable Electric Grinder Maker.webp",
+          "link": "/",
+          "title": "Portable Electric Grinder Maker",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-02",
+          "img": "/images/products/Indoor Steel Adjustable Silent Treadmill.webp",
+          "link": "/",
+          "title": "Indoor Steel Adjustable Silent Treadmill Home Fitness",
+          "price": "888",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-03",
+          "img": "/images/products/Rangs 43 Inch Frameless FHD Double.webp",
+          "link": "/",
+          "title": "Rangs 43 Inch Frameless FHD Double Glass Android TV",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "produc-04",
+          "img": "/images/products/Apple AirPods Max.webp",
+          "link": "/",
+          "title": "Apple AirPods Max",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-05",
+          "img": "/images/products/Apple Watch Ultra.webp",
+          "link": "/",
+          "title": "Apple Watch Ultra",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-06",
+          "img": "/images/products/MacBook Air M4 chip.webp",
+          "link": "/",
+          "title": "MacBook Air M4 chip, 16/256GB",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-07",
+          "img": "/images/products/Apple iMac M4 24-inch 2025.webp",
+          "link": "/",
+          "title": "Apple iMac M4 24-inch 2025",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-08",
+          "img": "/images/products/iPhone 16 Pro Max.webp",
+          "link": "/",
+          "title": "iPhone 16 Pro Max",
+          "price": "777",
+          "oldPrice": "999"
+        }
+      ]
+    }
   }
 }
