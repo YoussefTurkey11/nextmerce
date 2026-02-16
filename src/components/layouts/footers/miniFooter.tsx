@@ -8,8 +8,8 @@ const MiniFooter = () => {
     <section className="p-5 bg-muted">
       <div className="flex flex-col md:flex-row gap-5 items-center justify-between container mx-auto px-5 md:px-30">
         <h3 className="text-foreground/80">{t("copyRights")}</h3>
-        <div className="flex items-center gap-5">
-          <p className="text-foreground/80">{t("accept")}:</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 md:gap-0 items-center">
+          <p className="text-foreground/80 px-1">{t("accept")}:</p>
           <Image
             src={"/images/products/payment-01.svg"}
             width={40}

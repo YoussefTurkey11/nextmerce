@@ -2,6 +2,7 @@ import BannerSection from "./_sections/bannerSection";
 import BestSellerSection from "./_sections/bestSellerSection";
 import CategoriesSection from "./_sections/categoriesSection";
 import CountDownSection from "./_sections/countDownSection";
+import FooterBannerSection from "./_sections/footerBannerSection";
 import HeroSection from "./_sections/heroSection";
 import NewArrivalSection from "./_sections/newArrivalSection";
 import UserFeedbackSection from "./_sections/userFeedbackSection";
@@ -16,6 +17,7 @@ const Store = () => {
       <BestSellerSection />
       <CountDownSection />
       <UserFeedbackSection />
+      <FooterBannerSection />
     </main>
   );
 };
