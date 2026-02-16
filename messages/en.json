@@ -611,11 +611,46 @@
     }
   },
   "Footer": {
+    "copyRights": "© 2026. All rights reserved by SwanTeam.",
+    "accept": "We Accept",
     "footerBanner": {
       "title": "Don't Miss Out Latest Trends & Offers",
       "subTitle": "Register to receive news about the latest offers & discount codes",
       "placeholder": "Enter your email",
       "btn": "Subscribe"
+    },
+    "help": {
+      "title": "Help & Support",
+      "location": "685 Market Street,Las Vegas, LA 95820,United States.",
+      "phone": "(+099) 532-786-9843",
+      "email": "support@example.com"
+    },
+    "account": {
+      "title": "Account",
+      "login": "Login / Register",
+      "cart": "Cart",
+      "wishlist": "Wishlist",
+      "shop": "Shop"
+    },
+    "quickLink": {
+      "title": "Quick Link",
+      "privacy": "Privacy Policy",
+      "refund": "Refund Policy",
+      "terms": "Terms of Use",
+      "faq": "FAQ's",
+      "contact": "Contact"
+    },
+    "downloadApp": {
+      "title": "Download App",
+      "desc": "Save $3 With App & New User only",
+      "apple": {
+        "head": "Download on the",
+        "body": "App Store"
+      },
+      "google": {
+        "head": "Get in On",
+        "body": "Google Play"
+      }
     }
   }
 }

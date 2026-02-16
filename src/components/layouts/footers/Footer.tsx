@@ -35,27 +35,29 @@ const Footer = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-20 border-t border-ring/30 pt-10">
         {/* help & Support */}
         <div className="flex flex-col gap-5">
-          <h5 className="text-2xl font-semibold capitalize">Help & Support</h5>
+          <h5 className="text-2xl font-semibold capitalize">
+            {t("help.title")}
+          </h5>
           <ul className="flex flex-col gap-5">
             <li className="flex items-center gap-4">
               <span className="text-primary">
                 <MapPinned size={20} />
               </span>
-              <span>685 Market Street,Las Vegas, LA 95820,United States.</span>
+              <span>{t("help.location")}</span>
             </li>
             <li className="flex items-center gap-4">
               <span className="text-primary">
                 <Phone size={20} />
               </span>
-              <Link href={"tel:(+099) 532-786-9843"}>(+099) 532-786-9843</Link>
+              <Link href={`tel:${t("help.location")}`} dir="ltr">
+                {t("help.phone")}
+              </Link>
             </li>
             <li className="flex items-center gap-4">
               <span className="text-primary">
                 <Mail size={20} />
               </span>
-              <Link href={"mailto:support@example.com"}>
-                support@example.com
-              </Link>
+              <Link href={`mailto:${t("help.email")}`}>{t("help.email")}</Link>
             </li>
           </ul>
           <div className="flex items-center gap-5">
@@ -76,14 +78,16 @@ const Footer = () => {
 
         {/* Account */}
         <div className="flex flex-col gap-5">
-          <h5 className="text-2xl font-semibold capitalize">Account</h5>
+          <h5 className="text-2xl font-semibold capitalize">
+            {t("account.title")}
+          </h5>
           <ul className="flex flex-col gap-5">
             <li className="flex items-center gap-4 group">
               <Link
                 href={`/${locale}/login`}
                 className="group-hover:text-primary"
               >
-                Login / Register
+                {t("account.login")}
               </Link>
             </li>
             <li className="flex items-center gap-4 group">
@@ -91,7 +95,7 @@ const Footer = () => {
                 href={`/${locale}/cart`}
                 className="group-hover:text-primary"
               >
-                Cart
+                {t("account.cart")}
               </Link>
             </li>
             <li className="flex items-center gap-4 group">
@@ -99,7 +103,7 @@ const Footer = () => {
                 href={`/${locale}/wishlist`}
                 className="group-hover:text-primary"
               >
-                Wishlist
+                {t("account.wishlist")}
               </Link>
             </li>
             <li className="flex items-center gap-4 group">
@@ -107,7 +111,7 @@ const Footer = () => {
                 href={`/${locale}/shop`}
                 className="group-hover:text-primary"
               >
-                Shop
+                {t("account.shop")}
               </Link>
             </li>
           </ul>
@@ -115,14 +119,16 @@ const Footer = () => {
 
         {/* Quick Link */}
         <div className="flex flex-col gap-5">
-          <h5 className="text-2xl font-semibold capitalize">Quick Link</h5>
+          <h5 className="text-2xl font-semibold capitalize">
+            {t("quickLink.title")}
+          </h5>
           <ul className="flex flex-col gap-5">
             <li className="flex items-center gap-4 group">
               <Link
                 href={`/${locale}/privacyPolicy`}
                 className="group-hover:text-primary"
               >
-                Privacy Policy
+                {t("quickLink.privacy")}
               </Link>
             </li>
             <li className="flex items-center gap-4 group">
@@ -130,7 +136,7 @@ const Footer = () => {
                 href={`/${locale}/refundPolicy`}
                 className="group-hover:text-primary"
               >
-                Refund Policy
+                {t("quickLink.refund")}
               </Link>
             </li>
             <li className="flex items-center gap-4 group">
@@ -138,7 +144,7 @@ const Footer = () => {
                 href={`/${locale}/terms`}
                 className="group-hover:text-primary"
               >
-                Terms of Use
+                {t("quickLink.terms")}
               </Link>
             </li>
             <li className="flex items-center gap-4 group">
@@ -146,7 +152,7 @@ const Footer = () => {
                 href={`/${locale}/FAQs`}
                 className="group-hover:text-primary"
               >
-                FAQ's
+                {t("quickLink.faq")}
               </Link>
             </li>
             <li className="flex items-center gap-4 group">
@@ -154,7 +160,7 @@ const Footer = () => {
                 href={`/${locale}/contact`}
                 className="group-hover:text-primary"
               >
-                Contact
+                {t("quickLink.contact")}
               </Link>
             </li>
           </ul>
@@ -162,8 +168,10 @@ const Footer = () => {
 
         {/* Download App */}
         <div className="flex flex-col items-end gap-5">
-          <h5 className="text-2xl font-semibold capitalize">Download App</h5>
-          <p>Save $3 With App & New User only</p>
+          <h5 className="text-2xl font-semibold capitalize">
+            {t("downloadApp.title")}
+          </h5>
+          <p>{t("downloadApp.desc")}</p>
           <div className="flex flex-col gap-3">
             <Button className="w-45 rounded-lg py-7! bg-foreground">
               <Image
@@ -174,8 +182,10 @@ const Footer = () => {
                 loading="lazy"
               />
               <div className="flex flex-col items-start">
-                <p>Download on the</p>
-                <h6 className="text-lg font-semibold">App Store</h6>
+                <p>{t("downloadApp.apple.head")}</p>
+                <h6 className="text-lg font-semibold">
+                  {t("downloadApp.apple.body")}
+                </h6>
               </div>
             </Button>
 
@@ -188,8 +198,10 @@ const Footer = () => {
                 loading="lazy"
               />
               <div className="flex flex-col items-start">
-                <p>Get in On</p>
-                <h6 className="text-lg font-semibold">Google Play</h6>
+                <p>{t("downloadApp.google.head")}</p>
+                <h6 className="text-lg font-semibold">
+                  {t("downloadApp.google.body")}
+                </h6>
               </div>
             </Button>
           </div>
