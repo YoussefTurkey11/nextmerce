@@ -23,7 +23,7 @@ export default function SearchDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary" className="w-fit">
+        <Button variant="secondary" className=" w-70 sm:w-fit">
           <span>{t("btns.searchBtn")}</span>
           <SearchIcon />
         </Button>

@@ -21,18 +21,14 @@ const Header = () => {
   const logout = useLogout();
 
   return (
-    <header className="border-b border-ring/30">
-      <nav className="container mx-auto flex lg:items-center justify-between gap-5 py-5 header-comp">
-        <div className="flex flex-col md:flex-row items-center gap-5">
+    <header className="border-b border-ring/30 fixed top-0 w-full z-20 bg-background">
+      <nav className="container mx-auto flex lg:items-center justify-between gap-5 p-5 header-comp">
+        <div className="flex items-center gap-5">
           {/* Logo */}
-          <div className="flex justify-between items-center w-full">
-            <Logo />
-            <div className="flex md:hidden">
-              <MenuSheet user={user!} />
-            </div>
-          </div>
+          <Logo />
+
           {/* All Category && Search */}
-          <div className="flex items-center gap-3 header-btns">
+          <div className="hidden sm:flex items-center gap-3 header-btns">
             <DropMenuComponent />
             <SearchDialog />
           </div>
@@ -98,7 +94,7 @@ const Header = () => {
             </Link>
           )}
         </div>
-        <div className="hidden md:flex lg:hidden">
+        <div className="flex lg:hidden">
           <MenuSheet user={user!} />
         </div>
       </nav>

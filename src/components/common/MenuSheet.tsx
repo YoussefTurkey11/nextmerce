@@ -18,6 +18,8 @@ import Image from "next/image";
 import { User } from "@/types/authTypes";
 import CartSheet from "./CartSheet";
 import WishSheet from "./WishSheet";
+import { DropMenuComponent } from "./DropMenu";
+import SearchDialog from "./SearchDialog";
 
 export default function MenuSheet({ user }: { user: User }) {
   const locale = useLocale();
@@ -37,6 +39,10 @@ export default function MenuSheet({ user }: { user: User }) {
             <Logo />
           </SheetTitle>
         </SheetHeader>
+        <div className="flex flex-col items-center gap-3 header-btns">
+          <SearchDialog />
+          <DropMenuComponent />
+        </div>
         <ul className="flex flex-col gap-5 px-5">
           {menuList.map((link, idx) => (
             <li
