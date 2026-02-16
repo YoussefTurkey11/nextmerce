@@ -40,7 +40,8 @@ const HeroSection = () => {
           carouselData.map((caro) => (
             <div
               key={caro.id}
-              className={`flex items-between justify-center p-10 rounded-xl bg-[${caro.bgStyle}]`}
+              style={{ backgroundColor: caro.bgStyle }}
+              className={`flex items-between justify-center p-10 rounded-xl`}
             >
               <div className="flex flex-col justify-between md:w-50">
                 <Link

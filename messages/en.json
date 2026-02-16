@@ -467,6 +467,45 @@
           "oldPrice": "999"
         }
       ]
-    }
+    },
+    "bannerData": [
+      {
+        "id": "appleIphone14Plus",
+        "subTitle": "Apple iPhone 14 Plus",
+        "title": "UP TO 30% OFF",
+        "desc": "iPhone 14 has the same superspeedy chip that's in iPhone 13 Pro, A15 Bionic, with a 5-core GPU, powers all the latest features.",
+        "btn": "Buy Now",
+        "img": "/images/products/promo-01.webp",
+        "alt": "promo-01",
+        "bgColor": "#f5f5f7",
+        "actionColor": "var(--primary)",
+        "style": "md:col-span-2",
+        "styleImg": "relative w-full h-75 -mb-10 md:w-1/2 md:h-100 md:-mb-40 lg:w-1/2 lg:h-90 lg:-mb-20 xl:w-1/4 xl:h-90 xl:-mb-10"
+      },
+      {
+        "id": "foldableMotorisedTreadmill",
+        "subTitle": "Foldable Motorised Treadmill",
+        "title": "Flat 20% off",
+        "desc": "Workout At Home",
+        "btn": "Grab Now",
+        "img": "/images/products/promo-02.webp",
+        "alt": "promo-03",
+        "bgColor": "#dbf4f3",
+        "actionColor": "var(--chart-2)",
+        "styleImg": "relative w-full h-75 md:w-1/2 -mb-10 md:h-100 md:-mb-40 lg:h-90 lg:-mb-20 xl:h-90 xl:-mb-10"
+      },
+      {
+        "id": "AppleWatchUltra",
+        "subTitle": "Apple Watch Ultra",
+        "title": "Up to 40% off",
+        "desc": "The aerospace-grade titanium case strikes the perfect balance of everything.",
+        "btn": "Buy Now",
+        "img": "/images/products/promo-03.webp",
+        "alt": "promo-03",
+        "bgColor": "#ffece1",
+        "actionColor": "var(--chart-1)",
+        "styleImg": "relative w-full h-75 md:w-1/2 -mb-10 md:h-100 md:-mb-40 lg:h-90 lg:-mb-20 xl:h-90 xl:-mb-10"
+      }
+    ]
   }
 }

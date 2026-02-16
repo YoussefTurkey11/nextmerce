@@ -466,6 +466,45 @@
           "oldPrice": "999"
         }
       ]
-    }
+    },
+    "bannerData": [
+      {
+        "id": "appleIphone14Plus",
+        "subTitle": "آبل آيفون 14 بلس",
+        "title": "خصم يصل إلى 30%",
+        "desc": "يأتي iPhone 14 بنفس الشريحة فائقة السرعة الموجودة في iPhone 13 Pro، وهي A15 Bionic مع معالج رسومي 5 أنوية لتشغيل أحدث المميزات.",
+        "btn": "اشترِ الآن",
+        "img": "/images/products/promo-01.webp",
+        "alt": "promo-01",
+        "bgColor": "#f5f5f7",
+        "actionColor": "var(--primary)",
+        "style": "md:col-span-2",
+        "styleImg": "relative w-full h-75 -mb-10 md:w-1/2 md:h-100 md:-mb-40 lg:w-1/2 lg:h-90 lg:-mb-20 xl:w-1/4 xl:h-90 xl:-mb-10"
+      },
+      {
+        "id": "foldableMotorisedTreadmill",
+        "subTitle": "جهاز مشي كهربائي قابل للطي",
+        "title": "خصم 20% ثابت",
+        "desc": "تمرّن في المنزل",
+        "btn": "احصل عليه الآن",
+        "img": "/images/products/promo-02.webp",
+        "alt": "promo-03",
+        "bgColor": "#dbf4f3",
+        "actionColor": "var(--chart-2)",
+        "styleImg": "relative w-full h-75 md:w-1/2 -mb-10 md:h-100 md:-mb-40 lg:h-90 lg:-mb-20 xl:h-90 xl:-mb-10"
+      },
+      {
+        "id": "AppleWatchUltra",
+        "subTitle": "آبل واتش ألترا",
+        "title": "خصم يصل إلى 40%",
+        "desc": "هيكل من التيتانيوم المستخدم في الطيران يوفّر التوازن المثالي بين المتانة والخفة.",
+        "btn": "اشترِ الآن",
+        "img": "/images/products/promo-03.webp",
+        "alt": "promo-03",
+        "bgColor": "#ffece1",
+        "actionColor": "var(--chart-1)",
+        "styleImg": "relative w-full h-75 md:w-1/2 -mb-10 md:h-100 md:-mb-40 lg:h-90 lg:-mb-20 xl:h-90 xl:-mb-10"
+      }
+    ]
   }
 }
