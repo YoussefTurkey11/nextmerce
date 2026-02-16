@@ -1,5 +1,4 @@
 "use client";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -10,51 +9,6 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-
-const categoriesCarouselItem = [
-  {
-    id: "pc&Laptop",
-    img: "/images/products/pc.webp",
-    title: "Laptop & PC",
-    link: "/",
-  },
-  {
-    id: "watches",
-    img: "/images/products/watch.webp",
-    title: "Watches",
-    link: "/",
-  },
-  {
-    id: "mobiles&tablets",
-    img: "/images/products/iphone.webp",
-    title: "Mobile & Tablets",
-    link: "/",
-  },
-  {
-    id: "health&sports",
-    img: "/images/products/health.webp",
-    title: "Health & Sports",
-    link: "/",
-  },
-  {
-    id: "homeApps",
-    img: "/images/products/hone.webp",
-    title: "Home Applications",
-    link: "/",
-  },
-  {
-    id: "games",
-    img: "/images/products/game.webp",
-    title: "Games & Videos",
-    link: "/",
-  },
-  {
-    id: "tvs",
-    img: "/images/products/tv.webp",
-    title: "Televisions",
-    link: "/",
-  },
-];
 
 export function CategoriesCarousel() {
   const t = useTranslations("Landpage");

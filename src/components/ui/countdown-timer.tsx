@@ -1,5 +1,7 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import { useAnimate } from "framer-motion";
+import { useLocale } from "next-intl";
 
 // Change this date to your target countdown date
 const COUNTDOWN_FROM = "2026-10-01T00:00:00";
@@ -10,13 +12,23 @@ const HOUR = MINUTE * 60;
 const DAY = HOUR * 24;
 
 export default function ShiftingCountdown() {
+  const locale = useLocale();
   return (
     <section className="flex items-center justify-center transition-colors duration-500 ">
       <div className="flex w-full max-w-5xl items-center justify-center bg-transparent">
-        <CountdownItem unit="Day" label="Days" />
-        <CountdownItem unit="Hour" label="Hours" />
-        <CountdownItem unit="Minute" label="Minutes" />
-        <CountdownItem unit="Second" label="Seconds" />
+        <CountdownItem unit="Day" label={locale === "en" ? "Days" : "أيام"} />
+        <CountdownItem
+          unit="Hour"
+          label={locale === "en" ? "Hours" : "ساعات"}
+        />
+        <CountdownItem
+          unit="Minute"
+          label={locale === "en" ? "Minutes" : "دقائق"}
+        />
+        <CountdownItem
+          unit="Second"
+          label={locale === "en" ? "Seconds" : "ثوانٍ"}
+        />
       </div>
     </section>
   );
@@ -44,23 +56,26 @@ function CountdownItem({ unit, label }: { unit: string; label: string }) {
   );
 }
 
-function useTimer(unit) {
+function useTimer(unit: string) {
   const [ref, animate] = useAnimate();
-  const intervalRef = useRef(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeRef = useRef(0);
   const [time, setTime] = useState(0);
 
   useEffect(() => {
     handleCountdown();
     intervalRef.current = setInterval(handleCountdown, 1000);
-    return () => clearInterval(intervalRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   const handleCountdown = async () => {
     const end = new Date(COUNTDOWN_FROM);
     const now = new Date();
-    const distance = end - now;
+    const distance = end.getTime() - now.getTime();
 
     let newTime = 0;
     switch (unit) {

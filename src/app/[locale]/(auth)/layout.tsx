@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Suspense fallback={<HolyLoader />}>
-      <section className="center py-5">{children}</section>
+      <section className="center py-5 mt-10">{children}</section>
     </Suspense>
   );
 };

@@ -568,6 +568,46 @@
       "btn": "Check it out!",
       "img": "/images/products/countdown-img.webp",
       "alt": "offer-timer"
+    },
+    "testimonials": {
+      "title": "User Feedbacks",
+      "testimonialsCarouselItem": [
+        {
+          "id": "perosna-01",
+          "img": "/images/products/user-01.webp",
+          "msg": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea accusantium fugit enim voluptas quaerat explicabo dolor dolore! Reiciendis, voluptates suscipit!",
+          "name": "Davis Dorwart",
+          "position": "Backend Developer"
+        },
+        {
+          "id": "perosna-02",
+          "img": "/images/products/user-02.webp",
+          "msg": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea accusantium fugit enim voluptas quaerat explicabo dolor dolore! Reiciendis, voluptates suscipit!",
+          "name": "Wilson Dias",
+          "position": "Serial Enterprenuer"
+        },
+        {
+          "id": "perosna-03",
+          "img": "/images/products/user-01.webp",
+          "msg": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea accusantium fugit enim voluptas quaerat explicabo dolor dolore! Reiciendis, voluptates suscipit!",
+          "name": "Davis Dorwart",
+          "position": "Backend Developer"
+        },
+        {
+          "id": "perosna-04",
+          "img": "/images/products/user-02.webp",
+          "msg": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea accusantium fugit enim voluptas quaerat explicabo dolor dolore! Reiciendis, voluptates suscipit!",
+          "name": "Wilson Dias",
+          "position": "Serial Enterprenuer"
+        },
+        {
+          "id": "perosna-05",
+          "img": "/images/products/user-01.webp",
+          "msg": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea accusantium fugit enim voluptas quaerat explicabo dolor dolore! Reiciendis, voluptates suscipit!",
+          "name": "Davis Dorwart",
+          "position": "Backend Developer"
+        }
+      ]
     }
   }
 }
