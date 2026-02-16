@@ -81,7 +81,7 @@ const BestSellerSection = () => {
       </div>
 
       <div className="flex justify-center">
-        <Button variant={"secondary"} className="w-100">
+        <Button variant={"secondary"} className="w-fit md:w-100">
           {t("bestSeller.viewBtn")}
         </Button>
       </div>

@@ -147,7 +147,7 @@ const Footer = () => {
         </div>
 
         {/* Download App */}
-        <div className="flex flex-col items-end gap-5">
+        <div className="flex flex-col sm:items-end gap-5">
           <h5 className="text-2xl font-semibold capitalize">
             {t("downloadApp.title")}
           </h5>

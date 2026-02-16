@@ -41,29 +41,31 @@ const HeroSection = () => {
             <div
               key={caro.id}
               style={{ backgroundColor: caro.bgStyle }}
-              className={`flex items-between justify-center p-10 rounded-xl`}
+              className="flex items-center justify-between gap-6 p-6 sm:p-8 md:p-10 rounded-xl"
             >
-              <div className="flex flex-col justify-between md:w-50">
+              <div className="flex flex-col justify-between space-y-3 md:w-1/2">
                 <Link
                   href={caro.link}
-                  className="text-2xl font-semibold hover:text-primary transition-colors"
+                  className="text-xl sm:text-2xl font-semibold hover:text-primary transition-colors"
                 >
                   {caro.title}
                 </Link>
-                <p className="text-md">
+
+                <p className="text-sm sm:text-base">
                   {caro.saveTo}
                   <strong className="text-primary text-lg px-1">
                     ${caro.price}
                   </strong>
                 </p>
               </div>
+
               <Image
                 src={caro.img}
-                width={200}
-                height={200}
+                width={250}
+                height={250}
                 alt={caro.id}
                 loading="lazy"
-                className="object-contain mx-auto"
+                className="object-contain w-30 sm:w-52 md:w-60 h-auto"
               />
             </div>
           ))}

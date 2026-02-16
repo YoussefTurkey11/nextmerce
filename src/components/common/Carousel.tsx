@@ -31,15 +31,17 @@ export default function CarouselComponent() {
         className="mySwiper cursor-grab rounded-xl"
       >
         {swiperItems.map((item, idx) => (
-          <SwiperSlide key={idx} className="relative">
+          <SwiperSlide
+            key={idx}
+            className="relative aspect-square lg:aspect-[1/1.2] xl:aspect-4/4 2xl:aspect-4/3"
+          >
             <Image
               src={item.image}
-              width={1000}
-              height={1000}
               alt={item.name}
-              loading="lazy"
-              className="object-contain rounded-xl w-full!"
+              fill
+              className="object-cover rounded-xl"
             />
+
             <div className="absolute inset-0 bg-black/50 md:hidden"></div>
             <div
               className={`text-center ${locale === "en" ? "md:text-left" : "md:text-right"} w-full md:w-fit px-5 md:px-0 absolute top-1/2 left-1/2 md:left-10 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 space-y-5 text-background`}

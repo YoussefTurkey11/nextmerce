@@ -13,7 +13,7 @@ const CountDownSection = () => {
         className={`flex ${locale === "en" ? "lg:flex-row" : "lg:flex-row-reverse"} flex-col items-center justify-between bg-[#d0e9f3] rounded-lg`}
       >
         <div
-          className={`p-6 md:p-12 space-y-5 text-center w-[50%] ${
+          className={`p-6 md:p-12 space-y-5 text-center w-full lg:w-[50%] ${
             locale === "en" ? "lg:text-left" : "lg:text-right"
           }`}
         >
@@ -34,7 +34,7 @@ const CountDownSection = () => {
           <Button className="w-40 capitalize">{t("contDownData.btn")}</Button>
         </div>
 
-        <div className="lg:bg-[url('/images/products/countdown-bg.webp')] lg:bg-bottom p-10 w-[50%]">
+        <div className="hidden lg:flex lg:bg-[url('/images/products/countdown-bg.webp')] lg:bg-bottom p-10 w-full lg:w-[50%]">
           <Image
             src={t("contDownData.img")}
             width={500}
