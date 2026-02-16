@@ -8,7 +8,7 @@ import UserFeedbackSection from "./_sections/userFeedbackSection";
 
 const Store = () => {
   return (
-    <main className="container mx-auto mt-30">
+    <main className="container mx-auto mt-30 md:px-20">
       <HeroSection />
       <CategoriesSection />
       <NewArrivalSection />

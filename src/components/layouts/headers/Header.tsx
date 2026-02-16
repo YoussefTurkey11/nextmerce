@@ -6,10 +6,9 @@ import Logo from "@/components/common/Logo";
 import MenuSheet from "@/components/common/MenuSheet";
 import SearchDialog from "@/components/common/SearchDialog";
 import WishSheet from "@/components/common/WishSheet";
-import { Button } from "@/components/ui/button";
 import { useLogout } from "@/hooks/useLogout";
 import { RootState, useAppSelector } from "@/redux/store";
-import { Heart, UserRound } from "lucide-react";
+import { UserRound } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="border-b border-ring/30 fixed top-0 w-full z-20 bg-background">
-      <nav className="container mx-auto flex lg:items-center justify-between gap-5 p-5 header-comp">
+      <nav className="container mx-auto flex lg:items-center justify-between gap-5 px-5 md:px-30 py-5 header-comp">
         <div className="flex items-center gap-5">
           {/* Logo */}
           <Logo />

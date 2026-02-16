@@ -609,5 +609,13 @@
         }
       ]
     }
+  },
+  "Footer": {
+    "footerBanner": {
+      "title": "Don't Miss Out Latest Trends & Offers",
+      "subTitle": "Register to receive news about the latest offers & discount codes",
+      "placeholder": "Enter your email",
+      "btn": "Subscribe"
+    }
   }
 }

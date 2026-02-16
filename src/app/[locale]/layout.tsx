@@ -11,6 +11,7 @@ import HolyLoader from "holy-loader";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import HeaderServer from "@/components/layouts/headers/HeaderServer";
 import ScrollUp from "@/components/common/ScrollUp";
+import FooterServer from "@/components/layouts/footers/FooterServer";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -52,6 +53,7 @@ export default async function RootLayout({
                 <HeaderServer />
                 <ScrollUp />
                 {children}
+                <FooterServer />
               </GoogleOAuthProvider>
             </NextIntlClientProvider>
           </AuthInitializer>
