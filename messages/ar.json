@@ -559,6 +559,14 @@
           "oldPrice": "999"
         }
       ]
+    },
+    "contDownData": {
+      "subTitle": "لا تفوّت الفرصة!!",
+      "title": "ارتقِ بتجربتك الموسيقية",
+      "desc": "آيفون 16 برو ماكس",
+      "btn": "تصفّح الآن!",
+      "img": "/images/products/countdown-img.webp",
+      "alt": "offer-timer"
     }
   }
 }

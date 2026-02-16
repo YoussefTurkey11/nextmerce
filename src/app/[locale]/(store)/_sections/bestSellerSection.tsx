@@ -35,10 +35,10 @@ const BestSellerSection = () => {
               >
                 <Link
                   href={cart.link}
-                  className="block bg-primary/5 p-5 rounded-md"
+                  className="block bg-primary/5 py-10 rounded-md"
                 >
                   <div className="flex flex-col items-center gap-2">
-                    <h3 className="font-semibold text-lg truncate w-100 hover:text-primary transition-colors text-center">
+                    <h3 className="font-semibold text-lg truncate w-50 lg:w-100 hover:text-primary transition-colors text-center">
                       {cart.title}
                     </h3>
                     <div className="flex items-center gap-2">

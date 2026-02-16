@@ -560,6 +560,14 @@
           "oldPrice": "999"
         }
       ]
+    },
+    "contDownData": {
+      "subTitle": "Don’t Miss!!",
+      "title": "Enhance Your Music Experience",
+      "desc": "iPhone 16 Pro Max",
+      "btn": "Check it out!",
+      "img": "/images/products/countdown-img.webp",
+      "alt": "offer-timer"
     }
   }
 }
