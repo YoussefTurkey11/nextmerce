@@ -505,6 +505,60 @@
         "actionColor": "var(--chart-1)",
         "styleImg": "relative w-full h-75 md:w-1/2 -mb-10 md:h-100 md:-mb-40 lg:h-90 lg:-mb-20 xl:h-90 xl:-mb-10"
       }
-    ]
+    ],
+    "bestSeller": {
+      "title": "الأفضل مبيعًا",
+      "viewBtn": "عرض الكل",
+      "bestSellerData": [
+        {
+          "id": "product-01",
+          "img": "/images/products/Portable Electric Grinder Maker.webp",
+          "link": "/",
+          "title": "مطحنة كهربائية محمولة",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-02",
+          "img": "/images/products/Indoor Steel Adjustable Silent Treadmill.webp",
+          "link": "/",
+          "title": "جهاز مشي منزلي قابل للتعديل مصنوع من الفولاذ",
+          "price": "888",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-03",
+          "img": "/images/products/Rangs 43 Inch Frameless FHD Double.webp",
+          "link": "/",
+          "title": "تلفزيون Rangs مقاس 43 بوصة بدون إطار FHD زجاج مزدوج أندرويد",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "produc-04",
+          "img": "/images/products/Apple AirPods Max.webp",
+          "link": "/",
+          "title": "آبل إيربودز ماكس",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-05",
+          "img": "/images/products/Apple Watch Ultra.webp",
+          "link": "/",
+          "title": "آبل ووتش ألترا",
+          "price": "777",
+          "oldPrice": "999"
+        },
+        {
+          "id": "product-06",
+          "img": "/images/products/MacBook Air M4 chip.webp",
+          "link": "/",
+          "title": "ماك بوك إير بشريحة M4، 16/256 جيجابايت",
+          "price": "777",
+          "oldPrice": "999"
+        }
+      ]
+    }
   }
 }
