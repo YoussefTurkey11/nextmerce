@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="border-b border-ring/30 fixed top-0 w-full z-20 bg-background">
-      <nav className="container mx-auto flex lg:items-center justify-between gap-5 px-5 md:px-30 py-5 header-comp">
+      <nav className="container mx-auto flex lg:items-center justify-between gap-5 px-5 md:px-30 py-5 ">
         <div className="flex items-center gap-5">
           {/* Logo */}
           <Logo />

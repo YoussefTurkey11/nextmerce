@@ -14,8 +14,8 @@ const DAY = HOUR * 24;
 export default function ShiftingCountdown() {
   const locale = useLocale();
   return (
-    <section className="flex items-center justify-center transition-colors duration-500 ">
-      <div className="flex w-full max-w-5xl items-center justify-center bg-transparent">
+    <section className="flex items-center justify-center py-6 md:py-10">
+      <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-4 w-full max-w-5xl">
         <CountdownItem unit="Day" label={locale === "en" ? "Days" : "أيام"} />
         <CountdownItem
           unit="Hour"
@@ -40,16 +40,45 @@ function CountdownItem({ unit, label }: { unit: string; label: string }) {
   const display = unit === "Second" ? String(time).padStart(2, "0") : time;
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-1 px-4 md:gap-2">
-      <div className="relative w-full overflow-hidden text-center bg-background rounded-lg p-5">
+    <div className="flex flex-col items-center gap-2 md:gap-3">
+      {/* NUMBER BOX */}
+      <div
+        className="
+        w-full
+        max-w-[90px]
+        sm:max-w-[110px]
+        md:max-w-[130px]
+        bg-background
+        rounded-xl
+        py-4 md:py-6
+        text-center
+        shadow-sm
+      "
+      >
         <span
           ref={ref}
-          className="block font-semibold transition-colors duration-500 text-3xl"
+          className="
+            block
+            font-bold
+            text-2xl
+            sm:text-3xl
+            md:text-4xl
+            lg:text-5xl
+          "
         >
           {display}
         </span>
       </div>
-      <span className="text-sm font-light dark:text-gray-400 text-gray-500 md:text-base lg:text-lg transition-colors duration-500">
+
+      {/* LABEL */}
+      <span
+        className="
+        text-xs
+        sm:text-sm
+        md:text-base
+        text-muted-foreground
+      "
+      >
         {label}
       </span>
     </div>
