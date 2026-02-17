@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Heart, ShoppingCart, TextAlignJustify, UserRound } from "lucide-react";
+import { ShoppingCart, TextAlignJustify, UserRound } from "lucide-react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { useLocale } from "next-intl";
@@ -16,14 +16,17 @@ import { useTranslations } from "use-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
 import { User } from "@/types/authTypes";
-import CartSheet from "./CartSheet";
 import WishSheet from "./WishSheet";
 import { DropMenuComponent } from "./DropMenu";
 import SearchDialog from "./SearchDialog";
+import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
+import { openCart } from "@/redux/slices/uiSlice";
 
 export default function MenuSheet({ user }: { user: User }) {
   const locale = useLocale();
   const t = useTranslations("Header");
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state: RootState) => state.cart.items);
   const menuList = t.raw("menu") as Array<{ title: string; link: string }>;
   return (
     <Sheet>
@@ -78,7 +81,18 @@ export default function MenuSheet({ user }: { user: User }) {
               </Link>
 
               <WishSheet />
-              <CartSheet />
+              <Button
+                onClick={() => {
+                  dispatch(openCart());
+                }}
+                variant={"ghost"}
+                className="w-fit px-2! relative"
+              >
+                <ShoppingCart className="w-6! h-6!" />
+                <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
+                  {cart.length}
+                </div>
+              </Button>
             </div>
           ) : (
             <Link

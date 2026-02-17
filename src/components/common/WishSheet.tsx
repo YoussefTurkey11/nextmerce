@@ -5,26 +5,32 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet";
-import { CirclePlus, Heart } from "lucide-react";
-import { useTranslations } from "use-intl";
+import { HeartOff, Trash2 } from "lucide-react";
+import { useLocale, useTranslations } from "use-intl";
 import Image from "next/image";
+import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
+import { removeFromWishlist } from "@/redux/slices/wishlistSlice";
+import { closeWishlist } from "@/redux/slices/uiSlice";
 
 export default function WishSheet() {
   const t = useTranslations("Header");
+  const locale = useLocale();
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlist.items,
+  );
+  const isWishlistOpen = useAppSelector(
+    (state: RootState) => state.ui.isWishlistOpen,
+  );
+  const dispatch = useAppDispatch();
 
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant={"ghost"} className="w-fit px-2! relative">
-          <Heart className="w-6! h-6!" />
-          <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
-            0
-          </div>
-        </Button>
-      </SheetTrigger>
-
+    <Sheet
+      open={isWishlistOpen}
+      onOpenChange={(open) => {
+        if (!open) dispatch(closeWishlist());
+      }}
+    >
       <SheetContent>
         <SheetHeader>
           <SheetTitle className="border-b border-ring/30 pb-5" dir={"ltr"}>
@@ -32,28 +38,39 @@ export default function WishSheet() {
           </SheetTitle>
         </SheetHeader>
         <div className="flex flex-col gap-5 p-5">
-          <div className="flex items-start justify-between">
-            <div className="flex gap-2 w-70">
-              <Image
-                src={"/images/products/capa.webp"}
-                width={100}
-                height={100}
-                alt=""
-                loading="lazy"
-                className="bg-muted rounded-lg"
-              />
-              <div>
-                <p className="font-semibold">
-                  Portable Electric Grinder Maker <span>(1)</span>
-                </p>
-                <p>
-                  {t("wishlist.price")}: $<span>99.95</span>
-                </p>
-              </div>
-            </div>
-            <Button className="w-5">
-              <CirclePlus />
-            </Button>
+          <div className="flex flex-col gap-5 p-5">
+            {wishlistItems.length === 0 ? (
+              <p className="text-center text-muted-foreground">
+                {locale === "en" ? "WishList is empty" : "المفضلة فارغة"}
+              </p>
+            ) : (
+              wishlistItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-2 w-70">
+                    <Image
+                      src={item.imageCover}
+                      width={70}
+                      height={70}
+                      alt={item.title}
+                      className="bg-muted rounded-full"
+                    />
+                    <div>
+                      <p className="font-semibold">{item.title}</p>
+                    </div>
+                  </div>
+                  <Button
+                    variant={"delete"}
+                    className="w-5"
+                    onClick={() => dispatch(removeFromWishlist(item.id))}
+                  >
+                    <HeartOff />
+                  </Button>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </SheetContent>

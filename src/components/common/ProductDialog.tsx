@@ -7,12 +7,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { CircleCheck, Eye, Heart, Star } from "lucide-react";
+import { CircleCheck, CircleX, Eye, Heart, HeartOff, Star } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import ProductGallery from "../product/ProductGallery";
 import { Badge } from "../ui/badge";
 import { QuantityCounter } from "../ui/quantity-counter";
 import { TProductItem } from "@/types/product";
+import { rating } from "@/utils/rating";
+import { addToCart } from "@/redux/slices/cartSlice";
+import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
+import { useState } from "react";
+import { toggleWishlist } from "@/redux/slices/wishlistSlice";
+import { openWishlist } from "@/redux/slices/uiSlice";
 
 export default function ProductDialog({
   cartItem,
@@ -23,6 +29,12 @@ export default function ProductDialog({
 }) {
   const t = useTranslations("Landpage");
   const locale = useLocale();
+  const dispatch = useAppDispatch();
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlist.items,
+  );
+  const isInWishlist = wishlistItems.some((item) => item.id === cartItem.id);
 
   return (
     <Dialog>
@@ -39,46 +51,83 @@ export default function ProductDialog({
 
         <div className="flex flex-col md:flex-row gap-5">
           <ProductGallery
-            images={Array.isArray(cartItem.imgGroup) ? cartItem.imgGroup : []}
+            imageCover={cartItem.imageCover}
+            images={Array.isArray(cartItem.images) ? cartItem.images : []}
           />
 
           <div className="space-y-5">
             <Badge variant={"success"} className="py-1 px-2">
-              {cartItem.badge}
+              {locale === "en"
+                ? `SALE ${cartItem.discountPercentage}% OFF`
+                : `خصم ${cartItem.discountPercentage}%`}
             </Badge>
             <h3 className="text-3xl font-semibold capitalize">
               {cartItem.title}
             </h3>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
-                <Star fill="var(--chart-4)" color="var(--chart-4)" size={15} />
-                <Star fill="var(--ring)" color="var(--ring)" size={15} />
-                <Star fill="var(--ring)" color="var(--ring)" size={15} />
-                <Star fill="var(--ring)" color="var(--ring)" size={15} />
-                <Star fill="var(--ring)" color="var(--ring)" size={15} />
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={15}
+                    fill={
+                      i < rating(cartItem) ? "var(--chart-4)" : "var(--ring)"
+                    }
+                    color={
+                      i < rating(cartItem) ? "var(--chart-4)" : "var(--ring)"
+                    }
+                  />
+                ))}
               </div>
+
               <p className="text-ring">
                 <strong className="text-foreground">
-                  {`${cartItem.rating.num} ${cartItem.rating.head}`}
+                  {`${cartItem.ratingsQuantity} ${locale === "en" ? "reting" : "تقييم"}`}
                 </strong>{" "}
-                ( {`${cartItem.reviews.num} ${cartItem.reviews.head}`} )
+                ({" "}
+                {`${cartItem.reviews.length} ${locale === "en" ? "reviews" : "مراجعات"}`}{" "}
+                )
               </p>
-              <p className="text-chart-2 flex items-center gap-1 text-sm">
-                <CircleCheck size={20} /> <span>{cartItem.stock}</span>
-              </p>
+              <div className="flex items-center gap-1 text-sm">
+                {cartItem.quantity > 0 ? (
+                  locale === "en" ? (
+                    <p className="flex items-center gap-1 text-chart-2">
+                      <CircleCheck size={20} />
+                      <span>In Stock</span>
+                    </p>
+                  ) : (
+                    <p className="flex items-center gap-1 text-chart-2">
+                      <CircleCheck size={20} />
+                      <span>متوفر</span>
+                    </p>
+                  )
+                ) : locale === "en" ? (
+                  <p className="flex items-center gap-1 text-chart-5">
+                    <CircleX size={20} />
+                    <span>Out of Stock</span>
+                  </p>
+                ) : (
+                  <p className="flex items-center gap-1 text-chart-5">
+                    <CircleX size={20} />
+                    <span>غير متوفر</span>
+                  </p>
+                )}
+              </div>
             </div>
             <p className="text-muted-foreground line-clamp-3 w-100">
-              {cartItem.desc}
+              {cartItem.description}
             </p>
             <div className="flex items-start justify-between">
               <div className="flex flex-col gap-2">
-                <p className="text-lg font-bold">{cartItem.price.head}</p>
+                <p className="text-lg font-bold">
+                  {locale === "en" ? "Price" : "السعر"}
+                </p>
                 <p className="flex items-center gap-2">
                   <span className="line-through text-muted-foreground text-xl">
-                    ${cartItem.price.num}
+                    ${cartItem.priceAfterDiscount}
                   </span>
                   <span className="text-3xl font-semibold">
-                    ${cartItem.oldPrice.num}
+                    ${cartItem.price}
                   </span>
                 </p>
               </div>
@@ -90,20 +139,44 @@ export default function ProductDialog({
                 <QuantityCounter
                   min={1}
                   max={50}
-                  onChange={(value) => console.log("Quantity:", value)}
+                  onChange={(value) => setSelectedQuantity(value)}
                 />
               </div>
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-2 my-5">
-              <Button className="md:w-40 capitalize">
+              <Button
+                className="md:w-40 capitalize"
+                onClick={() =>
+                  dispatch(
+                    addToCart({
+                      ...cartItem,
+                      quantity: selectedQuantity,
+                    }),
+                  )
+                }
+              >
                 {t("quickViewItem.addToCart")}
               </Button>
               <Button
-                variant={"secondary"}
-                className="md:w-40 capitalize flex items-center gap-2"
+                variant={isInWishlist ? "default" : "secondary"}
+                className="md:w-50 capitalize flex items-center gap-2"
+                onClick={() => {
+                  dispatch(toggleWishlist(cartItem));
+                  dispatch(openWishlist());
+                }}
               >
-                <Heart /> {t("quickViewItem.addToWishlist")}
+                {isInWishlist ? (
+                  <>
+                    <HeartOff />
+                    {t("quickViewItem.removeFromWishlist")}
+                  </>
+                ) : (
+                  <>
+                    <Heart />
+                    {t("quickViewItem.addToWishlist")}
+                  </>
+                )}
               </Button>
             </div>
           </div>

@@ -1,16 +1,38 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { api } from "./baseApi";
+import { persistStore, persistReducer } from "redux-persist";
 import authReducer from "./slices/authSlice";
+import cartReducer from "./slices/cartSlice";
+import uiReducer from "./slices/uiSlice";
+import wishlistReducer from "./slices/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
+import storage from "redux-persist/lib/storage";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["cart", "wishlist"],
+};
+
+const rootReducer = combineReducers({
+  auth: authReducer,
+  cart: cartReducer,
+  wishlist: wishlistReducer,
+  ui: uiReducer,
+  [api.reducerPath]: api.reducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    [api.reducerPath]: api.reducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(api.middleware),
 });
+
+export const persistor = persistStore(store);
 
 // Type helpers
 export type RootState = ReturnType<typeof store.getState>;

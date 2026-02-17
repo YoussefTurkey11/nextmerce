@@ -13,6 +13,9 @@ import HeaderServer from "@/components/layouts/headers/HeaderServer";
 import ScrollUp from "@/components/common/ScrollUp";
 import FooterServer from "@/components/layouts/footers/FooterServer";
 import Script from "next/script";
+import CartSheet from "@/components/common/CartSheet";
+import WishSheet from "@/components/common/WishSheet";
+import AuthDialog from "@/components/common/AuthDialog";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -54,7 +57,10 @@ export default async function RootLayout({
               >
                 <HolyLoader />
                 <HeaderServer />
+                <CartSheet />
+                <WishSheet />
                 <ScrollUp />
+                <AuthDialog />
                 {children}
                 <Script
                   src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}

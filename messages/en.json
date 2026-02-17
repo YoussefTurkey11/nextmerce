@@ -222,6 +222,10 @@
           "notMatch": "Passwords do not match"
         }
       }
+    },
+    "AuthDialog": {
+      "title": "Login to continue shopping",
+      "loginBtn": "Login"
     }
   },
   "Header": {
@@ -704,7 +708,8 @@
     },
     "quickViewItem": {
       "addToCart": "Add To Cart",
-      "addToWishlist": "Add To Wishlist"
+      "addToWishlist": "Add To Wishlist",
+      "removeFromWishlist": "Remove From Wishlist"
     }
   },
   "Footer": {

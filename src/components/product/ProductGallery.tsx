@@ -8,10 +8,14 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
 type ProductGalleryProps = {
+  imageCover: string;
   images: string[];
 };
 
-export default function ProductGallery({ images }: ProductGalleryProps) {
+export default function ProductGallery({
+  imageCover,
+  images,
+}: ProductGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -50,9 +54,9 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
         className="relative aspect-square w-full h-full rounded-lg overflow-hidden cursor-zoom-in bg-ring/10"
         onClick={() => setOpen(true)}
       >
-        {images.length > 0 && images[selectedIndex] ? (
+        {imageCover.length > 0 && imageCover ? (
           <Image
-            src={images[selectedIndex]}
+            src={imageCover}
             alt="product"
             fill
             className="object-contain"

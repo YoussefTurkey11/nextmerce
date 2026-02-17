@@ -1,14 +1,15 @@
 "use client";
-import CartSheet from "@/components/common/CartSheet";
 import { DropMenuComponent } from "@/components/common/DropMenu";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import Logo from "@/components/common/Logo";
 import MenuSheet from "@/components/common/MenuSheet";
 import SearchDialog from "@/components/common/SearchDialog";
 import WishSheet from "@/components/common/WishSheet";
+import { Button } from "@/components/ui/button";
 import { useLogout } from "@/hooks/useLogout";
-import { RootState, useAppSelector } from "@/redux/store";
-import { UserRound } from "lucide-react";
+import { openCart, openWishlist } from "@/redux/slices/uiSlice";
+import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
+import { Heart, ShoppingCart, UserRound } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +19,9 @@ const Header = () => {
   const t = useTranslations("Header");
   const user = useAppSelector((state: RootState) => state.auth.user);
   const logout = useLogout();
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state: RootState) => state.cart.items);
+  const wishlist = useAppSelector((state: RootState) => state.wishlist.items);
 
   return (
     <header className="border-b border-ring/30 fixed top-0 w-full z-20 bg-background">
@@ -71,8 +75,30 @@ const Header = () => {
                   </span>
                 </div>
               </div>
-              <WishSheet />
-              <CartSheet />
+              <Button
+                onClick={() => {
+                  dispatch(openWishlist());
+                }}
+                variant={"ghost"}
+                className="w-fit px-2! relative"
+              >
+                <Heart className="w-6! h-6!" />
+                <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
+                  {wishlist.length}
+                </div>
+              </Button>
+              <Button
+                onClick={() => {
+                  dispatch(openCart());
+                }}
+                variant={"ghost"}
+                className="w-fit px-2! relative"
+              >
+                <ShoppingCart className="w-6! h-6!" />
+                <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
+                  {cart.length}
+                </div>
+              </Button>
             </div>
           ) : (
             <Link

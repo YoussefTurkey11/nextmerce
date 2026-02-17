@@ -1,7 +1,8 @@
 "use client";
 import { Provider } from "react-redux";
-import { store } from "@/redux/store";
+import { persistor, store } from "@/redux/store";
 import { Toaster } from "react-hot-toast";
+import { PersistGate } from "redux-persist/integration/react";
 
 export default function ReduxProvider({
   children,
@@ -10,8 +11,10 @@ export default function ReduxProvider({
 }) {
   return (
     <Provider store={store}>
-      {children}
-      <Toaster position="top-right" />
+      <PersistGate loading={null} persistor={persistor}>
+        {children}
+        <Toaster position="top-right" />
+      </PersistGate>
     </Provider>
   );
 }

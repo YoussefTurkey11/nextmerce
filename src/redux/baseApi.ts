@@ -13,7 +13,7 @@ export const api = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Users", "Auth"],
+  tagTypes: ["Users", "Auth", "Products"],
   refetchOnFocus: false,
   refetchOnReconnect: false,
   refetchOnMountOrArgChange: true,
