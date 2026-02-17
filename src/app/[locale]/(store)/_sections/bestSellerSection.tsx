@@ -6,17 +6,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
 import ProductDialog from "@/components/common/ProductDialog";
+import { TProductItem } from "@/types/product";
 
 const BestSellerSection = () => {
   const t = useTranslations("Landpage");
-  const bestSellerData = t.raw("bestSeller.bestSellerData") as Array<{
-    id: string;
-    img: string;
-    link: string;
-    title: string;
-    price: string;
-    oldPrice: string;
-  }>;
+  const bestSellerData = t.raw(
+    "bestSeller.bestSellerData",
+  ) as Array<TProductItem>;
 
   return (
     <section className="my-30 px-10">
@@ -44,16 +40,16 @@ const BestSellerSection = () => {
                     </h3>
                     <div className="flex items-center gap-2">
                       <span className="line-through text-ring">
-                        ${cart.oldPrice}
+                        ${cart.oldPrice.num}
                       </span>
-                      <strong>${cart.price}</strong>
+                      <strong>${cart.price.num}</strong>
                     </div>
                   </div>
                   <Image
                     src={cart.img}
                     width={1000}
                     height={1000}
-                    alt={cart.title}
+                    alt={cart.id}
                     loading="lazy"
                   />
                 </Link>
@@ -65,7 +61,7 @@ const BestSellerSection = () => {
                   transition={{ duration: 0.1, ease: "easeOut" }}
                   className="absolute bottom-15 right-5 flex flex-col items-center gap-2"
                 >
-                  <ProductDialog style="p-1!" />
+                  <ProductDialog cartItem={cart} style="p-1!" />
                   <Button variant="secondary" size="icon" className="p-1!">
                     <ShoppingCart />
                   </Button>

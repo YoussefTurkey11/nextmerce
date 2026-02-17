@@ -30,16 +30,17 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
       <div className="hidden md:block">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex flex-col gap-3">
-            {images.map((img, index) => (
-              <button
-                key={index}
-                onClick={() => onThumbClick(index)}
-                className={`relative w-20 h-20 rounded-md overflow-hidden border 
+            {images.length > 0 &&
+              images.map((img, index) => (
+                <button
+                  key={index}
+                  onClick={() => onThumbClick(index)}
+                  className={`relative w-20 h-20 rounded-md overflow-hidden border 
                 ${selectedIndex === index ? "border-primary" : "border-muted"}`}
-              >
-                <Image src={img} alt="thumb" fill className="object-cover" />
-              </button>
-            ))}
+                >
+                  <Image src={img} alt="thumb" fill className="object-cover" />
+                </button>
+              ))}
           </div>
         </div>
       </div>
@@ -49,23 +50,31 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
         className="relative aspect-square w-full h-full rounded-lg overflow-hidden cursor-zoom-in bg-ring/10"
         onClick={() => setOpen(true)}
       >
-        <Image
-          src={images[selectedIndex]}
-          alt="product"
-          fill
-          className="object-contain"
-          loading="lazy"
-        />
+        {images.length > 0 && images[selectedIndex] ? (
+          <Image
+            src={images[selectedIndex]}
+            alt="product"
+            fill
+            className="object-contain"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+            No Image
+          </div>
+        )}
       </div>
 
       {/* Lightbox with Zoom */}
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={images.map((img) => ({ src: img }))}
-        index={selectedIndex}
-        plugins={[Zoom]}
-      />
+      {images.length > 0 && (
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          slides={images.map((img) => ({ src: img }))}
+          index={selectedIndex}
+          plugins={[Zoom]}
+        />
+      )}
     </div>
   );
 }

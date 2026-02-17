@@ -406,66 +406,118 @@
         {
           "id": "product-01",
           "img": "/images/products/Portable Electric Grinder Maker.webp",
+          "imgGroup": ["/images/products/Portable Electric Grinder Maker.webp"],
           "link": "/",
           "title": "مطحنة كهربائية محمولة",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-02",
           "img": "/images/products/Indoor Steel Adjustable Silent Treadmill.webp",
+          "imgGroup": [
+            "/images/products/Indoor Steel Adjustable Silent Treadmill.webp"
+          ],
           "link": "/",
           "title": "جهاز مشي منزلي قابل للتعديل مصنوع من الفولاذ",
-          "price": "888",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-03",
           "img": "/images/products/Rangs 43 Inch Frameless FHD Double.webp",
+          "imgGroup": [
+            "/images/products/Rangs 43 Inch Frameless FHD Double.webp"
+          ],
           "link": "/",
           "title": "تلفزيون Rangs مقاس 43 بوصة بدون إطار FHD زجاج مزدوج أندرويد",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "produc-04",
           "img": "/images/products/Apple AirPods Max.webp",
+          "imgGroup": ["/images/products/Apple AirPods Max.webp"],
           "link": "/",
           "title": "آبل إيربودز ماكس",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-05",
           "img": "/images/products/Apple Watch Ultra.webp",
+          "imgGroup": ["/images/products/Apple Watch Ultra.webp"],
           "link": "/",
           "title": "آبل ووتش ألترا",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-06",
           "img": "/images/products/MacBook Air M4 chip.webp",
+          "imgGroup": ["/images/products/MacBook Air M4 chip.webp"],
           "link": "/",
           "title": "ماك بوك إير بشريحة M4، 16/256 جيجابايت",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-07",
           "img": "/images/products/Apple iMac M4 24-inch 2025.webp",
+          "imgGroup": ["/images/products/Apple iMac M4 24-inch 2025.webp"],
           "link": "/",
           "title": "آبل آيماك M4 مقاس 24 بوصة إصدار 2025",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-08",
           "img": "/images/products/iPhone 16 Pro Max.webp",
+          "imgGroup": ["/images/products/iPhone 16 Pro Max.webp"],
           "link": "/",
           "title": "آيفون 16 برو ماكس",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         }
       ]
     },
@@ -515,50 +567,90 @@
         {
           "id": "product-01",
           "img": "/images/products/Portable Electric Grinder Maker.webp",
+          "imgGroup": ["/images/products/Portable Electric Grinder Maker.webp"],
           "link": "/",
           "title": "مطحنة كهربائية محمولة",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-02",
           "img": "/images/products/Indoor Steel Adjustable Silent Treadmill.webp",
+          "imgGroup": [
+            "/images/products/Indoor Steel Adjustable Silent Treadmill.webp"
+          ],
           "link": "/",
           "title": "جهاز مشي منزلي قابل للتعديل مصنوع من الفولاذ",
-          "price": "888",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-03",
           "img": "/images/products/Rangs 43 Inch Frameless FHD Double.webp",
+          "imgGroup": [
+            "/images/products/Rangs 43 Inch Frameless FHD Double.webp"
+          ],
           "link": "/",
           "title": "تلفزيون Rangs مقاس 43 بوصة بدون إطار FHD زجاج مزدوج أندرويد",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "produc-04",
           "img": "/images/products/Apple AirPods Max.webp",
+          "imgGroup": ["/images/products/Apple AirPods Max.webp"],
           "link": "/",
           "title": "آبل إيربودز ماكس",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-05",
           "img": "/images/products/Apple Watch Ultra.webp",
+          "imgGroup": ["/images/products/Apple Watch Ultra.webp"],
           "link": "/",
           "title": "آبل ووتش ألترا",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         },
         {
           "id": "product-06",
           "img": "/images/products/MacBook Air M4 chip.webp",
+          "imgGroup": ["/images/products/MacBook Air M4 chip.webp"],
           "link": "/",
           "title": "ماك بوك إير بشريحة M4، 16/256 جيجابايت",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "السعر" },
+          "oldPrice": { "num": 999, "head": "السعر القديم" },
+          "badge": "خصم 20%",
+          "rating": { "num": 777, "head": "التقييم" },
+          "reviews": { "num": 777, "head": "مراجعات" },
+          "stock": "متوفر في المخزون",
+          "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء."
         }
       ]
     },
@@ -611,14 +703,6 @@
       ]
     },
     "quickViewItem": {
-      "badge": "خصم 20%",
-      "title": "مطحنة كهربائية محمولة",
-      "rating": "التقييم",
-      "reviews": "مراجعات",
-      "stock": "متوفر في المخزون",
-      "desc": "وصف تجريبي للمنتج يمكن استبداله بوصف حقيقي يوضح المميزات والاستخدامات والفوائد الخاصة بالمنتج بشكل واضح وجذاب للعملاء.",
-      "price": "السعر",
-      "quantity": "الكمية",
       "addToCart": "أضف إلى السلة",
       "addToWishlist": "أضف إلى المفضلة"
     }

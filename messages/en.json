@@ -407,66 +407,117 @@
         {
           "id": "product-01",
           "img": "/images/products/Portable Electric Grinder Maker.webp",
+          "imgGroup": ["/images/products/Portable Electric Grinder Maker.webp"],
           "link": "/",
           "title": "Portable Electric Grinder Maker",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-02",
           "img": "/images/products/Indoor Steel Adjustable Silent Treadmill.webp",
+          "imgGroup": [
+            "/images/products/Indoor Steel Adjustable Silent Treadmill.webp"
+          ],
           "link": "/",
           "title": "Indoor Steel Adjustable Silent Treadmill Home Fitness",
-          "price": "888",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-03",
           "img": "/images/products/Rangs 43 Inch Frameless FHD Double.webp",
+          "imgGroup": [
+            "/images/products/Rangs 43 Inch Frameless FHD Double.webp"
+          ],
           "link": "/",
           "title": "Rangs 43 Inch Frameless FHD Double Glass Android TV",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "produc-04",
           "img": "/images/products/Apple AirPods Max.webp",
+          "imgGroup": ["/images/products/Apple AirPods Max.webp"],
           "link": "/",
           "title": "Apple AirPods Max",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-05",
           "img": "/images/products/Apple Watch Ultra.webp",
+          "imgGroup": ["/images/products/Apple Watch Ultra.webp"],
           "link": "/",
           "title": "Apple Watch Ultra",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-06",
           "img": "/images/products/MacBook Air M4 chip.webp",
+          "imgGroup": ["/images/products/MacBook Air M4 chip.webp"],
           "link": "/",
           "title": "MacBook Air M4 chip, 16/256GB",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-07",
           "img": "/images/products/Apple iMac M4 24-inch 2025.webp",
+          "imgGroup": ["/images/products/Apple iMac M4 24-inch 2025.webp"],
           "link": "/",
           "title": "Apple iMac M4 24-inch 2025",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-08",
           "img": "/images/products/iPhone 16 Pro Max.webp",
+          "imgGroup": ["/images/products/iPhone 16 Pro Max.webp"],
           "link": "/",
-          "title": "iPhone 16 Pro Max",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         }
       ]
     },
@@ -516,50 +567,90 @@
         {
           "id": "product-01",
           "img": "/images/products/Portable Electric Grinder Maker.webp",
+          "imgGroup": ["/images/products/Portable Electric Grinder Maker.webp"],
           "link": "/",
           "title": "Portable Electric Grinder Maker",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-02",
           "img": "/images/products/Indoor Steel Adjustable Silent Treadmill.webp",
+          "imgGroup": [
+            "/images/products/Indoor Steel Adjustable Silent Treadmill.webp"
+          ],
           "link": "/",
           "title": "Indoor Steel Adjustable Silent Treadmill Home Fitness",
-          "price": "888",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-03",
           "img": "/images/products/Rangs 43 Inch Frameless FHD Double.webp",
+          "imgGroup": [
+            "/images/products/Rangs 43 Inch Frameless FHD Double.webp"
+          ],
           "link": "/",
           "title": "Rangs 43 Inch Frameless FHD Double Glass Android TV",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "produc-04",
           "img": "/images/products/Apple AirPods Max.webp",
+          "imgGroup": ["/images/products/Apple AirPods Max.webp"],
           "link": "/",
           "title": "Apple AirPods Max",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-05",
           "img": "/images/products/Apple Watch Ultra.webp",
+          "imgGroup": ["/images/products/Apple Watch Ultra.webp"],
           "link": "/",
           "title": "Apple Watch Ultra",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         },
         {
           "id": "product-06",
           "img": "/images/products/MacBook Air M4 chip.webp",
+          "imgGroup": ["/images/products/MacBook Air M4 chip.webp"],
           "link": "/",
           "title": "MacBook Air M4 chip, 16/256GB",
-          "price": "777",
-          "oldPrice": "999"
+          "price": { "num": 777, "head": "price" },
+          "badge": "SALE 20% OFF",
+          "oldPrice": { "num": 999, "head": "Old Price" },
+          "rating": { "num": 1, "head": "reting" },
+          "reviews": { "num": 1, "head": "reviews" },
+          "stock": "In Stock",
+          "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!"
         }
       ]
     },
@@ -612,14 +703,6 @@
       ]
     },
     "quickViewItem": {
-      "badge": "SALE 20% OFF",
-      "title": "Portable Electric Grinder Maker",
-      "rating": "Rating",
-      "reviews": "reviews",
-      "stock": "In Stock",
-      "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!",
-      "price": "Price",
-      "quantity": "Quantity",
       "addToCart": "Add To Cart",
       "addToWishlist": "Add To Wishlist"
     }

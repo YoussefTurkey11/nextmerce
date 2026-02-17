@@ -6,17 +6,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import ProductDialog from "@/components/common/ProductDialog";
+import { TProductItem } from "@/types/product";
 
 const NewArrivalSection = () => {
   const t = useTranslations("Landpage");
-  const newArrivalData = t.raw("newArrivals.newArrivalData") as Array<{
-    id: string;
-    img: string;
-    link: string;
-    title: string;
-    price: string;
-    oldPrice: string;
-  }>;
+  const newArrivalData = t.raw(
+    "newArrivals.newArrivalData",
+  ) as Array<TProductItem>;
   return (
     <section className="my-10 px-10">
       <div className="flex items-center justify-between">
@@ -46,7 +42,7 @@ const NewArrivalSection = () => {
                     src={cart.img}
                     width={1000}
                     height={1000}
-                    alt={cart.title}
+                    alt={cart.id}
                     loading="lazy"
                   />
                 </Link>
@@ -58,7 +54,7 @@ const NewArrivalSection = () => {
                   transition={{ duration: 0.1, ease: "easeOut" }}
                   className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2"
                 >
-                  <ProductDialog />
+                  <ProductDialog cartItem={cart} />
                   <Button className="w-fit">{t("newArrivals.cartBtn")}</Button>
                   <Button variant="secondary" size="icon">
                     <Heart />
@@ -73,9 +69,9 @@ const NewArrivalSection = () => {
                   {cart.title}
                 </Link>
                 <div className="flex items-center gap-2">
-                  <strong>${cart.price}</strong>
+                  <strong>${cart.price.num}</strong>
                   <span className="line-through text-ring">
-                    ${cart.oldPrice}
+                    ${cart.oldPrice.num}
                   </span>
                 </div>
               </div>

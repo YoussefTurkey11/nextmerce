@@ -8,13 +8,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { CircleCheck, Eye, Heart, Star } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import ProductGallery from "../product/ProductGallery";
 import { Badge } from "../ui/badge";
 import { QuantityCounter } from "../ui/quantity-counter";
+import { TProductItem } from "@/types/product";
 
-export default function ProductDialog({ style }: { style: string }) {
+export default function ProductDialog({
+  cartItem,
+  style,
+}: {
+  cartItem: TProductItem;
+  style?: string;
+}) {
   const t = useTranslations("Landpage");
+  const locale = useLocale();
 
   return (
     <Dialog>
@@ -24,26 +32,22 @@ export default function ProductDialog({ style }: { style: string }) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-5xl!">
+      <DialogContent className="max-w-5xl! py-10">
         <DialogHeader>
           <DialogTitle></DialogTitle>
         </DialogHeader>
 
         <div className="flex flex-col md:flex-row gap-5">
           <ProductGallery
-            images={[
-              "/images/products/capa.webp",
-              "/images/products/iphone.webp",
-              "/images/products/mob.webp",
-            ]}
+            images={Array.isArray(cartItem.imgGroup) ? cartItem.imgGroup : []}
           />
 
           <div className="space-y-5">
             <Badge variant={"success"} className="py-1 px-2">
-              {t("quickViewItem.badge")}
+              {cartItem.badge}
             </Badge>
             <h3 className="text-3xl font-semibold capitalize">
-              {t("quickViewItem.title")}
+              {cartItem.title}
             </h3>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
@@ -55,32 +59,33 @@ export default function ProductDialog({ style }: { style: string }) {
               </div>
               <p className="text-ring">
                 <strong className="text-foreground">
-                  0 {t("quickViewItem.rating")}
+                  {`${cartItem.rating.num} ${cartItem.rating.head}`}
                 </strong>{" "}
-                ( 0{t("quickViewItem.reviews")} )
+                ( {`${cartItem.reviews.num} ${cartItem.reviews.head}`} )
               </p>
               <p className="text-chart-2 flex items-center gap-1 text-sm">
-                <CircleCheck size={20} />{" "}
-                <span>{t("quickViewItem.stock")}</span>
+                <CircleCheck size={20} /> <span>{cartItem.stock}</span>
               </p>
             </div>
             <p className="text-muted-foreground line-clamp-3 w-100">
-              {t("quickViewItem.desc")}
+              {cartItem.desc}
             </p>
             <div className="flex items-start justify-between">
               <div className="flex flex-col gap-2">
-                <p className="text-lg font-bold">{t("quickViewItem.price")}</p>
+                <p className="text-lg font-bold">{cartItem.price.head}</p>
                 <p className="flex items-center gap-2">
                   <span className="line-through text-muted-foreground text-xl">
-                    $888
+                    ${cartItem.price.num}
                   </span>
-                  <span className="text-3xl font-semibold">$777</span>
+                  <span className="text-3xl font-semibold">
+                    ${cartItem.oldPrice.num}
+                  </span>
                 </p>
               </div>
 
               <div className="flex flex-col gap-2">
                 <p className="text-lg font-bold">
-                  {t("quickViewItem.quantity")}
+                  {locale === "en" ? "Quantity" : "الكمية"}
                 </p>
                 <QuantityCounter
                   min={1}
