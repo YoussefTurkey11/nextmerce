@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -56,6 +57,20 @@ export default function CartSheet() {
             </Button>
           </div>
         </div>
+        <SheetFooter className="border-t border-ring/30 py-5">
+          <div className="flex items-center justify-between">
+            <h4 className="text-lg md:text-2xl font-semibold">
+              {t("cart.subTotal")}:
+            </h4>
+            <p className="text-lg font-semibold">$1645</p>
+          </div>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 my-5">
+            <Button className="md:w-40">{t("cart.title")}</Button>
+            <Button variant={"secondary"} className="md:w-40">
+              {t("cart.checkout")}
+            </Button>
+          </div>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );

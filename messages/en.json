@@ -273,7 +273,9 @@
     ],
     "cart": {
       "title": "Cart View",
-      "price": "Price"
+      "price": "Price",
+      "subTotal": "Subtotal",
+      "checkout": "Checkout"
     },
     "wishlist": {
       "title": "Wishlist View",
@@ -608,6 +610,18 @@
           "position": "Backend Developer"
         }
       ]
+    },
+    "quickViewItem": {
+      "badge": "SALE 20% OFF",
+      "title": "Portable Electric Grinder Maker",
+      "rating": "Rating",
+      "reviews": "reviews",
+      "stock": "In Stock",
+      "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis rem aspernatur sequi architecto, reiciendis esse, quos animi natus eligendi ducimus doloremque laboriosam repudiandae nemo. Deserunt dolorem nemo sapiente mollitia quidem!",
+      "price": "Price",
+      "quantity": "Quantity",
+      "addToCart": "Add To Cart",
+      "addToWishlist": "Add To Wishlist"
     }
   },
   "Footer": {

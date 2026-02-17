@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import ProductDialog from "@/components/common/ProductDialog";
 
 const NewArrivalSection = () => {
   const t = useTranslations("Landpage");
@@ -48,26 +49,21 @@ const NewArrivalSection = () => {
                     alt={cart.title}
                     loading="lazy"
                   />
-
-                  <motion.div
-                    variants={{
-                      rest: { y: 40, opacity: 0 },
-                      hover: { y: 0, opacity: 1 },
-                    }}
-                    transition={{ duration: 0.1, ease: "easeOut" }}
-                    className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2"
-                  >
-                    <Button variant="secondary" size="icon">
-                      <Eye />
-                    </Button>
-                    <Button className="w-fit">
-                      {t("newArrivals.cartBtn")}
-                    </Button>
-                    <Button variant="secondary" size="icon">
-                      <Heart />
-                    </Button>
-                  </motion.div>
                 </Link>
+                <motion.div
+                  variants={{
+                    rest: { y: 40, opacity: 0 },
+                    hover: { y: 0, opacity: 1 },
+                  }}
+                  transition={{ duration: 0.1, ease: "easeOut" }}
+                  className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2"
+                >
+                  <ProductDialog />
+                  <Button className="w-fit">{t("newArrivals.cartBtn")}</Button>
+                  <Button variant="secondary" size="icon">
+                    <Heart />
+                  </Button>
+                </motion.div>
               </motion.div>
               <div className="flex flex-col gap-2">
                 <Link

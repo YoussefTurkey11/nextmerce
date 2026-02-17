@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
+import ProductDialog from "@/components/common/ProductDialog";
 
 const BestSellerSection = () => {
   const t = useTranslations("Landpage");
@@ -55,26 +56,23 @@ const BestSellerSection = () => {
                     alt={cart.title}
                     loading="lazy"
                   />
-
-                  <motion.div
-                    variants={{
-                      rest: { x: 40, opacity: 0 },
-                      hover: { x: 0, opacity: 1 },
-                    }}
-                    transition={{ duration: 0.1, ease: "easeOut" }}
-                    className="absolute bottom-15 right-5 flex flex-col items-center gap-2"
-                  >
-                    <Button variant="secondary" size="icon" className="p-1!">
-                      <Eye />
-                    </Button>
-                    <Button variant="secondary" size="icon" className="p-1!">
-                      <ShoppingCart />
-                    </Button>
-                    <Button variant="secondary" size="icon" className="p-1!">
-                      <Heart />
-                    </Button>
-                  </motion.div>
                 </Link>
+                <motion.div
+                  variants={{
+                    rest: { x: 40, opacity: 0 },
+                    hover: { x: 0, opacity: 1 },
+                  }}
+                  transition={{ duration: 0.1, ease: "easeOut" }}
+                  className="absolute bottom-15 right-5 flex flex-col items-center gap-2"
+                >
+                  <ProductDialog style="p-1!" />
+                  <Button variant="secondary" size="icon" className="p-1!">
+                    <ShoppingCart />
+                  </Button>
+                  <Button variant="secondary" size="icon" className="p-1!">
+                    <Heart />
+                  </Button>
+                </motion.div>
               </motion.div>
             </div>
           ))}
