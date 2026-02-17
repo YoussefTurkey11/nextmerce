@@ -64,7 +64,7 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
         `/ar/newPassword`,
       ].includes(pathname)
     ) {
-      dispatch(openAuthDialog());
+      setTimeout(() => dispatch(openAuthDialog()), 3000);
     }
   }, [authInitialized, user, dispatch]);
 

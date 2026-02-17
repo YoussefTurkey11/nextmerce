@@ -8,7 +8,7 @@ import { Heart, ShoppingCart } from "lucide-react";
 import ProductDialog from "@/components/common/ProductDialog";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { useGetProductsQuery } from "@/redux/api/productApi";
-import { SkeletonCard } from "./SkeletonCard";
+import { SkeletonCard } from "@/components/common/SkeletonCard";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { toggleWishlist } from "@/redux/slices/wishlistSlice";
 import { openCart, openWishlist } from "@/redux/slices/uiSlice";

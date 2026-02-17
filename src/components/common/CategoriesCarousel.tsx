@@ -6,21 +6,33 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useGetAllCategoriesQuery } from "@/redux/api/categoryApi";
+import { TCategory } from "@/types/category";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { Skeleton } from "../ui/skeleton";
 
 export function CategoriesCarousel() {
   const t = useTranslations("Landpage");
   const locale = useLocale();
-  const categoriesCarouselItem = t.raw(
-    "categories.categoriesCarouselItem",
-  ) as Array<{
-    id: string;
-    img: string;
-    title: string;
-    link: string;
-  }>;
+  const { data, isLoading } = useGetAllCategoriesQuery({ page: 1, limit: 10 });
+
+  const category = data?.data?.data ?? [];
+
+  if (isLoading)
+    return (
+      <div className="flex gap-6">
+        {Array.from({ length: 10 }).map((_, idx) => (
+          <div key={idx} className="flex flex-col items-center gap-4">
+            <Skeleton className="h-12 w-12 rounded-full" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-16" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
 
   return (
     <Carousel
@@ -31,25 +43,29 @@ export function CategoriesCarousel() {
       className="w-full relative border-b border-ring/30"
     >
       <CarouselContent>
-        {categoriesCarouselItem.map((cate) => (
+        {category.map((cate: TCategory) => (
           <CarouselItem
             key={cate.id}
             className="basis-1/2 md:basis-1/4 lg:basis-1/6 my-10"
           >
-            <Link href={cate.link} className="group flex flex-col items-center">
+            <Link href={cate.id} className="group flex flex-col items-center">
               <div className="rounded-full bg-primary/5 p-5 w-30 h-30 flex items-center justify-center group-hover:scale-[1.1] transition-all">
-                <Image
-                  src={cate.img}
-                  width={100}
-                  height={100}
-                  alt={cate.title}
-                  loading="lazy"
-                  className="object-contain"
-                />
+                {cate.image ? (
+                  <Image
+                    src={cate.image}
+                    width={100}
+                    height={100}
+                    alt={cate.name}
+                    loading="lazy"
+                    className="object-contain"
+                  />
+                ) : (
+                  <div>{locale === "en" ? "No Image" : "بلا صورة"}</div>
+                )}
               </div>
 
               <p className="group-hover:text-primary transition-colors font-semibold py-3">
-                {cate.title}
+                {cate.name}
               </p>
             </Link>
           </CarouselItem>

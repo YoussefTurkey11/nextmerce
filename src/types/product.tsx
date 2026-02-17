@@ -37,12 +37,12 @@ export type WishlistItem = TProductItem & {
   quantity: number;
 };
 
-export type ProductsQueryParams = {
+export type ProductQueryParams = {
   page?: number;
   limit?: number;
 };
 
-export type ProductsResponse = {
+export type ProductResponse = {
   message: string;
   results: number;
   data: TProductItem[];

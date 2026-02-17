@@ -1,6 +1,6 @@
 import {
-  ProductsQueryParams,
-  ProductsResponse,
+  ProductQueryParams,
+  ProductResponse,
   TProductItem,
 } from "@/types/product";
 import { api } from "../baseApi";
@@ -8,7 +8,7 @@ import { api } from "../baseApi";
 export const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
     // Get Products
-    getProducts: builder.query<ProductsResponse, ProductsQueryParams>({
+    getProducts: builder.query<ProductResponse, ProductQueryParams>({
       query: ({ page = 1, limit = 10 }) =>
         `/api/v1/products?page=${page}&limit=${limit}`,
       providesTags: ["Products"],

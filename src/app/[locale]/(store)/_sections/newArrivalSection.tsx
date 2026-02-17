@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import ProductDialog from "@/components/common/ProductDialog";
 import { useGetProductsQuery } from "@/redux/api/productApi";
-import { SkeletonCard } from "./SkeletonCard";
+import { SkeletonCard } from "@/components/common/SkeletonCard";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { openCart, openWishlist } from "@/redux/slices/uiSlice";
