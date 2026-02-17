@@ -18,7 +18,7 @@ import { addToCart } from "@/redux/slices/cartSlice";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { useState } from "react";
 import { toggleWishlist } from "@/redux/slices/wishlistSlice";
-import { openWishlist } from "@/redux/slices/uiSlice";
+import { openCart, openWishlist } from "@/redux/slices/uiSlice";
 
 export default function ProductDialog({
   cartItem,
@@ -153,6 +153,7 @@ export default function ProductDialog({
                       ...cartItem,
                       quantity: selectedQuantity,
                     }),
+                    dispatch(openCart()),
                   )
                 }
               >
