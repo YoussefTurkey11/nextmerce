@@ -11,14 +11,19 @@ import { CircleCheck, CircleX, Eye, Heart, HeartOff, Star } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import ProductGallery from "../product/ProductGallery";
 import { Badge } from "../ui/badge";
-import { QuantityCounter } from "../ui/quantity-counter";
+// import { QuantityCounter } from "../ui/quantity-counter";
 import { TProductItem } from "@/types/product";
 import { rating } from "@/utils/rating";
-import { addToCart } from "@/redux/slices/cartSlice";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toggleWishlist } from "@/redux/slices/wishlistSlice";
-import { openCart, openWishlist } from "@/redux/slices/uiSlice";
+import { openAuthDialog, openCart, openWishlist } from "@/redux/slices/uiSlice";
+import {
+  useAddProductsToCartMutation,
+  useGetAllProductsInCartQuery,
+  useUpdateQuantityInCartMutation,
+} from "@/redux/api/cartApi";
+import toast from "react-hot-toast";
 
 export default function ProductDialog({
   cartItem,
@@ -31,10 +36,81 @@ export default function ProductDialog({
   const locale = useLocale();
   const dispatch = useAppDispatch();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const user = useAppSelector((state: RootState) => state.auth.user);
   const wishlistItems = useAppSelector(
     (state: RootState) => state.wishlist.items,
   );
+  const { data: getCartData } = useGetAllProductsInCartQuery();
+  const [addToCart, { isLoading: isAddLoading }] =
+    useAddProductsToCartMutation();
+  const [updateQuantityInCart, { isLoading: isUpdateLoading }] =
+    useUpdateQuantityInCartMutation();
+
   const isInWishlist = wishlistItems.some((item) => item.id === cartItem.id);
+
+  const existingItem = getCartData?.data.cartItems.find(
+    (item) => item.product.id === cartItem.id,
+  );
+
+  useEffect(() => {
+    if (existingItem) {
+      setSelectedQuantity(existingItem.quantity);
+    }
+  }, [existingItem]);
+
+  const handleCartAction = async () => {
+    try {
+      if (!user) {
+        dispatch(openAuthDialog());
+        return;
+      }
+
+      if (existingItem) {
+        await updateQuantityInCart({
+          id: existingItem.id,
+          quantity: selectedQuantity,
+        }).unwrap();
+        toast.success(
+          locale === "en"
+            ? "Cart updated successfully"
+            : "تم تحديث السلة بنجاح",
+        );
+      } else {
+        await addToCart({ productId: cartItem.id }).unwrap();
+
+        if (selectedQuantity > 1) {
+          const newItem = getCartData?.data.cartItems.find(
+            (item) => item.product.id === cartItem.id,
+          );
+          if (newItem) {
+            await updateQuantityInCart({
+              id: newItem.id,
+              quantity: selectedQuantity,
+            }).unwrap();
+          }
+        }
+        toast.success(
+          locale === "en"
+            ? "Added to cart successfully"
+            : "تمت الإضافة للسلة بنجاح",
+        );
+      }
+
+      dispatch(openCart());
+    } catch (error) {
+      toast.error(
+        locale === "en" ? "Cannot update cart" : "لا يمكن تحديث السلة",
+      );
+    }
+  };
+
+  const handleQuantityChange = (value: number) => {
+    setSelectedQuantity(value);
+
+    if (user && existingItem && value !== existingItem.quantity) {
+      handleCartAction();
+    }
+  };
 
   return (
     <Dialog>
@@ -132,32 +208,43 @@ export default function ProductDialog({
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2">
+              {/* <div className="flex flex-col gap-2">
                 <p className="text-lg font-bold">
                   {locale === "en" ? "Quantity" : "الكمية"}
                 </p>
                 <QuantityCounter
                   min={1}
-                  max={50}
-                  onChange={(value) => setSelectedQuantity(value)}
+                  max={cartItem.quantity || 50}
+                  value={selectedQuantity}
+                  onChange={handleQuantityChange}
                 />
-              </div>
+                {existingItem && (
+                  <p className="text-xs text-muted-foreground">
+                    {locale === "en"
+                      ? `${existingItem.quantity} in cart`
+                      : `${existingItem.quantity} في السلة`}
+                  </p>
+                )}
+              </div> */}
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-2 my-5">
               <Button
-                className="md:w-40 capitalize"
-                onClick={() =>
-                  dispatch(
-                    addToCart({
-                      ...cartItem,
-                      quantity: selectedQuantity,
-                    }),
-                    dispatch(openCart()),
-                  )
+                className="w-fit"
+                onClick={handleCartAction}
+                disabled={
+                  isAddLoading || isUpdateLoading || cartItem.quantity === 0
                 }
               >
-                {t("quickViewItem.addToCart")}
+                {isAddLoading || isUpdateLoading
+                  ? locale === "en"
+                    ? "Updating..."
+                    : "جاري التحديث..."
+                  : existingItem
+                    ? locale === "en"
+                      ? "Update Cart"
+                      : "تحديث السلة"
+                    : t("quickViewItem.addToCart")}
               </Button>
               <Button
                 variant={isInWishlist ? "default" : "secondary"}

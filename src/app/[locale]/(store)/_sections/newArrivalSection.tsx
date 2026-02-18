@@ -1,26 +1,34 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Eye, Heart } from "lucide-react";
+import { Eye, Heart, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import ProductDialog from "@/components/common/ProductDialog";
 import { useGetProductsQuery } from "@/redux/api/productApi";
 import { SkeletonCard } from "@/components/common/SkeletonCard";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
-import { addToCart } from "@/redux/slices/cartSlice";
-import { openCart, openWishlist } from "@/redux/slices/uiSlice";
+import { openAuthDialog, openCart, openWishlist } from "@/redux/slices/uiSlice";
 import { toggleWishlist } from "@/redux/slices/wishlistSlice";
+import { useAddProductsToCartMutation } from "@/redux/api/cartApi";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 const NewArrivalSection = () => {
   const t = useTranslations("Landpage");
+  const locale = useLocale();
   const dispatch = useAppDispatch();
+  const user = useAppSelector((state: RootState) => state.auth.user);
   const { data, isLoading } = useGetProductsQuery({ limit: 8, page: 1 });
+  const [addToCart, { isLoading: isAddLoading }] =
+    useAddProductsToCartMutation();
   const product = data?.data ?? [];
   const wishlistItems = useAppSelector(
     (state: RootState) => state.wishlist.items,
   );
+
+  const [addingId, setAddingId] = useState<string | null>(null);
 
   if (isLoading)
     return (
@@ -80,17 +88,32 @@ const NewArrivalSection = () => {
                     <ProductDialog cartItem={cart} />
                     <Button
                       className="w-fit"
-                      onClick={() => {
-                        dispatch(
-                          addToCart({
-                            ...cart,
-                            quantity: 1,
-                          }),
-                        );
-                        dispatch(openCart());
+                      disabled={addingId === cart.id}
+                      onClick={async () => {
+                        try {
+                          if (user) {
+                            setAddingId(cart.id);
+                            await addToCart({ productId: cart.id }).unwrap();
+                            dispatch(openCart());
+                          } else {
+                            dispatch(openAuthDialog());
+                          }
+                        } catch {
+                          toast.error(
+                            locale === "en"
+                              ? "Can not add to cart"
+                              : "لا نستطيع إضافتها في السلة",
+                          );
+                        } finally {
+                          setAddingId(null);
+                        }
                       }}
                     >
-                      {t("newArrivals.cartBtn")}
+                      {addingId === cart.id ? (
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                      ) : (
+                        t("newArrivals.cartBtn")
+                      )}
                     </Button>
                     <Button
                       variant={isInWishlist ? "default" : "secondary"}

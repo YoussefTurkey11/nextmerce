@@ -7,23 +7,29 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Trash2 } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
 import { useLocale, useTranslations } from "use-intl";
 import Image from "next/image";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
-import { removeFromCart } from "@/redux/slices/cartSlice";
 import { closeCart } from "@/redux/slices/uiSlice";
+import {
+  useDeleteProductsInCartMutation,
+  useGetAllProductsInCartQuery,
+} from "@/redux/api/cartApi";
+import { useState } from "react";
 
 export default function CartSheet() {
   const t = useTranslations("Header");
   const locale = useLocale();
   const dispatch = useAppDispatch();
-  const cartItems = useAppSelector((state: RootState) => state.cart.items);
   const isCartOpen = useAppSelector((state: RootState) => state.ui.isCartOpen);
-  const subTotal = cartItems.reduce(
-    (acc, item) => acc + item.priceAfterDiscount * item.quantity,
-    0,
-  );
+  const { data } = useGetAllProductsInCartQuery();
+  const [deleteProduct, { isLoading: isDeleteLoading }] =
+    useDeleteProductsInCartMutation();
+  const cartItems = data?.data?.cartItems ?? [];
+  const subTotal = data?.data?.totalPrice ?? 0;
+
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   return (
     <Sheet
@@ -49,28 +55,40 @@ export default function CartSheet() {
                 <div key={item.id} className="flex items-start justify-between">
                   <div className="flex gap-2 w-70">
                     <Image
-                      src={item.imageCover}
+                      src={item.product.imageCover}
                       width={100}
                       height={100}
-                      alt={item.title}
+                      alt={item.product.title}
                       className="bg-muted rounded-lg"
                     />
                     <div>
                       <p className="font-semibold">
-                        {item.title} <span>({item.quantity})</span>
+                        {item.product.title} <span>({item.quantity})</span>
                       </p>
                       <p>
                         {t("cart.price")}: $
-                        <span>{item.priceAfterDiscount}</span>
+                        <span>{item.product.priceAfterDiscount}</span>
                       </p>
                     </div>
                   </div>
                   <Button
                     variant={"delete"}
                     className="w-5"
-                    onClick={() => dispatch(removeFromCart(item.id))}
+                    disabled={deletingId === item.id}
+                    onClick={async () => {
+                      try {
+                        setDeletingId(item.id);
+                        await deleteProduct(item.id).unwrap();
+                      } finally {
+                        setDeletingId(null);
+                      }
+                    }}
                   >
-                    <Trash2 />
+                    {deletingId === item.id ? (
+                      <Loader2 className="h-5 w-5 animate-spin text-red-500" />
+                    ) : (
+                      <Trash2 className="h-5 w-5" />
+                    )}
                   </Button>
                 </div>
               ))

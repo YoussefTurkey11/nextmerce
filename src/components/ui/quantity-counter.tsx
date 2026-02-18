@@ -2,11 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type QuantityCounterProps = {
   min?: number;
   max?: number;
+  value?: number;
   defaultValue?: number;
   onChange?: (value: number) => void;
 };
@@ -14,15 +15,26 @@ type QuantityCounterProps = {
 export function QuantityCounter({
   min = 1,
   max = 99,
+  value,
   defaultValue = 1,
   onChange,
 }: QuantityCounterProps) {
-  const [count, setCount] = useState(defaultValue);
+  const [internalCount, setInternalCount] = useState(defaultValue);
+
+  const count = value !== undefined ? value : internalCount;
+
+  useEffect(() => {
+    if (value === undefined) {
+      setInternalCount(defaultValue);
+    }
+  }, [defaultValue, value]);
 
   const increment = () => {
     if (count < max) {
       const newValue = count + 1;
-      setCount(newValue);
+      if (value === undefined) {
+        setInternalCount(newValue);
+      }
       onChange?.(newValue);
     }
   };
@@ -30,7 +42,9 @@ export function QuantityCounter({
   const decrement = () => {
     if (count > min) {
       const newValue = count - 1;
-      setCount(newValue);
+      if (value === undefined) {
+        setInternalCount(newValue);
+      }
       onChange?.(newValue);
     }
   };

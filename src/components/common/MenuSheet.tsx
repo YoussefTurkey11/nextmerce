@@ -19,15 +19,18 @@ import { User } from "@/types/authTypes";
 import WishSheet from "./WishSheet";
 import { DropMenuComponent } from "./DropMenu";
 import SearchDialog from "./SearchDialog";
-import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
+import { RootState, useAppDispatch } from "@/redux/store";
 import { openCart } from "@/redux/slices/uiSlice";
+import { useGetAllProductsInCartQuery } from "@/redux/api/cartApi";
 
 export default function MenuSheet({ user }: { user: User }) {
   const locale = useLocale();
   const t = useTranslations("Header");
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state: RootState) => state.cart.items);
   const menuList = t.raw("menu") as Array<{ title: string; link: string }>;
+  const { data } = useGetAllProductsInCartQuery();
+  const cart = data?.cartItems;
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -90,7 +93,7 @@ export default function MenuSheet({ user }: { user: User }) {
               >
                 <ShoppingCart className="w-6! h-6!" />
                 <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
-                  {cart.length}
+                  {cart?.length ?? 0}
                 </div>
               </Button>
             </div>

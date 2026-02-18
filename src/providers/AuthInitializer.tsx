@@ -12,6 +12,7 @@ import { useLazyGetUserQuery } from "@/redux/api/authApi";
 import { getAuthCookie } from "@/utils/cookie";
 import { openAuthDialog } from "@/redux/slices/uiSlice";
 import { usePathname } from "next/navigation";
+import { useLazyGetAllProductsInCartQuery } from "@/redux/api/cartApi";
 
 const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useAppDispatch();
@@ -19,6 +20,7 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
     (state: RootState) => state.auth,
   );
   const [getUser] = useLazyGetUserQuery();
+  const [getCart] = useLazyGetAllProductsInCartQuery();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -35,6 +37,7 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
       try {
         const res = await getUser().unwrap();
         dispatch(setUser(res.data));
+        await getCart().unwrap();
       } catch {
         dispatch(clearAuth());
       } finally {

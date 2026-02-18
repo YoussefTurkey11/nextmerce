@@ -1,26 +1,33 @@
 "use client";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart, Loader2, ShoppingCart } from "lucide-react";
 import ProductDialog from "@/components/common/ProductDialog";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { useGetProductsQuery } from "@/redux/api/productApi";
 import { SkeletonCard } from "@/components/common/SkeletonCard";
-import { addToCart } from "@/redux/slices/cartSlice";
 import { toggleWishlist } from "@/redux/slices/wishlistSlice";
-import { openCart, openWishlist } from "@/redux/slices/uiSlice";
+import { openAuthDialog, openCart, openWishlist } from "@/redux/slices/uiSlice";
+import { useAddProductsToCartMutation } from "@/redux/api/cartApi";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 const BestSellerSection = () => {
   const t = useTranslations("Landpage");
+  const locale = useLocale();
+  const user = useAppSelector((state: RootState) => state.auth.user);
   const wishlistItems = useAppSelector(
     (state: RootState) => state.wishlist.items,
   );
   const dispatch = useAppDispatch();
   const { data, isLoading } = useGetProductsQuery({ limit: 8, page: 1 });
+  const [addToCart] = useAddProductsToCartMutation();
   const product = data?.data ?? [];
+
+  const [addingId, setAddingId] = useState<string | null>(null);
 
   if (isLoading)
     return (
@@ -85,24 +92,38 @@ const BestSellerSection = () => {
                   >
                     <ProductDialog cartItem={cart} style="p-1!" />
                     <Button
-                      variant="secondary"
-                      size="icon"
-                      className="p-1!"
-                      onClick={() => {
-                        dispatch(
-                          addToCart({
-                            ...cart,
-                            quantity: 1,
-                          }),
-                        );
-                        dispatch(openCart());
+                      variant={"secondary"}
+                      className="w-fit p-2.5!"
+                      onClick={async () => {
+                        try {
+                          if (user) {
+                            setAddingId(cart.id);
+                            await addToCart({ productId: cart.id }).unwrap();
+                            dispatch(openCart());
+                          } else {
+                            dispatch(openAuthDialog());
+                          }
+                        } catch {
+                          toast.error(
+                            locale === "en"
+                              ? "Can not add to cart"
+                              : "لا نستطيع إضافتها في السلة",
+                          );
+                        } finally {
+                          setAddingId(null);
+                        }
                       }}
                     >
-                      <ShoppingCart />
+                      {addingId === cart.id ? (
+                        <Loader2 className="animate-spin" />
+                      ) : (
+                        <ShoppingCart />
+                      )}
                     </Button>
                     <Button
                       variant={isInWishlist ? "default" : "secondary"}
                       size="icon"
+                      className="p-1!"
                       onClick={() => {
                         dispatch(toggleWishlist(cart));
                         dispatch(openWishlist());
