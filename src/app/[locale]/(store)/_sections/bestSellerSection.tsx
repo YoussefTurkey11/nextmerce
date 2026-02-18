@@ -4,30 +4,38 @@ import { Button } from "@/components/ui/button";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, Loader2, ShoppingCart } from "lucide-react";
+import { Heart, HeartOff, Loader2, ShoppingCart } from "lucide-react";
 import ProductDialog from "@/components/common/ProductDialog";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { useGetProductsQuery } from "@/redux/api/productApi";
 import { SkeletonCard } from "@/components/common/SkeletonCard";
-import { toggleWishlist } from "@/redux/slices/wishlistSlice";
 import { openAuthDialog, openCart, openWishlist } from "@/redux/slices/uiSlice";
 import { useAddProductsToCartMutation } from "@/redux/api/cartApi";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import {
+  useCreateWishlistMutation,
+  useDeleteWishlistMutation,
+  useGetAllWishlistsQuery,
+} from "@/redux/api/wishlistApi";
 
 const BestSellerSection = () => {
   const t = useTranslations("Landpage");
   const locale = useLocale();
   const user = useAppSelector((state: RootState) => state.auth.user);
-  const wishlistItems = useAppSelector(
-    (state: RootState) => state.wishlist.items,
-  );
   const dispatch = useAppDispatch();
   const { data, isLoading } = useGetProductsQuery({ limit: 8, page: 1 });
+  const { data: wishlistData } = useGetAllWishlistsQuery();
+  const [deleteWishlist, { isLoading: isDeleteLoading }] =
+    useDeleteWishlistMutation();
+  const [addToWishlist, { isLoading: isWishlistLoading }] =
+    useCreateWishlistMutation();
   const [addToCart] = useAddProductsToCartMutation();
-  const product = data?.data ?? [];
 
-  const [addingId, setAddingId] = useState<string | null>(null);
+  const product = data?.data ?? [];
+  const [addingCartId, setAddingCartId] = useState<string | null>(null);
+  const [addingWishlistId, setAddingWishlistId] = useState<string | null>(null);
+  const [toggleId, setToggleId] = useState<string | null>(null);
 
   if (isLoading)
     return (
@@ -47,9 +55,10 @@ const BestSellerSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
         {product.length > 0 &&
           product.map((cart) => {
-            const isInWishlist = wishlistItems.some(
+            const wishlistItem = wishlistData?.data.find(
               (item) => item.id === cart.id,
             );
+            const isInWishlist = !!wishlistItem;
 
             return (
               <div className="flex flex-col gap-5" key={cart.id}>
@@ -97,7 +106,7 @@ const BestSellerSection = () => {
                       onClick={async () => {
                         try {
                           if (user) {
-                            setAddingId(cart.id);
+                            setAddingCartId(cart.id);
                             await addToCart({ productId: cart.id }).unwrap();
                             dispatch(openCart());
                           } else {
@@ -110,11 +119,11 @@ const BestSellerSection = () => {
                               : "لا نستطيع إضافتها في السلة",
                           );
                         } finally {
-                          setAddingId(null);
+                          setAddingCartId(null);
                         }
                       }}
                     >
-                      {addingId === cart.id ? (
+                      {addingCartId === cart.id ? (
                         <Loader2 className="animate-spin" />
                       ) : (
                         <ShoppingCart />
@@ -124,12 +133,52 @@ const BestSellerSection = () => {
                       variant={isInWishlist ? "default" : "secondary"}
                       size="icon"
                       className="p-1!"
-                      onClick={() => {
-                        dispatch(toggleWishlist(cart));
-                        dispatch(openWishlist());
+                      disabled={isWishlistLoading || isDeleteLoading}
+                      onClick={async () => {
+                        try {
+                          if (!user) {
+                            dispatch(openAuthDialog());
+                            return;
+                          }
+
+                          setToggleId(cart.id);
+
+                          if (isInWishlist && wishlistItem) {
+                            await deleteWishlist(wishlistItem.id).unwrap();
+                            toast.success(
+                              locale === "en"
+                                ? "Removed from wishlist"
+                                : "تمت الإزالة من المفضلة",
+                            );
+                          } else {
+                            await addToWishlist({
+                              productId: cart.id,
+                            }).unwrap();
+
+                            toast.success(
+                              locale === "en"
+                                ? "Added to wishlist"
+                                : "تمت الإضافة إلى المفضلة",
+                            );
+                          }
+                        } catch {
+                          toast.error(
+                            locale === "en"
+                              ? "Wishlist action failed"
+                              : "فشل تعديل المفضلة",
+                          );
+                        } finally {
+                          setToggleId(null);
+                        }
                       }}
                     >
-                      <Heart />
+                      {isWishlistLoading || isDeleteLoading ? (
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                      ) : isInWishlist ? (
+                        <HeartOff />
+                      ) : (
+                        <Heart />
+                      )}
                     </Button>
                   </motion.div>
                 </motion.div>

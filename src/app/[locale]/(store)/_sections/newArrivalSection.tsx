@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Eye, Heart, Loader2 } from "lucide-react";
+import { Eye, Heart, HeartOff, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -9,11 +9,15 @@ import ProductDialog from "@/components/common/ProductDialog";
 import { useGetProductsQuery } from "@/redux/api/productApi";
 import { SkeletonCard } from "@/components/common/SkeletonCard";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
-import { openAuthDialog, openCart, openWishlist } from "@/redux/slices/uiSlice";
-import { toggleWishlist } from "@/redux/slices/wishlistSlice";
+import { openAuthDialog, openCart } from "@/redux/slices/uiSlice";
 import { useAddProductsToCartMutation } from "@/redux/api/cartApi";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import {
+  useCreateWishlistMutation,
+  useDeleteWishlistMutation,
+  useGetAllWishlistsQuery,
+} from "@/redux/api/wishlistApi";
 
 const NewArrivalSection = () => {
   const t = useTranslations("Landpage");
@@ -21,14 +25,17 @@ const NewArrivalSection = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state: RootState) => state.auth.user);
   const { data, isLoading } = useGetProductsQuery({ limit: 8, page: 1 });
-  const [addToCart, { isLoading: isAddLoading }] =
-    useAddProductsToCartMutation();
-  const product = data?.data ?? [];
-  const wishlistItems = useAppSelector(
-    (state: RootState) => state.wishlist.items,
-  );
+  const { data: wishlistData } = useGetAllWishlistsQuery();
+  const [addToCart] = useAddProductsToCartMutation();
+  const [addToWishlist, { isLoading: isWishlistLoading }] =
+    useCreateWishlistMutation();
+  const [deleteWishlist, { isLoading: isDeleteLoading }] =
+    useDeleteWishlistMutation();
 
-  const [addingId, setAddingId] = useState<string | null>(null);
+  const product = data?.data ?? [];
+  const [addingCartId, setAddingCartId] = useState<string | null>(null);
+  const [addingWishlistId, setAddingWishlistId] = useState<string | null>(null);
+  const [toggleId, setToggleId] = useState<string | null>(null);
 
   if (isLoading)
     return (
@@ -53,9 +60,10 @@ const NewArrivalSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-10">
         {product.length > 0 &&
           product.map((cart) => {
-            const isInWishlist = wishlistItems.some(
+            const wishlistItem = wishlistData?.data.find(
               (item) => item.id === cart.id,
             );
+            const isInWishlist = !!wishlistItem;
 
             return (
               <div className="flex flex-col gap-5" key={cart.id}>
@@ -88,11 +96,11 @@ const NewArrivalSection = () => {
                     <ProductDialog cartItem={cart} />
                     <Button
                       className="w-fit"
-                      disabled={addingId === cart.id}
+                      disabled={addingCartId === cart.id}
                       onClick={async () => {
                         try {
                           if (user) {
-                            setAddingId(cart.id);
+                            setAddingCartId(cart.id);
                             await addToCart({ productId: cart.id }).unwrap();
                             dispatch(openCart());
                           } else {
@@ -105,11 +113,11 @@ const NewArrivalSection = () => {
                               : "لا نستطيع إضافتها في السلة",
                           );
                         } finally {
-                          setAddingId(null);
+                          setAddingCartId(null);
                         }
                       }}
                     >
-                      {addingId === cart.id ? (
+                      {addingCartId === cart.id ? (
                         <Loader2 className="h-5 w-5 animate-spin" />
                       ) : (
                         t("newArrivals.cartBtn")
@@ -118,12 +126,52 @@ const NewArrivalSection = () => {
                     <Button
                       variant={isInWishlist ? "default" : "secondary"}
                       size="icon"
-                      onClick={() => {
-                        dispatch(toggleWishlist(cart));
-                        dispatch(openWishlist());
+                      disabled={isWishlistLoading || isDeleteLoading}
+                      onClick={async () => {
+                        try {
+                          if (!user) {
+                            dispatch(openAuthDialog());
+                            return;
+                          }
+
+                          setToggleId(cart.id);
+
+                          if (isInWishlist && wishlistItem) {
+                            await deleteWishlist(wishlistItem.id).unwrap();
+                            toast.success(
+                              locale === "en"
+                                ? "Removed from wishlist"
+                                : "تمت الإزالة من المفضلة",
+                            );
+                          } else {
+                            await addToWishlist({
+                              productId: cart.id,
+                            }).unwrap();
+
+                            toast.success(
+                              locale === "en"
+                                ? "Added to wishlist"
+                                : "تمت الإضافة إلى المفضلة",
+                            );
+                          }
+                        } catch {
+                          toast.error(
+                            locale === "en"
+                              ? "Wishlist action failed"
+                              : "فشل تعديل المفضلة",
+                          );
+                        } finally {
+                          setToggleId(null);
+                        }
                       }}
                     >
-                      <Heart />
+                      {isWishlistLoading || isDeleteLoading ? (
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                      ) : isInWishlist ? (
+                        <HeartOff />
+                      ) : (
+                        <Heart />
+                      )}
                     </Button>
                   </motion.div>
                 </motion.div>

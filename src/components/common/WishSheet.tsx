@@ -6,22 +6,25 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { HeartOff, Trash2 } from "lucide-react";
+import { HeartOff } from "lucide-react";
 import { useLocale, useTranslations } from "use-intl";
 import Image from "next/image";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
-import { removeFromWishlist } from "@/redux/slices/wishlistSlice";
 import { closeWishlist } from "@/redux/slices/uiSlice";
+import {
+  useDeleteWishlistMutation,
+  useGetAllWishlistsQuery,
+} from "@/redux/api/wishlistApi";
+import toast from "react-hot-toast";
 
 export default function WishSheet() {
   const t = useTranslations("Header");
   const locale = useLocale();
-  const wishlistItems = useAppSelector(
-    (state: RootState) => state.wishlist.items,
-  );
   const isWishlistOpen = useAppSelector(
     (state: RootState) => state.ui.isWishlistOpen,
   );
+  const { data: wishlistData } = useGetAllWishlistsQuery();
+  const [deleteWishlist] = useDeleteWishlistMutation();
   const dispatch = useAppDispatch();
 
   return (
@@ -39,12 +42,12 @@ export default function WishSheet() {
         </SheetHeader>
         <div className="flex flex-col gap-5 p-5">
           <div className="flex flex-col gap-5 p-5">
-            {wishlistItems.length === 0 ? (
+            {wishlistData?.data.length === 0 ? (
               <p className="text-center text-muted-foreground">
                 {locale === "en" ? "WishList is empty" : "المفضلة فارغة"}
               </p>
             ) : (
-              wishlistItems.map((item) => (
+              wishlistData?.data.map((item) => (
                 <div
                   key={item.id}
                   className="flex items-center justify-between"
@@ -64,7 +67,17 @@ export default function WishSheet() {
                   <Button
                     variant={"delete"}
                     className="w-5"
-                    onClick={() => dispatch(removeFromWishlist(item.id))}
+                    onClick={async () => {
+                      try {
+                        await deleteWishlist(item.id).unwrap();
+                      } catch {
+                        toast.error(
+                          locale === "en"
+                            ? "Can not add to wishlist"
+                            : "لا نستطيع إضافتها في المفضلة",
+                        );
+                      }
+                    }}
                   >
                     <HeartOff />
                   </Button>

@@ -7,6 +7,7 @@ import SearchDialog from "@/components/common/SearchDialog";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "@/hooks/useLogout";
 import { useGetAllProductsInCartQuery } from "@/redux/api/cartApi";
+import { useGetAllWishlistsQuery } from "@/redux/api/wishlistApi";
 import { openCart, openWishlist } from "@/redux/slices/uiSlice";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { Heart, ShoppingCart, UserRound } from "lucide-react";
@@ -20,9 +21,10 @@ const Header = () => {
   const user = useAppSelector((state: RootState) => state.auth.user);
   const logout = useLogout();
   const dispatch = useAppDispatch();
-  const wishlist = useAppSelector((state: RootState) => state.wishlist.items);
-  const { data } = useGetAllProductsInCartQuery();
-  const cart = data?.data?.cartItems;
+  const { data: wishlistData, isLoading, isError } = useGetAllWishlistsQuery();
+  const { data: cartData } = useGetAllProductsInCartQuery();
+  const cart = cartData?.data?.cartItems;
+  const wishlist = wishlistData?.data;
 
   return (
     <header className="border-b border-ring/30 fixed top-0 w-full z-20 bg-background">
@@ -85,7 +87,7 @@ const Header = () => {
               >
                 <Heart className="w-6! h-6!" />
                 <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
-                  {wishlist.length}
+                  {wishlist?.length ?? 0}
                 </div>
               </Button>
               <Button

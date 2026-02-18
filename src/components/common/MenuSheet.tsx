@@ -19,7 +19,7 @@ import { User } from "@/types/authTypes";
 import WishSheet from "./WishSheet";
 import { DropMenuComponent } from "./DropMenu";
 import SearchDialog from "./SearchDialog";
-import { RootState, useAppDispatch } from "@/redux/store";
+import { useAppDispatch } from "@/redux/store";
 import { openCart } from "@/redux/slices/uiSlice";
 import { useGetAllProductsInCartQuery } from "@/redux/api/cartApi";
 
@@ -29,7 +29,7 @@ export default function MenuSheet({ user }: { user: User }) {
   const dispatch = useAppDispatch();
   const menuList = t.raw("menu") as Array<{ title: string; link: string }>;
   const { data } = useGetAllProductsInCartQuery();
-  const cart = data?.cartItems;
+  const cart = data?.data.cartItems;
 
   return (
     <Sheet>
@@ -83,7 +83,7 @@ export default function MenuSheet({ user }: { user: User }) {
                 )}
               </Link>
 
-              <WishSheet />
+              {/* <WishSheet /> */}
               <Button
                 onClick={() => {
                   dispatch(openCart());

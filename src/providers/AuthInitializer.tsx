@@ -13,6 +13,7 @@ import { getAuthCookie } from "@/utils/cookie";
 import { openAuthDialog } from "@/redux/slices/uiSlice";
 import { usePathname } from "next/navigation";
 import { useLazyGetAllProductsInCartQuery } from "@/redux/api/cartApi";
+import { useLazyGetAllWishlistsQuery } from "@/redux/api/wishlistApi";
 
 const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
   );
   const [getUser] = useLazyGetUserQuery();
   const [getCart] = useLazyGetAllProductsInCartQuery();
+  const [getWishlist] = useLazyGetAllWishlistsQuery();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -35,14 +37,21 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
       dispatch(setToken(token));
 
       try {
-        const res = await getUser().unwrap();
-        dispatch(setUser(res.data));
-        await getCart().unwrap();
-      } catch {
+        const userRes = await getUser().unwrap();
+        dispatch(setUser(userRes.data));
+      } catch (error) {
         dispatch(clearAuth());
-      } finally {
         dispatch(setAuthInitialized(true));
+        return;
       }
+
+      try {
+        await Promise.all([getCart().unwrap(), getWishlist().unwrap()]);
+      } catch (err) {
+        console.log("Cart or wishlist failed, but user still logged in");
+      }
+
+      dispatch(setAuthInitialized(true));
     };
 
     initAuth();
@@ -69,7 +78,7 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
     ) {
       setTimeout(() => dispatch(openAuthDialog()), 3000);
     }
-  }, [authInitialized, user, dispatch]);
+  }, [authInitialized, user, pathname, dispatch]);
 
   return <>{children}</>;
 };

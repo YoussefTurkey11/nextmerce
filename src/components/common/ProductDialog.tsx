@@ -7,7 +7,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { CircleCheck, CircleX, Eye, Heart, HeartOff, Star } from "lucide-react";
+import {
+  CircleCheck,
+  CircleX,
+  Eye,
+  Heart,
+  HeartOff,
+  Loader2,
+  Star,
+} from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import ProductGallery from "../product/ProductGallery";
 import { Badge } from "../ui/badge";
@@ -16,7 +24,6 @@ import { TProductItem } from "@/types/product";
 import { rating } from "@/utils/rating";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { useState, useEffect } from "react";
-import { toggleWishlist } from "@/redux/slices/wishlistSlice";
 import { openAuthDialog, openCart, openWishlist } from "@/redux/slices/uiSlice";
 import {
   useAddProductsToCartMutation,
@@ -24,6 +31,11 @@ import {
   useUpdateQuantityInCartMutation,
 } from "@/redux/api/cartApi";
 import toast from "react-hot-toast";
+import {
+  useCreateWishlistMutation,
+  useDeleteWishlistMutation,
+  useGetAllWishlistsQuery,
+} from "@/redux/api/wishlistApi";
 
 export default function ProductDialog({
   cartItem,
@@ -37,20 +49,27 @@ export default function ProductDialog({
   const dispatch = useAppDispatch();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const user = useAppSelector((state: RootState) => state.auth.user);
-  const wishlistItems = useAppSelector(
-    (state: RootState) => state.wishlist.items,
-  );
   const { data: getCartData } = useGetAllProductsInCartQuery();
+  const { data: wishlistData } = useGetAllWishlistsQuery();
+  const [addToWishlist, { isLoading: isWishlistLoading }] =
+    useCreateWishlistMutation();
   const [addToCart, { isLoading: isAddLoading }] =
     useAddProductsToCartMutation();
   const [updateQuantityInCart, { isLoading: isUpdateLoading }] =
     useUpdateQuantityInCartMutation();
+  const [deleteWishlist, { isLoading: isDeleteLoading }] =
+    useDeleteWishlistMutation();
 
-  const isInWishlist = wishlistItems.some((item) => item.id === cartItem.id);
+  const wishlistItem = wishlistData?.data.find(
+    (item) => item.id === cartItem.id,
+  );
+  const isInWishlist = !!wishlistItem;
 
   const existingItem = getCartData?.data.cartItems.find(
     (item) => item.product.id === cartItem.id,
   );
+
+  const [toggleId, setToggleId] = useState<string | null>(null);
 
   useEffect(() => {
     if (existingItem) {
@@ -101,14 +120,6 @@ export default function ProductDialog({
       toast.error(
         locale === "en" ? "Cannot update cart" : "لا يمكن تحديث السلة",
       );
-    }
-  };
-
-  const handleQuantityChange = (value: number) => {
-    setSelectedQuantity(value);
-
-    if (user && existingItem && value !== existingItem.quantity) {
-      handleCartAction();
     }
   };
 
@@ -249,12 +260,48 @@ export default function ProductDialog({
               <Button
                 variant={isInWishlist ? "default" : "secondary"}
                 className="md:w-50 capitalize flex items-center gap-2"
-                onClick={() => {
-                  dispatch(toggleWishlist(cartItem));
-                  dispatch(openWishlist());
+                disabled={isWishlistLoading || isDeleteLoading}
+                onClick={async () => {
+                  try {
+                    if (!user) {
+                      dispatch(openAuthDialog());
+                      return;
+                    }
+
+                    setToggleId(cartItem.id);
+
+                    if (isInWishlist && wishlistItem) {
+                      await deleteWishlist(wishlistItem.id).unwrap();
+                      toast.success(
+                        locale === "en"
+                          ? "Removed from wishlist"
+                          : "تمت الإزالة من المفضلة",
+                      );
+                    } else {
+                      await addToWishlist({
+                        productId: cartItem.id,
+                      }).unwrap();
+
+                      toast.success(
+                        locale === "en"
+                          ? "Added to wishlist"
+                          : "تمت الإضافة إلى المفضلة",
+                      );
+                    }
+                  } catch {
+                    toast.error(
+                      locale === "en"
+                        ? "Wishlist action failed"
+                        : "فشل تعديل المفضلة",
+                    );
+                  } finally {
+                    setToggleId(null);
+                  }
                 }}
               >
-                {isInWishlist ? (
+                {isWishlistLoading || isDeleteLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : isInWishlist ? (
                   <>
                     <HeartOff />
                     {t("quickViewItem.removeFromWishlist")}
