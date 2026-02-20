@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
@@ -16,17 +17,18 @@ import { useTranslations } from "use-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
 import { User } from "@/types/authTypes";
-import WishSheet from "./WishSheet";
 import { DropMenuComponent } from "./DropMenu";
 import SearchDialog from "./SearchDialog";
 import { useAppDispatch } from "@/redux/store";
 import { openCart } from "@/redux/slices/uiSlice";
 import { useGetAllProductsInCartQuery } from "@/redux/api/cartApi";
+import { useLogout } from "@/hooks/useLogout";
 
 export default function MenuSheet({ user }: { user: User }) {
   const locale = useLocale();
   const t = useTranslations("Header");
   const dispatch = useAppDispatch();
+  const logout = useLogout();
   const menuList = t.raw("menu") as Array<{ title: string; link: string }>;
   const { data } = useGetAllProductsInCartQuery();
   const cart = data?.data.cartItems;
@@ -59,6 +61,17 @@ export default function MenuSheet({ user }: { user: User }) {
             </li>
           ))}
         </ul>
+        {user && (
+          <SheetClose asChild>
+            <Button
+              variant={"destructive"}
+              className="w-70 mx-auto"
+              onClick={logout}
+            >
+              Logout
+            </Button>
+          </SheetClose>
+        )}
         <SheetFooter className="flex flex-row gap-5 border-t border-ring/30 pt-5">
           {/* Language */}
           <LanguageSwitcher />

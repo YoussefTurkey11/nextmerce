@@ -754,5 +754,126 @@
         "body": "Google Play"
       }
     }
+  },
+  "Profile": {
+    "layoutData": [
+      {
+        "id": "dashboard",
+        "name": "Dashboard",
+        "link": "/"
+      },
+      {
+        "id": "orders",
+        "name": "Orders",
+        "link": "/orders"
+      },
+      {
+        "id": "downloads",
+        "name": "Downloads",
+        "link": "/downloads"
+      },
+      {
+        "id": "addresses",
+        "name": "Addresses",
+        "link": "/addresses"
+      },
+      {
+        "id": "accountDetails",
+        "name": "Account Details",
+        "link": "/details"
+      }
+    ],
+    "dashboard": {
+      "title": "Hello",
+      "logOutBtn": "Log Out",
+      "desc": "From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your password and account details."
+    },
+    "order": {
+      "tableHead": {
+        "order": "Order",
+        "date": "Date",
+        "status": "Status",
+        "title": "Title",
+        "total": "Total",
+        "action": "Action"
+      },
+      "noOrders": "You don't have any orders!"
+    },
+    "download": {
+      "noDownloads": "You don't have any download!"
+    },
+    "address": {
+      "title": "Addresses",
+      "addBtn": {
+        "loading": "Adding...",
+        "add": "Add Address",
+        "successAdd": "Address created successfully",
+        "failedAdd": "Cannot add new address"
+      },
+      "deleteBtn": {
+        "successDelete": "Address deleted successfully",
+        "failedDelete": "Cannot delete this address"
+      },
+      "formData": [
+        {
+          "id": "alias",
+          "name": "alias",
+          "label": "Alias",
+          "placeholder": "Enter your alias",
+          "type": "text"
+        },
+        {
+          "id": "details",
+          "name": "details",
+          "label": "Details",
+          "placeholder": "Enter your details",
+          "type": "text"
+        },
+        {
+          "id": "phone",
+          "name": "phone",
+          "label": "Phone",
+          "placeholder": "Enter your phone",
+          "type": "phone"
+        },
+        {
+          "id": "country",
+          "name": "country",
+          "label": "Country",
+          "placeholder": "Enter your country",
+          "type": "text"
+        },
+        {
+          "id": "city",
+          "name": "city",
+          "label": "City",
+          "placeholder": "Enter your city",
+          "type": "text"
+        },
+        {
+          "id": "postalCode",
+          "name": "postalCode",
+          "label": "Postal Code",
+          "placeholder": "Enter your postal code",
+          "type": "text"
+        }
+      ],
+      "formTitles": {
+        "alias": "Alias",
+        "place": "Place",
+        "details": "Details",
+        "phone": "Phone",
+        "postalCode": "Postal Code"
+      },
+      "required": "This field is required",
+      "details": {
+        "min": "This field must has at least 10 characters",
+        "max": "This field must be less than 40 characters"
+      },
+      "phone": {
+        "phoneRequired": "Phone number is required",
+        "invalidPhone": "Invalid phone number"
+      }
+    }
   }
 }

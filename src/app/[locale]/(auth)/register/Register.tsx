@@ -53,8 +53,6 @@ const RegisterPage = () => {
         passwordConfirmation: data.passwordConfirmation,
       }).unwrap();
 
-      console.log(res);
-
       const token = res.token;
 
       setAuthCookie(token);

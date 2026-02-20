@@ -754,5 +754,126 @@
         "body": "Google Play"
       }
     }
+  },
+  "Profile": {
+    "layoutData": [
+      {
+        "id": "dashboard",
+        "name": "لوحة التحكم",
+        "link": "/"
+      },
+      {
+        "id": "orders",
+        "name": "الطلبات",
+        "link": "/orders"
+      },
+      {
+        "id": "downloads",
+        "name": "التنزيلات",
+        "link": "/downloads"
+      },
+      {
+        "id": "addresses",
+        "name": "العناوين",
+        "link": "/addresses"
+      },
+      {
+        "id": "accountDetails",
+        "name": "تفاصيل الحساب",
+        "link": "/details"
+      }
+    ],
+    "dashboard": {
+      "title": "مرحبًا",
+      "logOutBtn": "تسجيل الخروج",
+      "desc": "من خلال لوحة حسابك يمكنك عرض طلباتك الأخيرة، وإدارة عناوين الشحن والفوترة، وتعديل كلمة المرور وتفاصيل حسابك."
+    },
+    "order": {
+      "tableHead": {
+        "order": "رقم الطلب",
+        "date": "التاريخ",
+        "status": "الحالة",
+        "title": "المنتج",
+        "total": "الإجمالي",
+        "action": "إجراء"
+      },
+      "noOrders": "ليس لديك أي طلبات بعد!"
+    },
+    "download": {
+      "noDownloads": "ليس لديك أي تنزيلات بعد!"
+    },
+    "address": {
+      "title": "العناوين",
+      "addBtn": {
+        "loading": "جاري الإضافة...",
+        "add": "أضف عنوانًا",
+        "successAdd": "تم إضافة العنوان بنجاح",
+        "failedAdd": "لم نستطع إضافة هذا العنوان"
+      },
+      "deleteBtn": {
+        "successDelete": "تم مسح العنوان بنجاح",
+        "failedDelete": "لم نستطع مسح هذا العنوان"
+      },
+      "formData": [
+        {
+          "id": "alias",
+          "name": "alias",
+          "label": "الاسم المستعار",
+          "placeholder": "أدخل الاسم المستعار",
+          "type": "text"
+        },
+        {
+          "id": "details",
+          "name": "details",
+          "label": "التفاصيل",
+          "placeholder": "أدخل التفاصيل",
+          "type": "text"
+        },
+        {
+          "id": "phone",
+          "name": "phone",
+          "label": "رقم الهاتف",
+          "placeholder": "أدخل رقم الهاتف",
+          "type": "phone"
+        },
+        {
+          "id": "country",
+          "name": "country",
+          "label": "البلد",
+          "placeholder": "أدخل البلد",
+          "type": "text"
+        },
+        {
+          "id": "city",
+          "name": "city",
+          "label": "المدينة",
+          "placeholder": "أدخل المدينة",
+          "type": "text"
+        },
+        {
+          "id": "postalCode",
+          "name": "postalCode",
+          "label": "الرمز البريدي",
+          "placeholder": "أدخل الرمز البريدي",
+          "type": "text"
+        }
+      ],
+      "formTitles": {
+        "alias": "الاسم التعريفي",
+        "place": "المكان",
+        "details": "التفاصيل",
+        "phone": "رقم الهاتف",
+        "postalCode": "الرمز البريدي"
+      },
+      "required": "هذا الحقل مطلوب",
+      "details": {
+        "min": "يجب ألا يقل هذا الحقل عن 10 أحرف",
+        "max": "يجب ألا يزيد هذا الحقل عن 40 حرفًا"
+      },
+      "phone": {
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "invalidPhone": "رقم الهاتف غير صحيح"
+      }
+    }
   }
 }

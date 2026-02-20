@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost: "",
         link: "text-primary underline-offset-4 hover:underline",
         delete:
-          "ring ring-ring hover:ring-0 hover:bg-destructive hover:text-background",
+          "ring ring-destructive text-destructive hover:ring-0 hover:bg-destructive hover:text-background",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
