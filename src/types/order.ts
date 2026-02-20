@@ -1,6 +1,6 @@
 export type TCreateOrderResponse = {
   message: string;
-  data: TOrder;
+  data: { data: TOrder };
 };
 
 export type TOrder = {
