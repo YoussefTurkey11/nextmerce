@@ -1,5 +1,5 @@
 import { api } from "@/redux/baseApi";
-import { AuthResponse, RegisterPayload } from "@/types/authTypes";
+import { AuthResponse, RegisterPayload, User } from "@/types/authTypes";
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -10,7 +10,7 @@ export const authApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: [{ type: "Auth", id: "LIST" }],
     }),
     register: builder.mutation<AuthResponse, RegisterPayload>({
       query: (body) => ({
@@ -18,7 +18,7 @@ export const authApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: [{ type: "Auth", id: "LIST" }],
     }),
     signUpWithGoogle: builder.mutation<
       { token: string; data: any },
@@ -29,7 +29,7 @@ export const authApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: [{ type: "Auth", id: "LIST" }],
     }),
     // logout: builder.mutation<void, void>({
     //   query: () => ({
@@ -39,10 +39,19 @@ export const authApi = api.injectEndpoints({
     //   invalidatesTags: ["Auth"],
     // }),
 
-    // ------- Get User Info -------
+    // ------- User Info -------
     getUser: builder.query<AuthResponse, void>({
       query: () => "/api/v1/userDashboard/getMyData",
-      providesTags: ["Users"],
+      providesTags: [{ type: "Users", id: "LIST" }],
+    }),
+
+    updateUserData: builder.mutation<AuthResponse, FormData>({
+      query: (body) => ({
+        url: `/api/v1/userDashboard/updateMyData`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: [{ type: "Users", id: "LIST" }],
     }),
 
     // ------- Email Action -------
@@ -52,14 +61,14 @@ export const authApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: [{ type: "Auth", id: "LIST" }],
     }),
     resendVerifyCode: builder.mutation<void, void>({
       query: () => ({
         url: "/auth/verify-email/resend-code",
         method: "POST",
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: [{ type: "Auth", id: "LIST" }],
     }),
 
     // ------- Password Action -------
@@ -69,7 +78,7 @@ export const authApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: [{ type: "Auth", id: "LIST" }],
     }),
     checkResetOtp: builder.mutation<void, { resetCode: string }>({
       query: (body) => ({
@@ -77,7 +86,7 @@ export const authApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: [{ type: "Auth", id: "LIST" }],
     }),
     resetPassword: builder.mutation<
       void,
@@ -93,7 +102,7 @@ export const authApi = api.injectEndpoints({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: [{ type: "Auth", id: "LIST" }],
     }),
   }),
 });
@@ -105,6 +114,7 @@ export const {
   // useLogoutMutation,
   useGetUserQuery,
   useLazyGetUserQuery,
+  useUpdateUserDataMutation,
   useVerifyEmailMutation,
   useResendVerifyCodeMutation,
   useSendResetEmailMutation,

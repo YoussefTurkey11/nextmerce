@@ -1,10 +1,14 @@
+import { TAddress } from "./address";
+
 export interface User {
   id: number;
   type: "client";
   name: string;
   email: string;
   phone: string;
-  profile: string;
+  profileImage: string;
+  addresses: TAddress[];
+  role: string;
   email_verified_at: boolean;
   count_items_cart: number;
   referral_code: string;

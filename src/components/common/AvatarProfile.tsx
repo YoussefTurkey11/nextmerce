@@ -26,18 +26,15 @@ const AvatarProfile = ({ user }: { user: User }) => {
   return (
     <div className="flex items-center gap-5">
       <div className="flex items-center gap-2 cursor-pointer">
-        <Link
-          href={`/${locale}/profile`}
-          className="ring ring-primary p-3 rounded-full transition-colors"
-        >
-          {user.profile ? (
+        <Link href={`/${locale}/profile`} className="transition-colors">
+          {user.profileImage ? (
             <Image
-              src={user.profile}
-              width={30}
-              height={30}
+              src={user.profileImage}
+              width={40}
+              height={40}
               alt={user.name}
               loading="lazy"
-              className=""
+              className="rounded-full"
             />
           ) : (
             <UserRound size={18} />

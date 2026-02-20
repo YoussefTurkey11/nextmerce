@@ -16,7 +16,6 @@ const Orders = () => {
   const t = useTranslations("Profile");
   const { data: orderData, isLoading } = useGetAllOrdersQuery();
   const order = orderData?.data?.data;
-  console.log(order);
 
   if (isLoading)
     return (

@@ -55,7 +55,7 @@ const AddressDialog = ({ open, setOpen, handleCreate, isCreating }: Props) => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="md:min-w-200!">
         <DialogHeader>
-          <DialogTitle>Add New Address</DialogTitle>
+          <DialogTitle>{t("address.head")}</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit(onSubmit)}>

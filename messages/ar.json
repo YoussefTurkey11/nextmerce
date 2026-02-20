@@ -803,6 +803,7 @@
       "noDownloads": "ليس لديك أي تنزيلات بعد!"
     },
     "address": {
+      "head": "إضافة عنوان جديد",
       "title": "العناوين",
       "addBtn": {
         "loading": "جاري الإضافة...",
@@ -873,6 +874,50 @@
       "phone": {
         "phoneRequired": "رقم الهاتف مطلوب",
         "invalidPhone": "رقم الهاتف غير صحيح"
+      }
+    },
+    "profile": {
+      "formData": [
+        {
+          "id": "name",
+          "name": "name",
+          "label": "الاسم الكامل",
+          "placeholder": "محمد أحمد",
+          "type": "text"
+        },
+        {
+          "id": "email",
+          "name": "email",
+          "label": "البريد الإلكتروني",
+          "placeholder": "أدخل بريدك الإلكتروني",
+          "type": "email"
+        },
+        {
+          "id": "phone",
+          "name": "phone",
+          "label": "رقم الهاتف",
+          "type": "phone",
+          "placeholder": "+971 50 123 4567"
+        },
+        {
+          "id": "profileImage",
+          "name": "profileImage",
+          "label": "الصورة الشخصية",
+          "placeholder": "اختر صورة شخصية",
+          "type": "file"
+        }
+      ],
+      "response": {
+        "success": "تم تعديل البيانات بنجاح",
+        "error": "حدثت مشكلة ما، يرجى المحاولة مرة أخرى!"
+      },
+      "validation": {
+        "invalidEmail": "البريد الإلكتروني غير صالح",
+        "existEmail": "البريد الإلكتروني مستخدم بالفعل",
+        "required": "هذا الحقل مطلوب",
+        "nameMax": "يجب ألا يتجاوز الاسم 255 حرفًا",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "invalidPhone": "رقم الهاتف غير صالح"
       }
     }
   }

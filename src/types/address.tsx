@@ -12,6 +12,7 @@ export type TAddress = {
   country: string;
   postalCode: string;
   city: string;
+  _id?: string;
 };
 
 export type TCreateAddressBody = {

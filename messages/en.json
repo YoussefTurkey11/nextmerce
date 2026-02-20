@@ -803,6 +803,7 @@
       "noDownloads": "You don't have any download!"
     },
     "address": {
+      "head": "Add New Address",
       "title": "Addresses",
       "addBtn": {
         "loading": "Adding...",
@@ -871,6 +872,50 @@
         "max": "This field must be less than 40 characters"
       },
       "phone": {
+        "phoneRequired": "Phone number is required",
+        "invalidPhone": "Invalid phone number"
+      }
+    },
+    "profile": {
+      "formData": [
+        {
+          "id": "name",
+          "name": "name",
+          "label": "Full Name",
+          "placeholder": "John",
+          "type": "text"
+        },
+        {
+          "id": "email",
+          "name": "email",
+          "label": "email",
+          "placeholder": "Enter your email",
+          "type": "email"
+        },
+        {
+          "id": "phone",
+          "name": "phone",
+          "label": "Phone Number",
+          "type": "phone",
+          "placeholder": "+971 50 123 4567"
+        },
+        {
+          "id": "profileImage",
+          "name": "profileImage",
+          "label": "Profile Image",
+          "placeholder": "Enter your profile image",
+          "type": "file"
+        }
+      ],
+      "response": {
+        "success": "Data was Updated Successfully",
+        "error": "We are have some issues, please try again!"
+      },
+      "validation": {
+        "invalidEmail": "Email is invalid",
+        "existEmail": "Email already in use",
+        "required": "This field is required",
+        "nameMax": "Name must not exceed 255 characters",
         "phoneRequired": "Phone number is required",
         "invalidPhone": "Invalid phone number"
       }

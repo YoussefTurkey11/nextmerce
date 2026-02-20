@@ -82,9 +82,9 @@ export default function MenuSheet({ user }: { user: User }) {
                 href={`/${locale}/profile`}
                 className="ring ring-primary p-3 rounded-full transition-colors"
               >
-                {user.profile ? (
+                {user.profileImage ? (
                   <Image
-                    src={user.profile}
+                    src={user.profileImage}
                     width={30}
                     height={30}
                     alt={user.name}
