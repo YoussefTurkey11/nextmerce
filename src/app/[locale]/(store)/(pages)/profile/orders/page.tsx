@@ -28,7 +28,7 @@ const Orders = () => {
 
   return (
     <>
-      {order.length > 0 ? (
+      {order ? (
         <Table>
           <TableHeader className="text-center">
             <TableRow>
