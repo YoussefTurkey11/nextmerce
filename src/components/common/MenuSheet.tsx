@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ShoppingCart, TextAlignJustify, UserRound } from "lucide-react";
+import { Heart, ShoppingCart, TextAlignJustify, UserRound } from "lucide-react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { useLocale } from "next-intl";
@@ -20,9 +20,10 @@ import { User } from "@/types/authTypes";
 import { DropMenuComponent } from "./DropMenu";
 import SearchDialog from "./SearchDialog";
 import { useAppDispatch } from "@/redux/store";
-import { openCart } from "@/redux/slices/uiSlice";
+import { openCart, openWishlist } from "@/redux/slices/uiSlice";
 import { useGetAllProductsInCartQuery } from "@/redux/api/cartApi";
 import { useLogout } from "@/hooks/useLogout";
+import { useGetAllWishlistsQuery } from "@/redux/api/wishlistApi";
 
 export default function MenuSheet({ user }: { user: User }) {
   const locale = useLocale();
@@ -32,6 +33,8 @@ export default function MenuSheet({ user }: { user: User }) {
   const menuList = t.raw("menu") as Array<{ title: string; link: string }>;
   const { data } = useGetAllProductsInCartQuery();
   const cart = data?.data.cartItems;
+  const { data: wishlistData } = useGetAllWishlistsQuery();
+  const wishlist = wishlistData?.data;
 
   return (
     <Sheet>
@@ -68,7 +71,7 @@ export default function MenuSheet({ user }: { user: User }) {
               className="w-70 mx-auto"
               onClick={logout}
             >
-              Logout
+              {t("btns.logout")}
             </Button>
           </SheetClose>
         )}
@@ -77,26 +80,36 @@ export default function MenuSheet({ user }: { user: User }) {
           <LanguageSwitcher />
           {/* account */}
           {user ? (
-            <div className="flex items-center gap-1 cursor-pointer">
-              <Link
-                href={`/${locale}/profile`}
-                className="ring ring-primary p-3 rounded-full transition-colors"
-              >
-                {user.profileImage ? (
-                  <Image
-                    src={user.profileImage}
-                    width={30}
-                    height={30}
-                    alt={user.name}
-                    loading="lazy"
-                    className=""
-                  />
-                ) : (
-                  <UserRound size={18} />
-                )}
-              </Link>
+            <div className="flex items-center gap-5 cursor-pointer">
+              <SheetClose asChild>
+                <Link href={`/${locale}/profile`}>
+                  {user.profileImage ? (
+                    <Image
+                      src={user.profileImage}
+                      width={40}
+                      height={40}
+                      alt={user.name}
+                      loading="lazy"
+                      className=""
+                    />
+                  ) : (
+                    <UserRound size={18} />
+                  )}
+                </Link>
+              </SheetClose>
 
-              {/* <WishSheet /> */}
+              <Button
+                onClick={() => {
+                  dispatch(openWishlist());
+                }}
+                variant={"ghost"}
+                className="w-fit px-2! relative"
+              >
+                <Heart className="w-6! h-6!" />
+                <div className="bg-destructive rounded-full absolute top-1 right-0 text-background text-xs w-4 h-4">
+                  {wishlist?.length ?? 0}
+                </div>
+              </Button>
               <Button
                 onClick={() => {
                   dispatch(openCart());

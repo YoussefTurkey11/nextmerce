@@ -29,13 +29,16 @@ export default function SearchDialog() {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="pt-7 pb-3">
-            <Field orientation="horizontal">
+            <Field
+              orientation="horizontal"
+              className="flex flex-col sm:flex-row gap-3"
+            >
               <Input
                 type="search"
                 placeholder={t("btns.searchInput")}
                 className="py-6 px-5 rounded-full"
               />
-              <Button className="w-fit">{t("btns.searchInputBtn")}</Button>
+              <Button className="sm:w-fit">{t("btns.searchInputBtn")}</Button>
             </Field>
           </DialogTitle>
           <DialogDescription className="flex items-center gap-3">
