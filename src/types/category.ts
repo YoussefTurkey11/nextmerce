@@ -14,7 +14,7 @@ export type CategoryQueryParams = {
 export type CategoryResponse = {
   message: string;
   results: number;
-  data: TCategory[];
+  data: { data: TCategory[] };
   paginationResult: {
     currentPage: number;
     limit: number;

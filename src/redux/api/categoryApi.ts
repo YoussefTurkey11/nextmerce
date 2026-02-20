@@ -1,11 +1,14 @@
-import { ProductQueryParams, ProductResponse } from "@/types/product";
 import { api } from "../baseApi";
-import { TCategory } from "@/types/category";
+import {
+  CategoryQueryParams,
+  CategoryResponse,
+  TCategory,
+} from "@/types/category";
 
 const categoryApi = api.injectEndpoints({
   endpoints: (builder) => ({
     // Get All Categories
-    getAllCategories: builder.query<ProductResponse, ProductQueryParams>({
+    getAllCategories: builder.query<CategoryResponse, CategoryQueryParams>({
       query: ({ page = 1, limit = 10 }) =>
         `/api/v1/categories?page=${page}&limit=${limit}`,
       providesTags: ["Categories"],
