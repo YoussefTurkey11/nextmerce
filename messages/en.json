@@ -955,7 +955,20 @@
       "successAdd": "Item was added to cart successfully",
       "successRemove": "Item removed from cart successfully",
       "errorAdd": "Item cannot be added to cart",
-      "errorRemove": "Item cannot be removed from cart"
+      "errorRemove": "Item cannot be removed from cart",
+      "require": "This field is required"
+    },
+    "coupon": {
+      "title": "Have any discount code?",
+      "placeholder": "Enter your coupon code",
+      "applyBtn": "Apply Coupon"
+    },
+    "orderSummary": {
+      "title": "Order Summary",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "product": "Product",
+      "btn": "Process to Checkout"
     }
   }
 }

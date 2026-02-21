@@ -57,7 +57,26 @@ export const cartApi = api.injectEndpoints({
         url: `/api/v1/carts`,
         method: "DELETE",
       }),
-      invalidatesTags: [{ type: "Carts", id: "LIST" }],
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(
+          cartApi.util.updateQueryData(
+            "getAllProductsInCart",
+            undefined,
+            (draft) => {
+              if (draft?.data) {
+                draft.data.cartItems = [];
+                draft.data.totalPrice = 0;
+              }
+            },
+          ),
+        );
+
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult.undo();
+        }
+      },
     }),
   }),
 });
