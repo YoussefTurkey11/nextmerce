@@ -126,7 +126,7 @@ const NewArrivalSection = () => {
                     <Button
                       variant={isInWishlist ? "default" : "secondary"}
                       size="icon"
-                      disabled={isWishlistLoading || isDeleteLoading}
+                      disabled={addingWishlistId === cart.id}
                       onClick={async () => {
                         try {
                           if (!user) {
@@ -135,6 +135,7 @@ const NewArrivalSection = () => {
                           }
 
                           setToggleId(cart.id);
+                          setAddingWishlistId(cart.id);
 
                           if (isInWishlist && wishlistItem) {
                             await deleteWishlist(wishlistItem.id).unwrap();
@@ -162,10 +163,11 @@ const NewArrivalSection = () => {
                           );
                         } finally {
                           setToggleId(null);
+                          setAddingWishlistId(null);
                         }
                       }}
                     >
-                      {isWishlistLoading || isDeleteLoading ? (
+                      {addingWishlistId === cart.id ? (
                         <Loader2 className="h-5 w-5 animate-spin" />
                       ) : isInWishlist ? (
                         <HeartOff />

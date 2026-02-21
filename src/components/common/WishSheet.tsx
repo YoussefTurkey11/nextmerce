@@ -2,7 +2,9 @@
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
@@ -16,6 +18,7 @@ import {
   useGetAllWishlistsQuery,
 } from "@/redux/api/wishlistApi";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function WishSheet() {
   const t = useTranslations("Header");
@@ -86,6 +89,13 @@ export default function WishSheet() {
             )}
           </div>
         </div>
+        <SheetFooter className="border-t border-ring/30 py-5">
+          <SheetClose asChild>
+            <Button asChild>
+              <Link href={`/${locale}/wishlist`}>{t("wishlist.viewPage")}</Link>
+            </Button>
+          </SheetClose>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );

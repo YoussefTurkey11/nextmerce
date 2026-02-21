@@ -133,7 +133,7 @@ const BestSellerSection = () => {
                       variant={isInWishlist ? "default" : "secondary"}
                       size="icon"
                       className="p-1!"
-                      disabled={isWishlistLoading || isDeleteLoading}
+                      disabled={addingWishlistId === cart.id}
                       onClick={async () => {
                         try {
                           if (!user) {
@@ -142,6 +142,7 @@ const BestSellerSection = () => {
                           }
 
                           setToggleId(cart.id);
+                          setAddingWishlistId(cart.id);
 
                           if (isInWishlist && wishlistItem) {
                             await deleteWishlist(wishlistItem.id).unwrap();
@@ -169,10 +170,11 @@ const BestSellerSection = () => {
                           );
                         } finally {
                           setToggleId(null);
+                          setAddingWishlistId(null);
                         }
                       }}
                     >
-                      {isWishlistLoading || isDeleteLoading ? (
+                      {addingWishlistId === cart.id ? (
                         <Loader2 className="h-5 w-5 animate-spin" />
                       ) : isInWishlist ? (
                         <HeartOff />

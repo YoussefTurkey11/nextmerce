@@ -283,7 +283,8 @@
     },
     "wishlist": {
       "title": "Wishlist View",
-      "price": "Price"
+      "price": "Price",
+      "viewPage": "View All Wishlist"
     }
   },
   "Landpage": {
@@ -919,6 +920,24 @@
         "phoneRequired": "Phone number is required",
         "invalidPhone": "Invalid phone number"
       }
+    }
+  },
+  "Wishlist": {
+    "title": "Your Wishlist",
+    "tableHead": [
+      { "head": "Product" },
+      { "head": "Unit Price" },
+      { "head": "Stock Status" },
+      { "head": "Action" }
+    ],
+    "addToCart": "Add To Cart",
+    "emptyTitle": "Your wishlist is empty!",
+    "continueShopping": "Continue Shopping",
+    "response": {
+      "successAdd": "Item was added to cart successfully",
+      "successRemove": "Item removed from wishlist successfully",
+      "errorAdd": "Item cannot be added to cart",
+      "errorRemove": "Item cannot be removed from wishlist successfully"
     }
   }
 }
