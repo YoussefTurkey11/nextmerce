@@ -8,7 +8,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { HeartOff } from "lucide-react";
+import { HeartOff, Loader2 } from "lucide-react";
 import { useLocale, useTranslations } from "use-intl";
 import Image from "next/image";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
@@ -19,16 +19,18 @@ import {
 } from "@/redux/api/wishlistApi";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function WishSheet() {
   const t = useTranslations("Header");
   const locale = useLocale();
+  const dispatch = useAppDispatch();
   const isWishlistOpen = useAppSelector(
     (state: RootState) => state.ui.isWishlistOpen,
   );
   const { data: wishlistData } = useGetAllWishlistsQuery();
   const [deleteWishlist] = useDeleteWishlistMutation();
-  const dispatch = useAppDispatch();
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   return (
     <Sheet
@@ -70,8 +72,10 @@ export default function WishSheet() {
                   <Button
                     variant={"delete"}
                     className="w-5"
+                    disabled={deleteId === item.id}
                     onClick={async () => {
                       try {
+                        setDeleteId(item.id);
                         await deleteWishlist(item.id).unwrap();
                       } catch {
                         toast.error(
@@ -79,10 +83,16 @@ export default function WishSheet() {
                             ? "Can not add to wishlist"
                             : "لا نستطيع إضافتها في المفضلة",
                         );
+                      } finally {
+                        setDeleteId(null);
                       }
                     }}
                   >
-                    <HeartOff />
+                    {deleteId === item.id ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <HeartOff />
+                    )}
                   </Button>
                 </div>
               ))

@@ -281,7 +281,7 @@ export default function ProductDialog({
                       await addToWishlist({
                         productId: cartItem.id,
                       }).unwrap();
-
+                      dispatch(openWishlist());
                       toast.success(
                         locale === "en"
                           ? "Added to wishlist"
