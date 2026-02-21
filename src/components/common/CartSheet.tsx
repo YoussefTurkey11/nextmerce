@@ -17,6 +17,7 @@ import {
   useGetAllProductsInCartQuery,
 } from "@/redux/api/cartApi";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function CartSheet() {
   const t = useTranslations("Header");
@@ -103,7 +104,13 @@ export default function CartSheet() {
             <p className="text-lg font-semibold">${subTotal.toFixed(2)}</p>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 my-5">
-            <Button className="md:w-40">{t("cart.title")}</Button>
+            <Button
+              className="md:w-40"
+              asChild
+              onClick={() => dispatch(closeCart())}
+            >
+              <Link href={`/${locale}/cart`}>{t("cart.title")}</Link>
+            </Button>
             <Button variant={"secondary"} className="md:w-40">
               {t("cart.checkout")}
             </Button>

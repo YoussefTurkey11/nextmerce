@@ -934,10 +934,28 @@
     "emptyTitle": "Your wishlist is empty!",
     "continueShopping": "Continue Shopping",
     "response": {
-      "successAdd": "Item was added to cart successfully",
+      "successAdd": "Item was added to wishlist successfully",
       "successRemove": "Item removed from wishlist successfully",
+      "errorAdd": "Item cannot be added to wishlist",
+      "errorRemove": "Item cannot be removed from wishlist"
+    }
+  },
+  "Cart": {
+    "title": "Your Cart",
+    "clearBtn": "Clear Shopping Cart",
+    "tableHead": [
+      { "head": "Product" },
+      { "head": "Price" },
+      { "head": "Subtotal" },
+      { "head": "Action" }
+    ],
+    "emptyTitle": "Your Cart is empty!",
+    "continueShopping": "Continue Shopping",
+    "response": {
+      "successAdd": "Item was added to cart successfully",
+      "successRemove": "Item removed from cart successfully",
       "errorAdd": "Item cannot be added to cart",
-      "errorRemove": "Item cannot be removed from wishlist successfully"
+      "errorRemove": "Item cannot be removed from cart"
     }
   }
 }

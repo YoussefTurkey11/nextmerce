@@ -52,7 +52,7 @@ export const cartApi = api.injectEndpoints({
     }),
 
     // Clear Cart Content
-    clearCartContent: builder.mutation<void, void>({
+    clearCartContent: builder.mutation<TCartResponse, void>({
       query: () => ({
         url: `/api/v1/carts`,
         method: "DELETE",
