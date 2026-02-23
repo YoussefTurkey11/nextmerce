@@ -970,5 +970,59 @@
       "product": "Product",
       "btn": "Process to Checkout"
     }
+  },
+  "Checkout": {
+    "title": "Billing details",
+    "formData": [
+      {
+        "id": "name",
+        "name": "name",
+        "label": "Full Name",
+        "placeholder": "Enter your full name",
+        "type": "text"
+      },
+      {
+        "id": "email",
+        "name": "email",
+        "label": "email",
+        "placeholder": "Enter your email",
+        "type": "email"
+      },
+      {
+        "id": "companyName",
+        "name": "companyName",
+        "label": "Company Name",
+        "placeholder": "Enter your company name (optional)",
+        "type": "text"
+      },
+      {
+        "id": "country",
+        "name": "country",
+        "label": "Country",
+        "placeholder": "Enter your country",
+        "type": "text"
+      },
+      {
+        "id": "city",
+        "name": "city",
+        "label": "City",
+        "placeholder": "Enter your city",
+        "type": "text"
+      },
+      {
+        "id": "postalCode",
+        "name": "postalCode",
+        "label": "Postal Code",
+        "placeholder": "Enter your postal code",
+        "type": "text"
+      },
+      {
+        "id": "phone",
+        "name": "phone",
+        "label": "Phone",
+        "placeholder": "Enter your phone",
+        "type": "phone"
+      }
+    ]
   }
 }

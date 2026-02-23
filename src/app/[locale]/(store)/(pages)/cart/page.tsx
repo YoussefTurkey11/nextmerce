@@ -41,8 +41,6 @@ const CartPage = () => {
   const [deletedId, setDeletedId] = useState<string | null>(null);
   const cart = cartData?.data.cartItems;
 
-  console.log(cartData?.data);
-
   const {
     register,
     handleSubmit,
@@ -200,7 +198,9 @@ const CartPage = () => {
                 </p>
               </div>
             </div>
-            <Button>{t("orderSummary.btn")}</Button>
+            <Button asChild>
+              <Link href={`/${locale}/checkout`}>{t("orderSummary.btn")}</Link>
+            </Button>
           </div>
         </div>
       ) : (

@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
 import { GoogleLogin } from "@react-oauth/google";
 import { useSignUpWithGoogleMutation } from "@/redux/api/authApi";
