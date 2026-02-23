@@ -16,7 +16,7 @@ import {
   detailsSchema,
 } from "@/validations/details/details.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LockKeyhole, Mail, PenLine, UserRound } from "lucide-react";
+import { PenLine } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
@@ -58,7 +58,6 @@ const Details = () => {
   useEffect(() => {
     if (user) {
       setValue("name", user.name);
-      setValue("email", user.email);
       setValue("phone", user.phone);
     }
   }, [user, setValue]);
@@ -81,7 +80,6 @@ const Details = () => {
 
       const formData = new FormData();
       formData.append("name", data.name);
-      formData.append("email", data.email);
       formData.append("phone", data.phone);
 
       if (data.profileImage?.[0]) {
@@ -141,6 +139,10 @@ const Details = () => {
               <PenLine size={16} />
             </label>
           </div>
+
+          <p className="py-3 px-6 rounded-md bg-muted-foreground/5 text-muted-foreground font-semibold">
+            {user?.email}
+          </p>
         </div>
 
         {/* Inputs */}
@@ -168,15 +170,6 @@ const Details = () => {
                 errors={errors}
                 control={control}
                 isSubmitting={isSubmitting || isUploading}
-                icon={
-                  field.type === "email" ? (
-                    <Mail size={18} />
-                  ) : field.type === "password" ? (
-                    <LockKeyhole size={18} />
-                  ) : (
-                    <UserRound size={18} />
-                  )
-                }
               />
             )}
           </div>

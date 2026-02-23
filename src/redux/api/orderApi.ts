@@ -1,4 +1,8 @@
-import { TCreateOrderResponse, TUpdateOrderBody } from "@/types/order";
+import {
+  TCheckoutSessionResponse,
+  TCreateOrderResponse,
+  TUpdateOrderBody,
+} from "@/types/order";
 import { api } from "../baseApi";
 
 export const orderApi = api.injectEndpoints({
@@ -6,6 +10,18 @@ export const orderApi = api.injectEndpoints({
     // Get All Orders
     getAllOrders: builder.query<TCreateOrderResponse, void>({
       query: () => `/api/v1/orders`,
+      providesTags: [{ type: "Orders", id: "LIST" }],
+    }),
+
+    // Check Out Session - Stripe
+    checkOutSessionStripe: builder.query<TCheckoutSessionResponse, string>({
+      query: (cartId) => `/api/v1/orders/stripe-checkout-session/${cartId}`,
+      providesTags: [{ type: "Orders", id: "LIST" }],
+    }),
+
+    // Check Out Session - Paymob
+    checkOutSessionPaymob: builder.query<TCheckoutSessionResponse, string>({
+      query: (cartId) => `/api/v1/orders/payMob-checkout-session/${cartId}`,
       providesTags: [{ type: "Orders", id: "LIST" }],
     }),
 
@@ -46,6 +62,8 @@ export const orderApi = api.injectEndpoints({
 
 export const {
   useGetAllOrdersQuery,
+  useCheckOutSessionStripeQuery,
+  useCheckOutSessionPaymobQuery,
   useCreateCashOrderMutation,
   useUpdateOrderStatusMutation,
   useDeleteOrderMutation,

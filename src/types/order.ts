@@ -59,3 +59,11 @@ export type TItemState =
   | "shipped"
   | "delivered"
   | "cancelled";
+
+export type TCheckoutSessionResponse = {
+  status: string;
+  session?: {
+    id: string;
+    url: string;
+  };
+};

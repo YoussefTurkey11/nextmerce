@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const cartCouponSchema = (t: (key: string) => string) =>
   z.object({
-    coupon: z.string().min(1, t("response.require")).trim(),
+    coupon: z.string().trim().optional(),
   });
 export type CartCouponFormDataSchema = z.infer<
   ReturnType<typeof cartCouponSchema>

@@ -34,17 +34,25 @@ export default function ProductGallery({
       <div className="hidden md:block">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex flex-col gap-3">
-            {images.length > 0 &&
-              images.map((img, index) => (
-                <button
-                  key={index}
-                  onClick={() => onThumbClick(index)}
-                  className={`relative w-20 h-20 rounded-md overflow-hidden border 
-                ${selectedIndex === index ? "border-primary" : "border-muted"}`}
-                >
-                  <Image src={img} alt="thumb" fill className="object-cover" />
-                </button>
-              ))}
+            {images.length > 0
+              ? images.map((img, index) =>
+                  img ? (
+                    <button
+                      key={index}
+                      onClick={() => onThumbClick(index)}
+                      className={`relative w-20 h-20 rounded-md overflow-hidden border 
+                      ${selectedIndex === index ? "border-primary" : "border-muted"}`}
+                    >
+                      <Image
+                        src={img}
+                        alt="thumb"
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  ) : null,
+                )
+              : null}
           </div>
         </div>
       </div>
@@ -70,15 +78,15 @@ export default function ProductGallery({
       </div>
 
       {/* Lightbox with Zoom */}
-      {images.length > 0 && (
+      {images.length > 0 ? (
         <Lightbox
           open={open}
           close={() => setOpen(false)}
-          slides={images.map((img) => ({ src: img }))}
+          slides={images.filter(Boolean).map((img) => ({ src: img }))}
           index={selectedIndex}
           plugins={[Zoom]}
         />
-      )}
+      ) : null}
     </div>
   );
 }

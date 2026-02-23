@@ -887,13 +887,6 @@
           "type": "text"
         },
         {
-          "id": "email",
-          "name": "email",
-          "label": "البريد الإلكتروني",
-          "placeholder": "أدخل بريدك الإلكتروني",
-          "type": "email"
-        },
-        {
           "id": "phone",
           "name": "phone",
           "label": "رقم الهاتف",
@@ -970,6 +963,99 @@
       "subtotal": "الإجمالي الفرعي",
       "product": "المنتج",
       "btn": "المتابعة إلى إتمام الشراء"
+    }
+  },
+  "Checkout": {
+    "title": "تفاصيل الفاتورة",
+    "newAddressTitle": "الشحن إلى عنوان مختلف؟",
+    "shippingMethod": "طريقة الشحن",
+    "freeShipping": "شحن مجاني",
+    "paymentMethodTitle": "طريقة الدفع",
+    "loading": "جاري التحميل...",
+    "formData": [
+      {
+        "id": "name",
+        "name": "name",
+        "label": "الاسم الكامل",
+        "placeholder": "أدخل اسمك الكامل",
+        "type": "text"
+      },
+      {
+        "id": "email",
+        "name": "email",
+        "label": "البريد الإلكتروني",
+        "placeholder": "أدخل بريدك الإلكتروني",
+        "type": "email"
+      },
+      {
+        "id": "companyName",
+        "name": "companyName",
+        "label": "اسم الشركة",
+        "placeholder": "أدخل اسم شركتك (اختياري)",
+        "type": "text"
+      },
+      {
+        "id": "country",
+        "name": "country",
+        "label": "الدولة",
+        "placeholder": "أدخل دولتك",
+        "type": "text"
+      },
+      {
+        "id": "city",
+        "name": "city",
+        "label": "المدينة",
+        "placeholder": "أدخل مدينتك",
+        "type": "text"
+      },
+      {
+        "id": "postalCode",
+        "name": "postalCode",
+        "label": "الرمز البريدي",
+        "placeholder": "أدخل الرمز البريدي",
+        "type": "text"
+      },
+      {
+        "id": "phone",
+        "name": "phone",
+        "label": "رقم الهاتف",
+        "placeholder": "أدخل رقم هاتفك",
+        "type": "phone"
+      }
+    ],
+    "newAddress": [
+      {
+        "id": "country",
+        "name": "country",
+        "label": "الدولة",
+        "placeholder": "أدخل دولتك",
+        "type": "text"
+      },
+      {
+        "id": "city",
+        "name": "city",
+        "label": "المدينة",
+        "placeholder": "أدخل مدينتك",
+        "type": "text"
+      },
+      {
+        "id": "postalCode",
+        "name": "postalCode",
+        "label": "الرمز البريدي",
+        "placeholder": "أدخل الرمز البريدي",
+        "type": "text"
+      }
+    ],
+    "validation": {
+      "invalidEmail": "البريد الإلكتروني غير صالح",
+      "required": "هذا الحقل مطلوب",
+      "nameMax": "يجب ألا يتجاوز الاسم 255 حرفًا",
+      "phoneRequired": "رقم الهاتف مطلوب",
+      "invalidPhone": "رقم الهاتف غير صالح"
+    },
+    "response": {
+      "successOrder": "تمت الشراء بنجاح",
+      "errorOrder": "تعذر الشراء"
     }
   }
 }

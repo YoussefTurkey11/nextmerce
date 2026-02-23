@@ -887,13 +887,6 @@
           "type": "text"
         },
         {
-          "id": "email",
-          "name": "email",
-          "label": "email",
-          "placeholder": "Enter your email",
-          "type": "email"
-        },
-        {
           "id": "phone",
           "name": "phone",
           "label": "Phone Number",
@@ -973,6 +966,11 @@
   },
   "Checkout": {
     "title": "Billing details",
+    "newAddressTitle": "Ship to a different address?",
+    "shippingMethod": "Shipping Method",
+    "freeShipping": "Free Shipping",
+    "paymentMethodTitle": "Payment Method",
+    "loading": "Loading...",
     "formData": [
       {
         "id": "name",
@@ -1023,6 +1021,40 @@
         "placeholder": "Enter your phone",
         "type": "phone"
       }
-    ]
+    ],
+    "newAddress": [
+      {
+        "id": "secondCountry",
+        "name": "secondCountry",
+        "label": "Country",
+        "placeholder": "Enter your country",
+        "type": "text"
+      },
+      {
+        "id": "secondCity",
+        "name": "secondCity",
+        "label": "City",
+        "placeholder": "Enter your city",
+        "type": "text"
+      },
+      {
+        "id": "secondPostalCode",
+        "name": "secondPostalCode",
+        "label": "Postal Code",
+        "placeholder": "Enter your postal code",
+        "type": "text"
+      }
+    ],
+    "validation": {
+      "invalidEmail": "Email is invalid",
+      "required": "This field is required",
+      "nameMax": "Name must not exceed 255 characters",
+      "phoneRequired": "Phone number is required",
+      "invalidPhone": "Invalid phone number"
+    },
+    "response": {
+      "successOrder": "Order was ckecked out successfully",
+      "errorOrder": "Item cannot be checked out"
+    }
   }
 }

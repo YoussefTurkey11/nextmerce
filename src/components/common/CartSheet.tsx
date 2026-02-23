@@ -111,7 +111,12 @@ export default function CartSheet() {
             >
               <Link href={`/${locale}/cart`}>{t("cart.title")}</Link>
             </Button>
-            <Button variant={"secondary"} className="md:w-40" asChild>
+            <Button
+              variant={"secondary"}
+              className="md:w-40"
+              asChild
+              onClick={() => dispatch(closeCart())}
+            >
               <Link href={`/${locale}/checkout`}>{t("cart.checkout")}</Link>
             </Button>
           </div>
