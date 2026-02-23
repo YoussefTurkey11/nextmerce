@@ -59,6 +59,7 @@ const CheckoutPage = () => {
   const { data: cartData, isLoading: isCartLoading } =
     useGetAllProductsInCartQuery();
   const cart = cartData?.data.cartItems;
+  console.log(cart);
   const { data: userData, isLoading: isUserLoading } = useGetUserQuery();
   const user = userData?.data;
   const { data: orderData, isLoading: isOrderLoading } =
@@ -117,8 +118,8 @@ const CheckoutPage = () => {
   }, [stripeSession]);
 
   useEffect(() => {
-    if (paymobSession?.data) {
-      window.location.href = paymobSession.data;
+    if (paymobSession?.data?.iframeURL) {
+      window.location.href = paymobSession.data.iframeURL;
     }
   }, [paymobSession]);
 

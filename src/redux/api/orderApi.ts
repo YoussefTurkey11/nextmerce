@@ -1,6 +1,7 @@
 import {
   TCashOrderResponse,
-  TCheckoutSessionResponse,
+  TCheckoutSessionPaymob,
+  TCheckoutSessionStrapi,
   TCreateOrderResponse,
   TGetAllOrdersResponse,
   TUpdateOrderBody,
@@ -21,13 +22,13 @@ export const orderApi = api.injectEndpoints({
     }),
 
     // Check Out Session - Stripe
-    checkOutSessionStripe: builder.query<TCheckoutSessionResponse, string>({
+    checkOutSessionStripe: builder.query<TCheckoutSessionStrapi, string>({
       query: (cartId) => `/api/v1/orders/stripe-checkout-session/${cartId}`,
       providesTags: [{ type: "Orders", id: "LIST" }],
     }),
 
     // Check Out Session - Paymob
-    checkOutSessionPaymob: builder.query<TCheckoutSessionResponse, string>({
+    checkOutSessionPaymob: builder.query<TCheckoutSessionPaymob, string>({
       query: (cartId) => `/api/v1/orders/payMob-checkout-session/${cartId}`,
       providesTags: [{ type: "Orders", id: "LIST" }],
     }),

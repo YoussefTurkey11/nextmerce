@@ -235,11 +235,7 @@
       "searchInput": "Type anyting to search...",
       "searchInputBtn": "search",
       "logout": "Logout",
-      "tabs": [
-        { "title": "All" },
-        { "title": "Products" },
-        { "title": "Blogs" }
-      ],
+      "tabs": [{ "title": "All" }, { "title": "Products" }],
       "account": {
         "title": "account",
         "action": "Login / Register"

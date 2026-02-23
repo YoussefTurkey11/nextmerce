@@ -60,9 +60,13 @@ export type TItemState =
   | "delivered"
   | "cancelled";
 
-export type TCheckoutSessionResponse = {
+export type TCheckoutSessionStrapi = {
   status: string;
   data?: string;
+};
+export type TCheckoutSessionPaymob = {
+  status: string;
+  data?: { iframeURL: string };
 };
 
 export type TCashOrderResponse = {

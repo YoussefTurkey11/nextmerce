@@ -1,15 +1,16 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { GoogleLogin } from "@react-oauth/google";
 import { useSignUpWithGoogleMutation } from "@/redux/api/authApi";
 import { useAppDispatch } from "@/redux/store";
 import { setToken, setUser } from "@/redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { setAuthCookie } from "@/utils/cookie";
 
 const SocialAuth = () => {
   const t = useTranslations("Auth.register");
-
+  const locale = useLocale();
   const [signUpWithGoogle] = useSignUpWithGoogleMutation();
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -22,14 +23,16 @@ const SocialAuth = () => {
         idToken,
       }).unwrap();
 
-      dispatch(setToken(res.token));
+      const token = res.data.token;
+      console.log(res);
+
+      setAuthCookie(token);
+      dispatch(setToken(token));
       dispatch(setUser(res.data));
 
-      localStorage.setItem("token", res.token);
+      toast.success(t("response.success"));
 
-      toast.success("Welcome 🎉");
-
-      router.push("/home");
+      router.push(`/${locale}/`);
     } catch (error: any) {
       console.error(error);
       toast.error(error?.data?.message || "Google login failed");

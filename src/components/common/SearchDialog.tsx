@@ -12,10 +12,15 @@ import { SearchIcon } from "lucide-react";
 import { Field } from "../ui/field";
 import { Input } from "../ui/input";
 import { useTranslations } from "next-intl";
+import { useGetProductsQuery } from "@/redux/api/productApi";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function SearchDialog() {
   const t = useTranslations("Header");
   const tabs = t.raw("btns.tabs") as Array<{ title: string }>;
+  const { data: productData } = useGetProductsQuery({ limit: 10 });
+  const product = productData?.data;
 
   return (
     <Dialog>
@@ -55,11 +60,25 @@ export default function SearchDialog() {
         </DialogHeader>
 
         <div className="-mx-4 max-h-[50vh] overflow-y-auto px-4">
-          {Array.from({ length: 100 }).map((_, index) => (
-            <p key={index} className="mb-4 leading-normal">
-              Lorem ipsum dolor sit amet…
-            </p>
-          ))}
+          {product?.length! > 0 &&
+            product?.map((prod) => (
+              <Link
+                href={prod.id}
+                key={prod.id}
+                className="flex items-center gap-3 my-5 group"
+              >
+                <Image
+                  src={prod.imageCover}
+                  width={70}
+                  height={70}
+                  alt={prod.title}
+                  loading="lazy"
+                />
+                <p className="text-xl font-semibold group-hover:text-primary">
+                  {prod.title}
+                </p>
+              </Link>
+            ))}
         </div>
       </DialogContent>
     </Dialog>
