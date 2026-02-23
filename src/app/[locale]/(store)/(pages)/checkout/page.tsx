@@ -273,7 +273,7 @@ const CheckoutPage = () => {
                       {cart.product.title}
                     </p>
                     <p className="text-md font-semibold text-muted-foreground">
-                      ${cart.product.priceAfterDiscount}
+                      ${cart.product.priceAfterDiscount} ({cart.quantity})
                     </p>
                   </div>
                 ))}
