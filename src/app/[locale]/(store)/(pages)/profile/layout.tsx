@@ -31,7 +31,6 @@ const AccountLayount = ({ children }: { children: React.ReactNode }) => {
   const iconMap: Record<string, React.ReactNode> = {
     "/": <LayoutDashboard size={20} />,
     "/orders": <ShoppingBag size={20} />,
-    "/downloads": <Download size={20} />,
     "/addresses": <MapPin size={20} />,
     "/details": <User size={20} />,
   };

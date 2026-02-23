@@ -3,25 +3,32 @@ import { Dispatch, SetStateAction } from "react";
 import { TPagination } from "@/types/product";
 import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
+import { Loader2 } from "lucide-react";
 
 const Pagination = ({
   page,
   setPage,
   pagination,
+  isLoading,
 }: {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
   pagination?: TPagination;
+  isLoading: boolean;
 }) => {
   const t = useTranslations("Pagination");
   return (
     <div className="flex justify-end items-center gap-5 mt-10">
       <Button
-        disabled={page === 1}
+        disabled={page === 1 || isLoading}
         onClick={() => setPage((prev) => prev - 1)}
         className="px-4 py-2 w-fit"
       >
-        {t("previous")}
+        {isLoading ? (
+          <Loader2 className="w-5 h-5 animatae-spin" />
+        ) : (
+          <>{t("previous")}</>
+        )}
       </Button>
 
       <span>
@@ -30,11 +37,15 @@ const Pagination = ({
       </span>
 
       <Button
-        disabled={!pagination?.next}
+        disabled={!pagination?.next || isLoading}
         onClick={() => setPage((prev) => prev + 1)}
         className="px-4 py-2 w-fit"
       >
-        {t("next")}
+        {isLoading ? (
+          <Loader2 className="w-5 h-5 animatae-spin" />
+        ) : (
+          <>{t("next")}</>
+        )}
       </Button>
     </div>
   );

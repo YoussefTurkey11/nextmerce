@@ -769,11 +769,6 @@
         "link": "/orders"
       },
       {
-        "id": "downloads",
-        "name": "التنزيلات",
-        "link": "/downloads"
-      },
-      {
         "id": "addresses",
         "name": "العناوين",
         "link": "/addresses"
@@ -798,10 +793,16 @@
         "total": "الإجمالي",
         "action": "إجراء"
       },
-      "noOrders": "ليس لديك أي طلبات بعد!"
-    },
-    "download": {
-      "noDownloads": "ليس لديك أي تنزيلات بعد!"
+      "noOrders": "ليس لديك أي طلبات بعد!",
+      "order": "الطلب",
+      "status": "الحالة",
+      "payment": "الدفع",
+      "date": "التاريخ",
+      "product": "المنتج",
+      "quantity": "الكمية",
+      "price": "السعر",
+      "total": "الإجمالي",
+      "history": "السجل"
     },
     "address": {
       "head": "إضافة عنوان جديد",
@@ -1064,6 +1065,7 @@
     }
   },
   "Invoice": {
+    "title": "الفاتورة",
     "loading": "جاري التحميل...",
     "orderNotFound": "الطلب غير موجود",
     "order": "الطلب",

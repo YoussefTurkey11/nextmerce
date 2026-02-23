@@ -769,11 +769,6 @@
         "link": "/orders"
       },
       {
-        "id": "downloads",
-        "name": "Downloads",
-        "link": "/downloads"
-      },
-      {
         "id": "addresses",
         "name": "Addresses",
         "link": "/addresses"
@@ -798,10 +793,16 @@
         "total": "Total",
         "action": "Action"
       },
-      "noOrders": "You don't have any orders!"
-    },
-    "download": {
-      "noDownloads": "You don't have any download!"
+      "noOrders": "You don't have any orders!",
+      "order": "Order",
+      "status": "Status",
+      "payment": "Payment",
+      "date": "Date",
+      "product": "Product",
+      "quantity": "Quantity",
+      "price": "Price",
+      "total": "Total",
+      "history": "History"
     },
     "address": {
       "head": "Add New Address",
@@ -1063,6 +1064,7 @@
     }
   },
   "Invoice": {
+    "title": "Invoice",
     "loading": "Loading...",
     "orderNotFound": "Order Not Found",
     "order": "Order",
