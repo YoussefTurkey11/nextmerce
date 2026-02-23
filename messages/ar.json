@@ -949,7 +949,9 @@
       "successRemove": "تمت إزالة المنتج من السلة بنجاح",
       "errorAdd": "تعذر إضافة المنتج إلى السلة",
       "errorRemove": "تعذر إزالة المنتج من السلة",
-      "require": "هذا الحقل مطلوب"
+      "require": "هذا الحقل مطلوب",
+      "successCoupon": "تم تفعيل كود الخصم بنجاح",
+      "errorCoupon": "تعذر تفعيل كود الخصم"
     },
     "coupon": {
       "title": "هل لديك كود خصم؟",
@@ -972,6 +974,7 @@
     "freeShipping": "شحن مجاني",
     "paymentMethodTitle": "طريقة الدفع",
     "loading": "جاري التحميل...",
+    "payBtn": "دفع",
     "formData": [
       {
         "id": "name",
@@ -1055,7 +1058,28 @@
     },
     "response": {
       "successOrder": "تمت الشراء بنجاح",
-      "errorOrder": "تعذر الشراء"
+      "successCoupon": "تم تفعيل كود الخصم بنجاح",
+      "errorOrder": "تعذر الشراء",
+      "errorCoupon": "تعذر تفعيل كود الخصم"
     }
+  },
+  "Invoice": {
+    "loading": "جاري التحميل...",
+    "orderNotFound": "الطلب غير موجود",
+    "order": "الطلب",
+    "status": "الحالة",
+    "payment": "الدفع",
+    "date": "التاريخ",
+    "product": "المنتج",
+    "quantity": "الكمية",
+    "price": "السعر",
+    "total": "الإجمالي",
+    "history": "السجل"
+  },
+  "Pagination": {
+    "previous": "السابق",
+    "page": "الصفحة",
+    "of": "من",
+    "next": "التالي"
   }
 }

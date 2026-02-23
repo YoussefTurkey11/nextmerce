@@ -1,6 +1,8 @@
 import {
+  TCashOrderResponse,
   TCheckoutSessionResponse,
   TCreateOrderResponse,
+  TGetAllOrdersResponse,
   TUpdateOrderBody,
 } from "@/types/order";
 import { api } from "../baseApi";
@@ -8,7 +10,12 @@ import { api } from "../baseApi";
 export const orderApi = api.injectEndpoints({
   endpoints: (builder) => ({
     // Get All Orders
-    getAllOrders: builder.query<TCreateOrderResponse, void>({
+    getAllOrders: builder.query<TGetAllOrdersResponse, number>({
+      query: (page = 1) => `/api/v1/orders?page=${page}&limit=5`,
+      providesTags: [{ type: "Orders", id: "LIST" }],
+    }),
+
+    getSingleOrder: builder.query<TGetAllOrdersResponse, void>({
       query: () => `/api/v1/orders`,
       providesTags: [{ type: "Orders", id: "LIST" }],
     }),
@@ -26,15 +33,13 @@ export const orderApi = api.injectEndpoints({
     }),
 
     // Create Cash Order
-    createCashOrder: builder.mutation<TCreateOrderResponse, { cartId: string }>(
-      {
-        query: ({ cartId }) => ({
-          url: `/api/v1/orders/${cartId}`,
-          method: "POST",
-        }),
-        invalidatesTags: [{ type: "Orders", id: "LIST" }],
-      },
-    ),
+    createCashOrder: builder.mutation<TCashOrderResponse, { cartId: string }>({
+      query: ({ cartId }) => ({
+        url: `/api/v1/orders/${cartId}`,
+        method: "POST",
+      }),
+      invalidatesTags: [{ type: "Orders", id: "LIST" }],
+    }),
 
     // Update Order Status
     updateOrderStatus: builder.mutation<
@@ -62,6 +67,7 @@ export const orderApi = api.injectEndpoints({
 
 export const {
   useGetAllOrdersQuery,
+  useGetSingleOrderQuery,
   useCheckOutSessionStripeQuery,
   useCheckOutSessionPaymobQuery,
   useCreateCashOrderMutation,

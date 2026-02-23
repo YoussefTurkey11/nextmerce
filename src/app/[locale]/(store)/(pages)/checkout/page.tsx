@@ -11,7 +11,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useGetUserQuery } from "@/redux/api/authApi";
-import { useGetAllProductsInCartQuery } from "@/redux/api/cartApi";
+import {
+  useApplyCouponInCartMutation,
+  useGetAllProductsInCartQuery,
+} from "@/redux/api/cartApi";
 import {
   useCheckOutSessionPaymobQuery,
   useCheckOutSessionStripeQuery,
@@ -71,6 +74,8 @@ const CheckoutPage = () => {
       skip: !checkoutCartId,
     });
   const [createCashOrder] = useCreateCashOrderMutation();
+  const [applyCoupon, { isLoading: isApplyCouponLoading }] =
+    useApplyCouponInCartMutation();
 
   const {
     register,
@@ -137,12 +142,29 @@ const CheckoutPage = () => {
     if (data.paymentMethod === "COD") {
       try {
         const res = await createCashOrder({ cartId }).unwrap();
+        console.log(res.data);
         toast.success(ch("response.successOrder"));
-        router.push(`/invoice/${res.data?.data?.id}`);
+        router.push(`/${locale}/invoice/${res.data?.id}`);
       } catch (err) {
         console.log(err);
         toast.success(ch("response.errorOrder"));
       }
+    }
+  };
+
+  const handleApplyCoupon = async () => {
+    const couponCode = watch("coupon");
+
+    if (!couponCode) {
+      toast.error(t("response.errorCoupon"));
+      return;
+    }
+
+    try {
+      await applyCoupon({ code: couponCode }).unwrap();
+      toast.success(t("response.successCoupon"));
+    } catch (err) {
+      toast.error(t("response.errorCoupon"));
     }
   };
 
@@ -283,8 +305,17 @@ const CheckoutPage = () => {
                   )}
                 </div>
 
-                <Button className="w-fit" type="button" disabled={isSubmitting}>
-                  {t("coupon.applyBtn")}
+                <Button
+                  className="w-fit"
+                  type="button"
+                  onClick={handleApplyCoupon}
+                  disabled={isSubmitting}
+                >
+                  {isApplyCouponLoading ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <>{t("coupon.applyBtn")}</>
+                  )}
                 </Button>
               </div>
             </div>
@@ -394,7 +425,7 @@ const CheckoutPage = () => {
                 <Loader2 className="w-5 h-5 animate-spin" />
               ) : (
                 <>
-                  Pay{" "}
+                  {ch("payBtn")}{" "}
                   <span className="font-semibold">${order?.totalPrice}</span>
                 </>
               )}

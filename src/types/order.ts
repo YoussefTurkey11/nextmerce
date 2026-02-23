@@ -67,3 +67,8 @@ export type TCheckoutSessionResponse = {
     url: string;
   };
 };
+
+export type TCashOrderResponse = {
+  message: string;
+  data: TOrder;
+};

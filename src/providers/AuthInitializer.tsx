@@ -58,24 +58,7 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    if (
-      authInitialized &&
-      !user &&
-      ![
-        `/en/login`,
-        `/en/register`,
-        `/en/forgotPassword`,
-        `/en/verify`,
-        `/en/verifyOTP`,
-        `/en/newPassword`,
-        `/ar/login`,
-        `/ar/register`,
-        `/ar/forgotPassword`,
-        `/ar/verify`,
-        `/ar/verifyOTP`,
-        `/ar/newPassword`,
-      ].includes(pathname)
-    ) {
+    if (authInitialized && !user && [`/en/`, `/ar/`].includes(pathname)) {
       setTimeout(() => dispatch(openAuthDialog()), 3000);
     }
   }, [authInitialized, user, pathname, dispatch]);

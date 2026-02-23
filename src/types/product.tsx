@@ -46,9 +46,12 @@ export type ProductResponse = {
   message: string;
   results: number;
   data: TProductItem[];
-  paginationResult: {
-    currentPage: number;
-    limit: number;
-    totalPages: number;
-  };
+  paginationResult: TPagination;
+};
+
+export type TPagination = {
+  currentPage: number;
+  limit: number;
+  totalPages: number;
+  next?: number;
 };

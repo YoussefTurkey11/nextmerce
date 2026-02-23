@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
+  useApplyCouponInCartMutation,
   useClearCartContentMutation,
   useDeleteProductsInCartMutation,
   useGetAllProductsInCartQuery,
@@ -36,6 +37,8 @@ const CartPage = () => {
   }>;
   const { data: cartData, refetch } = useGetAllProductsInCartQuery();
   const [clearCart] = useClearCartContentMutation();
+  const [applyCoupon, { isLoading: isApplyCouponLoading }] =
+    useApplyCouponInCartMutation();
   const [deleteItemFromCart] = useDeleteProductsInCartMutation();
 
   const [deletedId, setDeletedId] = useState<string | null>(null);
@@ -43,13 +46,29 @@ const CartPage = () => {
 
   const {
     register,
-    handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
+    watch,
   } = useForm<CartCouponFormDataSchema>({
     resolver: zodResolver(cartCouponSchema(t)),
     mode: "onChange",
   });
+
+  const handleApplyCoupon = async () => {
+    const couponCode = watch("coupon");
+
+    if (!couponCode) {
+      toast.error(t("response.errorCoupon"));
+      return;
+    }
+
+    try {
+      await applyCoupon({ code: couponCode }).unwrap();
+      toast.success(t("response.successCoupon"));
+    } catch (err) {
+      toast.error(t("response.errorCoupon"));
+    }
+  };
+
   return (
     <section
       className={`mt-40 container mx-auto px-5 md:px-30 ${cart?.length! > 0 ? "min-h-screen" : ""}`}
@@ -160,8 +179,17 @@ const CartPage = () => {
                 )}
               </div>
 
-              <Button className="w-fit" type="submit" disabled={isSubmitting}>
-                {t("coupon.applyBtn")}
+              <Button
+                className="w-fit"
+                type="button"
+                onClick={handleApplyCoupon}
+                disabled={isSubmitting}
+              >
+                {isApplyCouponLoading ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : (
+                  <>{t("coupon.applyBtn")}</>
+                )}
               </Button>
             </div>
           </form>

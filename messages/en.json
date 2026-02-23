@@ -949,7 +949,9 @@
       "successRemove": "Item removed from cart successfully",
       "errorAdd": "Item cannot be added to cart",
       "errorRemove": "Item cannot be removed from cart",
-      "require": "This field is required"
+      "require": "This field is required",
+      "successCoupon": "Coupon applied successfully",
+      "errorCoupon": "Invalid coupon"
     },
     "coupon": {
       "title": "Have any discount code?",
@@ -971,6 +973,7 @@
     "freeShipping": "Free Shipping",
     "paymentMethodTitle": "Payment Method",
     "loading": "Loading...",
+    "payBtn": "Pay",
     "formData": [
       {
         "id": "name",
@@ -1054,7 +1057,28 @@
     },
     "response": {
       "successOrder": "Order was ckecked out successfully",
-      "errorOrder": "Item cannot be checked out"
+      "successCoupon": "Coupon applied successfully",
+      "errorOrder": "Item cannot be checked out",
+      "errorCoupon": "Invalid coupon"
     }
+  },
+  "Invoice": {
+    "loading": "Loading...",
+    "orderNotFound": "Order Not Found",
+    "order": "Order",
+    "status": "Status",
+    "payment": "Payment",
+    "date": "Date",
+    "product": "Product",
+    "quantity": "Quantity",
+    "price": "Price",
+    "total": "Total",
+    "history": "History"
+  },
+  "Pagination": {
+    "previous": "Previous",
+    "page": "Page",
+    "of": "of",
+    "next": "Next"
   }
 }
