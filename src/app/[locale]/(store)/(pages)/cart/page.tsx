@@ -96,8 +96,8 @@ const CartPage = () => {
 
       {cart?.length! > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div className="col-span-2">
-            <Table className="mt-10 border border-ring/30">
+          <div className="md:col-span-2">
+            <Table className="mt-10 border border-ring/30 overflow-x-scroll md:overflow-hidden w-200 md:w-full">
               <TableHeader className="bg-muted">
                 <TableRow>
                   {tableHead.map((head) => (
@@ -164,7 +164,7 @@ const CartPage = () => {
             <h4 className="text-lg font-semibold pb-5 border-b border-ring/30">
               {t("coupon.title")}
             </h4>
-            <div className="flex items-center gap-5 mt-5">
+            <div className="flex items-center flex-col md:flex-row gap-5 mt-5">
               <div className="flex flex-col w-full">
                 <Input
                   {...register("coupon")}
@@ -180,7 +180,7 @@ const CartPage = () => {
               </div>
 
               <Button
-                className="w-fit"
+                className="w-full md:w-fit"
                 type="button"
                 onClick={handleApplyCoupon}
                 disabled={isSubmitting}

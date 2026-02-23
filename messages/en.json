@@ -975,6 +975,9 @@
     "paymentMethodTitle": "Payment Method",
     "loading": "Loading...",
     "payBtn": "Pay",
+    "COD": "Cash on delivery",
+    "stripe": "Stripe",
+    "paymob": "Paymob",
     "formData": [
       {
         "id": "name",

@@ -976,6 +976,9 @@
     "paymentMethodTitle": "طريقة الدفع",
     "loading": "جاري التحميل...",
     "payBtn": "دفع",
+    "COD": "الدفع عند الاستلام",
+    "stripe": "سترايب",
+    "paymob": "باي موب",
     "formData": [
       {
         "id": "name",

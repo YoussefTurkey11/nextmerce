@@ -62,10 +62,7 @@ export type TItemState =
 
 export type TCheckoutSessionResponse = {
   status: string;
-  session?: {
-    id: string;
-    url: string;
-  };
+  data?: string;
 };
 
 export type TCashOrderResponse = {

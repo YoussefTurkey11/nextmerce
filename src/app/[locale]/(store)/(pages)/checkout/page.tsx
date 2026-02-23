@@ -111,14 +111,14 @@ const CheckoutPage = () => {
   }, [user, setValue]);
 
   useEffect(() => {
-    if (stripeSession?.session?.url) {
-      window.location.href = stripeSession.session.url;
+    if (stripeSession?.data) {
+      window.location.href = stripeSession.data;
     }
   }, [stripeSession]);
 
   useEffect(() => {
-    if (paymobSession?.session?.url) {
-      window.location.href = paymobSession.session.url;
+    if (paymobSession?.data) {
+      window.location.href = paymobSession.data;
     }
   }, [paymobSession]);
 
@@ -190,7 +190,7 @@ const CheckoutPage = () => {
       <h1 className="text-4xl font-semibold capitalize mb-5">{ch("title")}</h1>
 
       {cart ? (
-        <div className="flex items-start gap-5">
+        <div className="flex flex-col md:flex-row items-start gap-5">
           <div className="space-y-5 w-full">
             <div className="border border-ring/30 rounded-lg p-5 space-y-5">
               {formData.map((field) => (
@@ -290,7 +290,7 @@ const CheckoutPage = () => {
               <h4 className="text-lg font-semibold pb-5 border-b border-ring/30">
                 {t("coupon.title")}
               </h4>
-              <div className="flex items-center gap-5 mt-5">
+              <div className="flex items-center flex-col md:flex-row gap-5 mt-5">
                 <div className="flex flex-col w-full">
                   <Input
                     {...register("coupon")}
@@ -306,7 +306,7 @@ const CheckoutPage = () => {
                 </div>
 
                 <Button
-                  className="w-fit"
+                  className="w-full md:w-fit"
                   type="button"
                   onClick={handleApplyCoupon}
                   disabled={isSubmitting}
@@ -321,7 +321,9 @@ const CheckoutPage = () => {
             </div>
 
             <div className="border border-ring/30 rounded-lg p-5">
-              <h4 className="text-2xl font-semibold">{ch("shippingMethod")}</h4>
+              <h4 className="text-2xl font-semibold border-b border-ring/30 pb-3">
+                {ch("shippingMethod")}
+              </h4>
 
               <RadioGroup
                 defaultValue="shipping"
@@ -342,7 +344,7 @@ const CheckoutPage = () => {
             </div>
 
             <div className="border border-ring/30 rounded-lg p-5">
-              <h4 className="text-2xl font-semibold">
+              <h4 className="text-2xl font-semibold border-b border-ring/30 pb-3">
                 {ch("paymentMethodTitle")}
               </h4>
 
@@ -367,7 +369,7 @@ const CheckoutPage = () => {
                   >
                     <CircleDollarSign size={25} />
                     <span>|</span>
-                    <span>Cash On Delivery</span>
+                    <span>{ch("COD")}</span>
                   </Label>
                 </div>
 
@@ -389,7 +391,7 @@ const CheckoutPage = () => {
                       loading="lazy"
                     />
                     <span>|</span>
-                    <span>Stripe</span>
+                    <span>{ch("stripe")}</span>
                   </Label>
                 </div>
 
@@ -411,7 +413,7 @@ const CheckoutPage = () => {
                       loading="lazy"
                     />
                     <span>|</span>
-                    <span>Paymob</span>
+                    <span>{ch("paymob")}</span>
                   </Label>
                 </div>
               </RadioGroup>
