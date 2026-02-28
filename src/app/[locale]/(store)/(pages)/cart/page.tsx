@@ -1,7 +1,9 @@
 "use client";
 
+import { CouponForm } from "@/components/common/CouponForm";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { QuantityCounter } from "@/components/ui/quantity-counter";
 import {
   Table,
   TableBody,
@@ -15,6 +17,7 @@ import {
   useClearCartContentMutation,
   useDeleteProductsInCartMutation,
   useGetAllProductsInCartQuery,
+  useUpdateQuantityInCartMutation,
 } from "@/redux/api/cartApi";
 import {
   CartCouponFormDataSchema,
@@ -25,7 +28,7 @@ import { Loader2, Store, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -40,6 +43,8 @@ const CartPage = () => {
   const [applyCoupon, { isLoading: isApplyCouponLoading }] =
     useApplyCouponInCartMutation();
   const [deleteItemFromCart] = useDeleteProductsInCartMutation();
+  const [updateQuantity, { isLoading: isUpdating }] =
+    useUpdateQuantityInCartMutation();
 
   const [deletedId, setDeletedId] = useState<string | null>(null);
   const cart = cartData?.data.cartItems;
@@ -52,6 +57,10 @@ const CartPage = () => {
     resolver: zodResolver(cartCouponSchema(t)),
     mode: "onChange",
   });
+
+  const isCouponApplied =
+    !!cartData?.data.totalPriceAfterDiscount &&
+    cartData.data.totalPriceAfterDiscount !== cartData.data.totalPrice;
 
   const handleApplyCoupon = async () => {
     const couponCode = watch("coupon");
@@ -66,6 +75,19 @@ const CartPage = () => {
       toast.success(t("response.successCoupon"));
     } catch (err) {
       toast.error(t("response.errorCoupon"));
+    }
+  };
+
+  const handleQuantityChange = async (id: string, value: number) => {
+    try {
+      await updateQuantity({
+        id,
+        quantity: value,
+      }).unwrap();
+
+      toast.success("Quantity updated");
+    } catch {
+      toast.error("Failed to update quantity");
     }
   };
 
@@ -113,7 +135,7 @@ const CartPage = () => {
               <TableBody>
                 {cart?.map((cart) => (
                   <TableRow key={cart.id} className="text-center">
-                    <TableCell className="flex items-center gap-2">
+                    <TableCell className="flex items-center justify-center gap-2">
                       <Image
                         src={cart.product.imageCover}
                         width={60}
@@ -127,9 +149,17 @@ const CartPage = () => {
                       </p>
                     </TableCell>
                     <TableCell className="text-xl font-bold">
-                      ${cart.product.price}
+                      ${cart.product.priceAfterDiscount}
                     </TableCell>
-                    <TableCell>${cart.product.priceAfterDiscount}</TableCell>
+                    <TableCell className="flex items-center justify-center">
+                      <QuantityCounter
+                        min={1}
+                        max={50}
+                        value={cart.quantity}
+                        disabled={isUpdating}
+                        onChange={(val) => handleQuantityChange(cart.id, val)}
+                      />
+                    </TableCell>
                     <TableCell>
                       <Button
                         variant={"delete"}
@@ -160,39 +190,18 @@ const CartPage = () => {
             </Table>
           </div>
 
-          <form className="border border-ring/30 rounded-lg p-5 h-fit">
-            <h4 className="text-lg font-semibold pb-5 border-b border-ring/30">
-              {t("coupon.title")}
-            </h4>
-            <div className="flex items-center flex-col md:flex-row gap-5 mt-5">
-              <div className="flex flex-col w-full">
-                <Input
-                  {...register("coupon")}
-                  placeholder={t("coupon.placeholder")}
-                  type={"text"}
-                  className="py-5.5 px-5 rounded-full bg-background"
-                />
-                {errors && (
-                  <p className="text-destructive text-sm mt-1">
-                    {errors?.coupon?.message as string}
-                  </p>
-                )}
-              </div>
-
-              <Button
-                className="w-full md:w-fit"
-                type="button"
-                onClick={handleApplyCoupon}
-                disabled={isSubmitting}
-              >
-                {isApplyCouponLoading ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                ) : (
-                  <>{t("coupon.applyBtn")}</>
-                )}
-              </Button>
-            </div>
-          </form>
+          <div className="border border-ring/30 rounded-lg p-5 h-fit">
+            <CouponForm
+              appliedCoupon={isCouponApplied ? t("response.successAdd") : null}
+              loading={isApplyCouponLoading}
+              disabled={isCouponApplied}
+              errors={errors}
+              onApply={async (code) => {
+                await applyCoupon({ code }).unwrap();
+                await refetch();
+              }}
+            />
+          </div>
 
           <div className="border border-ring/30 rounded-lg p-5">
             <h4 className="text-lg font-semibold pb-5 border-b border-ring/30">
@@ -222,7 +231,9 @@ const CartPage = () => {
               <div className="flex items-center justify-between py-5">
                 <p className="text-lg font-bold">{t("orderSummary.total")}</p>
                 <p className="text-lg font-bold">
-                  ${cartData?.data.totalPrice}
+                  $
+                  {cartData?.data.totalPriceAfterDiscount ??
+                    cartData?.data.totalPrice}{" "}
                 </p>
               </div>
             </div>

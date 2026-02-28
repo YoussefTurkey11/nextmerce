@@ -1,4 +1,5 @@
 "use client";
+import { CouponForm } from "@/components/common/CouponForm";
 import { InputField } from "@/components/common/InputField";
 import {
   Accordion,
@@ -7,7 +8,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useGetUserQuery } from "@/redux/api/authApi";
@@ -56,8 +56,11 @@ const CheckoutPage = () => {
     type: Exclude<TInputType, "phone">;
   }>;
 
-  const { data: cartData, isLoading: isCartLoading } =
-    useGetAllProductsInCartQuery();
+  const {
+    data: cartData,
+    isLoading: isCartLoading,
+    refetch,
+  } = useGetAllProductsInCartQuery();
   const cart = cartData?.data.cartItems;
   console.log(cart);
   const { data: userData, isLoading: isUserLoading } = useGetUserQuery();
@@ -153,21 +156,9 @@ const CheckoutPage = () => {
     }
   };
 
-  const handleApplyCoupon = async () => {
-    const couponCode = watch("coupon");
-
-    if (!couponCode) {
-      toast.error(t("response.errorCoupon"));
-      return;
-    }
-
-    try {
-      await applyCoupon({ code: couponCode }).unwrap();
-      toast.success(t("response.successCoupon"));
-    } catch (err) {
-      toast.error(t("response.errorCoupon"));
-    }
-  };
+  const isCouponApplied =
+    !!cartData?.data.totalPriceAfterDiscount &&
+    cartData.data.totalPriceAfterDiscount !== cartData.data.totalPrice;
 
   if (
     isCartLoading ||
@@ -281,45 +272,24 @@ const CheckoutPage = () => {
                 <div className="flex items-center justify-between py-5">
                   <p className="text-lg font-bold">{t("orderSummary.total")}</p>
                   <p className="text-lg font-bold">
-                    ${cartData?.data.totalPrice}
+                    $
+                    {cartData?.data.totalPriceAfterDiscount ??
+                      cartData?.data.totalPrice}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="border border-ring/30 rounded-lg p-5 h-fit">
-              <h4 className="text-lg font-semibold pb-5 border-b border-ring/30">
-                {t("coupon.title")}
-              </h4>
-              <div className="flex items-center flex-col md:flex-row gap-5 mt-5">
-                <div className="flex flex-col w-full">
-                  <Input
-                    {...register("coupon")}
-                    placeholder={t("coupon.placeholder")}
-                    type={"text"}
-                    className="py-5.5 px-5 rounded-full bg-background"
-                  />
-                  {errors && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors?.coupon?.message as string}
-                    </p>
-                  )}
-                </div>
-
-                <Button
-                  className="w-full md:w-fit"
-                  type="button"
-                  onClick={handleApplyCoupon}
-                  disabled={isSubmitting}
-                >
-                  {isApplyCouponLoading ? (
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                  ) : (
-                    <>{t("coupon.applyBtn")}</>
-                  )}
-                </Button>
-              </div>
-            </div>
+            <CouponForm
+              appliedCoupon={isCouponApplied ? t("response.successAdd") : null}
+              loading={isApplyCouponLoading}
+              disabled={isCouponApplied}
+              errors={errors}
+              onApply={async (code) => {
+                await applyCoupon({ code }).unwrap();
+                await refetch();
+              }}
+            />
 
             <div className="border border-ring/30 rounded-lg p-5">
               <h4 className="text-2xl font-semibold border-b border-ring/30 pb-3">
@@ -429,7 +399,10 @@ const CheckoutPage = () => {
               ) : (
                 <>
                   {ch("payBtn")}{" "}
-                  <span className="font-semibold">${order?.totalPrice}</span>
+                  <span className="font-semibold">
+                    ${order?.totalPriceAfterDiscount ?? order?.totalPrice}
+                  </span>
+                  <p className="text-lg font-bold"></p>
                 </>
               )}
             </Button>

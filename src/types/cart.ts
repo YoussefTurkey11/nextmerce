@@ -12,6 +12,7 @@ export type TCart = {
   user: string;
   cartItems: TCartItems[];
   totalPrice: number;
+  totalPriceAfterDiscount: number;
 };
 
 export type TCartResponse = {

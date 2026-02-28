@@ -936,7 +936,7 @@
     "tableHead": [
       { "head": "Product" },
       { "head": "Price" },
-      { "head": "Subtotal" },
+      { "head": "Quantity" },
       { "head": "Action" }
     ],
     "emptyTitle": "Your Cart is empty!",
